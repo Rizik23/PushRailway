@@ -1,0 +1,13 @@
+{
+  "panel": true,
+  "admin": false,
+  "vps": false,
+  "do": false,
+  "app": true,
+  "script": true,
+  "prompt": true,
+  "subdo": true,
+  "smm": false,
+  "topup": false,
+  "nokos": true
+}
