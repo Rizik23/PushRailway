@@ -55,7 +55,7 @@ const config = require("./config");
       { command: "delrole", description: "Mᴇɴɢʜᴀᴘᴜs Rᴏʟʟᴇ ≈Usᴇʀ ♣" },
       { command: "addvoucher", description: "Mᴇᴍʙᴜᴀᴛ Rᴇғᴇʀʀᴀʟ Sᴀʟᴅᴏ Dᴀɴ Kᴜᴏᴛᴀ 🪔" },
       { command: "getdb", description: "Bᴀᴄᴋᴜᴘ Hᴀɴʏᴀ Bᴀɢɪᴀɴ Dʙ ( Pᴇɴᴛɪɴɢ ) 🎁" },
-      { command: "ganti", description: "Mᴇɴɢɢᴀɴᴛɪ Fɪʟᴇ Dᴀʀɪ Tᴇʟᴇɢʀᴀᴍ 🐇" }
+      { command: "ganti", description: "Mᴇɴɢɢᴀɴᴛɪ Fɪʟᴇ Dᴀʀɪ Tᴇʟᴇɢʀᴀᴍ 🐇" },
       { command: "mt", description: "Fɪᴛᴜʀ Mᴀɪɴᴛᴇɴᴀɴᴄᴇ Oɴ/Oғ 🎛" }
     ];
 
