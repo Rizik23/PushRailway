@@ -37,21 +37,52 @@ if (!fs.existsSync(settingsDB)) fs.writeFileSync(settingsDB, JSON.stringify({
     script: true
 }, null, 2));
 
-// Load database
-const loadScripts = () => JSON.parse(fs.readFileSync(scriptDB));
-const saveScripts = (d) => fs.writeFileSync(scriptDB, JSON.stringify(d, null, 2));
-const loadUsers = () => JSON.parse(fs.readFileSync(userDB));
-const saveUsers = (d) => fs.writeFileSync(userDB, JSON.stringify(d, null, 2));
-const loadVouchers = () => JSON.parse(fs.readFileSync(voucherDB));
-const saveVouchers = (d) => fs.writeFileSync(voucherDB, JSON.stringify(d, null, 2));
-const loadRatings = () => JSON.parse(fs.readFileSync(ratingDB));
-const saveRatings = (d) => fs.writeFileSync(ratingDB, JSON.stringify(d, null, 2));
-const loadSettings = () => JSON.parse(fs.readFileSync(settingsDB));
-const saveSettings = (d) => fs.writeFileSync(settingsDB, JSON.stringify(d, null, 2));
-const loadMissions = () => JSON.parse(fs.readFileSync(missionDB));
-const saveMissions = (d) => fs.writeFileSync(missionDB, JSON.stringify(d, null, 2));
-const loadApks = () => JSON.parse(fs.readFileSync(apkDB));
-const saveApks = (d) => fs.writeFileSync(apkDB, JSON.stringify(d, null, 2));
+// ==========================================
+// 🚀 IN-MEMORY DATABASE SYSTEM (ANTI-DELAY)
+// ==========================================
+// Muat data ke RAM HANYA SEKALI saat bot pertama kali menyala
+global.dbCache = {
+    users: JSON.parse(fs.readFileSync(userDB, 'utf-8')),
+    scripts: JSON.parse(fs.readFileSync(scriptDB, 'utf-8')),
+    vouchers: JSON.parse(fs.readFileSync(voucherDB, 'utf-8')),
+    ratings: JSON.parse(fs.readFileSync(ratingDB, 'utf-8')),
+    missions: JSON.parse(fs.readFileSync(missionDB, 'utf-8')),
+    apks: JSON.parse(fs.readFileSync(apkDB, 'utf-8')),
+    settings: JSON.parse(fs.readFileSync(settingsDB, 'utf-8'))
+};
+
+// Fungsi Load sekarang mengambil dari RAM (Instan 0ms)
+const loadUsers = () => global.dbCache.users;
+const loadScripts = () => global.dbCache.scripts;
+const loadVouchers = () => global.dbCache.vouchers;
+const loadRatings = () => global.dbCache.ratings;
+const loadMissions = () => global.dbCache.missions;
+const loadApks = () => global.dbCache.apks;
+const loadSettings = () => global.dbCache.settings;
+
+// Penanda jika ada data yang berubah
+let needSave = { users: false, scripts: false, vouchers: false, ratings: false, missions: false, apks: false, settings: false };
+
+// Fungsi Save sekarang hanya memperbarui RAM (Instan 0ms)
+const saveUsers = (d) => { global.dbCache.users = d; needSave.users = true; };
+const saveScripts = (d) => { global.dbCache.scripts = d; needSave.scripts = true; };
+const saveVouchers = (d) => { global.dbCache.vouchers = d; needSave.vouchers = true; };
+const saveRatings = (d) => { global.dbCache.ratings = d; needSave.ratings = true; };
+const saveMissions = (d) => { global.dbCache.missions = d; needSave.missions = true; };
+const saveApks = (d) => { global.dbCache.apks = d; needSave.apks = true; };
+const saveSettings = (d) => { global.dbCache.settings = d; needSave.settings = true; };
+
+// ⚙️ BACKGROUND WORKER: Menyimpan ke File secara diam-diam tiap 3 detik jika ada perubahan
+setInterval(() => {
+    if (needSave.users) { fs.writeFile(userDB, JSON.stringify(global.dbCache.users, null, 2), ()=>{}); needSave.users = false; }
+    if (needSave.scripts) { fs.writeFile(scriptDB, JSON.stringify(global.dbCache.scripts, null, 2), ()=>{}); needSave.scripts = false; }
+    if (needSave.vouchers) { fs.writeFile(voucherDB, JSON.stringify(global.dbCache.vouchers, null, 2), ()=>{}); needSave.vouchers = false; }
+    if (needSave.ratings) { fs.writeFile(ratingDB, JSON.stringify(global.dbCache.ratings, null, 2), ()=>{}); needSave.ratings = false; }
+    if (needSave.missions) { fs.writeFile(missionDB, JSON.stringify(global.dbCache.missions, null, 2), ()=>{}); needSave.missions = false; }
+    if (needSave.apks) { fs.writeFile(apkDB, JSON.stringify(global.dbCache.apks, null, 2), ()=>{}); needSave.apks = false; }
+    if (needSave.settings) { fs.writeFile(settingsDB, JSON.stringify(global.dbCache.settings, null, 2), ()=>{}); needSave.settings = false; }
+}, 3000);
+// ==========================================
 
 
 // ===================== FUNGSI UTILITAS =====================
@@ -74,6 +105,82 @@ try {
   registerFont('./font/NotoColorEmoji-Regular.ttf', { family: 'EmojiFont' });
 } catch (e) {
   console.log("⚠️ File font tidak ditemukan, pastikan file .ttf ada di folder!");
+}
+
+// ============================================
+// 🎨 FUNGSI PEMBUAT KARTU SULTAN CASINO (CANVAS)
+// ============================================
+async function createTopSlotCard(user, rank, favGameName) {
+    const { createCanvas } = require("canvas");
+    const width = 800;
+    const height = 400;
+    const canvas = createCanvas(width, height);
+    const ctx = canvas.getContext("2d");
+
+    // Background Gradient (Dark Casino Vibe)
+    const bgGradient = ctx.createLinearGradient(0, 0, width, height);
+    bgGradient.addColorStop(0, "#111111"); // Hitam elegan
+    bgGradient.addColorStop(1, "#3a0000"); // Merah gelap kasino
+    ctx.fillStyle = bgGradient;
+    ctx.fillRect(0, 0, width, height);
+
+    // Gold Border Dalam
+    ctx.strokeStyle = "#FFD700";
+    ctx.lineWidth = 6;
+    ctx.strokeRect(10, 10, width - 20, height - 20);
+
+    // Efek Watermark VIP di background
+    ctx.globalAlpha = 0.05;
+    ctx.fillStyle = "#FFFFFF";
+    ctx.font = "bold 250px Arial";
+    ctx.fillText("VIP", 450, 300);
+    ctx.globalAlpha = 1.0;
+
+    // Header Kartu
+    ctx.fillStyle = "#FFD700"; // Emas
+    ctx.font = "bold 35px Arial";
+    ctx.textAlign = "center";
+    ctx.fillText("👑 KING OF CASINO 👑", width / 2, 60);
+
+    // Garis pemisah atas
+    ctx.beginPath();
+    ctx.moveTo(100, 80);
+    ctx.lineTo(700, 80);
+    ctx.strokeStyle = "#FFD700";
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    // Rank Badge
+    ctx.fillStyle = "#FFFFFF";
+    ctx.font = "bold 80px Arial";
+    ctx.textAlign = "left";
+    ctx.fillText(`#${rank}`, 40, 170);
+
+    // Nama Pemain
+    ctx.fillStyle = "#FFA500";
+    ctx.font = "bold 45px Arial";
+    let name = user.first_name || user.username || "Anonymous";
+    if (name.length > 15) name = name.substring(0, 15) + "...";
+    ctx.fillText(name.toUpperCase(), 180, 170);
+
+    // Garis pemisah tengah
+    ctx.beginPath();
+    ctx.moveTo(40, 200);
+    ctx.lineTo(760, 200);
+    ctx.strokeStyle = "rgba(255, 215, 0, 0.3)";
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    // Statistik Info (Saldo & Jackpot)
+    ctx.fillStyle = "#FFFFFF";
+    ctx.font = "30px Arial";
+    ctx.fillText(`💰 Total Saldo   : ${user.balance.toLocaleString('id-ID')} Coin`, 40, 260);
+    ctx.fillText(`🏆 Total Jackpot : ${user.slotStats.wins.toLocaleString('id-ID')} Coin`, 40, 310);
+    
+    ctx.fillStyle = "#FFD700";
+    ctx.fillText(`🎰 Fav Mesin     : ${favGameName}`, 40, 360);
+
+    return canvas.toBuffer();
 }
 
 function escapeHTML(str) {
@@ -831,12 +938,35 @@ module.exports = (bot) => {
 
 global.channelTitleCache = {}; 
 
+// MEMORI VIP PASS (Catat ID yang sudah lulus cek channel)
+global.verifiedUsers = global.verifiedUsers || new Set();
+
 bot.use(async (ctx, next) => {
-    // TAMBAHKAN BARIS INI: Abaikan pengecekan jika bot sedang berada di grup
+    // Abaikan pengecekan jika bot sedang berada di grup
     if (ctx.chat && ctx.chat.type !== 'private') return next();
 
-    // Kode asli kamu di bawahnya tetap sama
+    // 1. OWNER BEBAS LEWAT TANPA HALANGAN APAPUN
     if (ctx.from && String(ctx.from.id) === String(config.ownerId)) return next();
+
+    // ==========================================
+    // 🛑 2. SISTEM MAINTENANCE MODE 🛑
+    // ==========================================
+    const settings = loadSettings();
+    if (settings.maintenance) {
+        if (ctx.callbackQuery) {
+            return ctx.answerCbQuery("🛠️ BOT UNDER MAINTENANCE!\n\nSedang ada perbaikan/update sistem. Silakan kembali nanti.", { show_alert: true }).catch(() => {});
+        } else if (ctx.message) {
+            return ctx.reply("🛠️ <b>BOT UNDER MAINTENANCE</b>\n\nMohon maaf, bot sedang dalam perbaikan/update sistem oleh Owner. Silakan coba lagi nanti!", { parse_mode: "HTML" }).catch(() => {});
+        }
+        return; // Berhenti total di sini, jangan biarkan user masuk!
+    }
+
+    const userId = ctx.from?.id;
+
+    // 🚀 INI KUNCI ANTI-DELAY: Kalau user udah pernah dicek & lulus, langsung gas lewati (0ms Delay)
+    if (userId && global.verifiedUsers.has(userId)) {
+        return next();
+    }
 
     const rawChannels = config.wajibJoinChannels || (config.wajibJoinChannel ? [config.wajibJoinChannel] : []);
     const channels = rawChannels.filter(c => c && c.length > 1); 
@@ -847,7 +977,6 @@ bot.use(async (ctx, next) => {
         }
 
         const missingChannels = await getMissingChannels(ctx);
-        
         if (missingChannels.length > 0) {
             if (ctx.message && ctx.message.text && ctx.message.text.startsWith('/start ')) {
                 const args = ctx.message.text.split(' ');
@@ -883,7 +1012,6 @@ bot.use(async (ctx, next) => {
             }
             
             buttons.push([{ text: '✅ SAYA SUDAH JOIN SEMUA', callback_data: 'cek_join' }]);
-
             const keyboard = { inline_keyboard: buttons };
 
             try {
@@ -892,7 +1020,6 @@ bot.use(async (ctx, next) => {
                     try { await ctx.deleteMessage(); } catch(e){}
                     return ctx.reply(textPeringatan, { parse_mode: 'HTML', reply_markup: keyboard });
                 } 
-                
                 if (ctx.message) {
                     return ctx.reply(textPeringatan, { parse_mode: 'HTML', reply_markup: keyboard });
                 }
@@ -900,8 +1027,14 @@ bot.use(async (ctx, next) => {
                 console.log("Error Force Sub:", err.message);
             }
             return; 
+        } else {
+            // KALAU LULUS, MASUKKAN KE DAFTAR VIP PASS BIAR GAK DICEK LAGI
+            if (userId) global.verifiedUsers.add(userId);
         }
+    } else {
+        if (userId) global.verifiedUsers.add(userId);
     }
+    
     return next(); 
 });
 
@@ -972,6 +1105,16 @@ bot.action(/toggle_feature\|(.+)/, async (ctx) => {
             : body.toLowerCase();
             
         const fromId = ctx.from.id;
+        // ==========================================
+        // 🛡️ SHIELD ANTI-LAG UNTUK GRUP
+        // ==========================================
+        // Abaikan semua chat di grup yang BUKAN command dan BUKAN balasan sistem
+        if (ctx.chat && ctx.chat.type !== 'private') {
+            if (!isCmd && !pendingDeposit[fromId] && !global.pendingSchedule[fromId] && !pendingTransfer[fromId] && !pendingDeleteAllCoin[fromId]) {
+                return; // Langsung buang pesannya, jangan diproses! (Bot jadi super ringan)
+            }
+        }
+        // ==========================================
         const userName = ctx.from.username || `${ctx.from.first_name}${ctx.from.last_name ? ' ' + ctx.from.last_name : ''}`;
 
         // ===== TANGKAP INPUT CUSTOM DEPOSIT =====
@@ -2372,8 +2515,181 @@ ${redeemLink}`,
     );
 }
 
+// ===== COMMAND MAINTENANCE MODE =====
+case "mt":
+case "maintenance": {
+    if (!isOwner(ctx)) return ctx.reply("❌ Owner Only!");
+    
+    if (args.length < 1) {
+        const settings = loadSettings();
+        const status = settings.maintenance ? "🟢 AKTIF" : "🔴 MATI";
+        return ctx.reply(`🛠️ <b>MAINTENANCE MODE</b>\n\nStatus saat ini: <b>${status}</b>\n\nCara pakai:\n<code>${config.prefix}maintenance on</code> (Untuk menyalakan)\n<code>${config.prefix}maintenance off</code> (Untuk mematikan)\n\n<i>*Bisa juga disingkat pakai ${config.prefix}mt on</i>`, { parse_mode: "HTML" });
+    }
+
+    const action = args[0].toLowerCase();
+    const settings = loadSettings();
+
+    if (action === "on") {
+        settings.maintenance = true;
+        saveSettings(settings);
+        return ctx.reply("✅ <b>MAINTENANCE MODE DIAKTIFKAN!</b>\n\nSekarang semua user biasa tidak akan bisa menggunakan bot (diblokir sementara). Hanya Owner yang bisa akses dan testing.", { parse_mode: "HTML" });
+    } else if (action === "off") {
+        settings.maintenance = false;
+        saveSettings(settings);
+        return ctx.reply("✅ <b>MAINTENANCE MODE DIMATIKAN!</b>\n\nBot kembali normal, semua user sudah bisa mengakses bot lagi.", { parse_mode: "HTML" });
+    } else {
+        return ctx.reply("❌ Argumen salah! Gunakan 'on' atau 'off'.\nContoh: .mt on");
+    }
+}
+
+// ============================================
+// ⚔️ CASE ADU KOIN (TARUH DI DALAM SWITCH COMMAND LU)
+// ============================================
+case 'adu':
+case 'coinflip':
+case 'cf': {
+    // Asumsi 'args' udah didefinisikan di base lu (biasanya dari text.split(' '))
+    const userId = ctx.from.id; // Sesuaikan kalau di base lu pakenya m.sender
+    
+    if (!args[0]) {
+        return ctx.reply("⚠️ <b>Format Salah!</b>\nKetik: <code>/adu [nominal]</code>\nContoh: <code>/adu 5000000</code>", { parse_mode: "HTML" });
+    }
+
+    let nominal = parseInt(args[0].replace(/[^0-9]/g, ''));
+    if (isNaN(nominal) || nominal < 100000) {
+        return ctx.reply("❌ <b>Minimal taruhan adalah 100.000 Coin!</b>", { parse_mode: "HTML" });
+    }
+
+    let users = loadUsers();
+    let userIndex = users.findIndex(u => u.id === userId);
+    if (userIndex === -1) return ctx.reply("❌ Akun belum terdaftar.");
+    if ((users[userIndex].balance || 0) < nominal) {
+        return ctx.reply(`❌ <b>Saldo tidak cukup!</b>\nSaldo kamu: ${formatCoin(users[userIndex].balance)} Coin`, { parse_mode: "HTML" });
+    }
+
+    // Bikin ID Unik buat Duel ini & Simpan ke memori global
+    const duelId = `duel_${Date.now()}_${userId}`;
+    const penantangName = ctx.from.first_name ? ctx.from.first_name.replace(/[<>&]/g, "") : "Player";
+
+    global.activeDuels = global.activeDuels || {};
+    global.activeDuels[duelId] = {
+        p1_id: userId,
+        p1_name: penantangName,
+        nominal: nominal,
+        status: "WAITING"
+    };
+
+    const text = `<blockquote>⚔️ <b>ARENA ADU KOIN (PvP)</b> ⚔️</blockquote>\n▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰\n🦅 <b>Penantang :</b> ${penantangName}\n💰 <b>Taruhan    :</b> ${formatCoin(nominal)} Coin\n🏆 <b>Total Pot  :</b> ${formatCoin(nominal * 2)} Coin\n▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰\n🔥 <i>Siapa yang berani menerima tantangan ini? Pilih tebakanmu di bawah! (Pajak Kasino 5%)</i>`;
+
+    const keyboard = {
+        inline_keyboard: [
+            [
+                { text: "🦅 PILIH GARUDA", callback_data: `terima_adu|${duelId}|garuda` },
+                { text: "🔢 PILIH ANGKA", callback_data: `terima_adu|${duelId}|angka` }
+            ],
+            [{ text: "❌ BATALKAN TANTANGAN", callback_data: `batal_adu|${duelId}` }]
+        ]
+    };
+
+    await ctx.reply(text, { parse_mode: "HTML", reply_markup: keyboard });
+    break;
+}
+
 }
 }); // End of bot.on("text")
+
+// ============================================
+// ⚔️ AKSI TOMBOL PvP (TARUH DI LUAR SWITCH/CASE)
+// ============================================
+
+// Aksi Membatalkan Duel
+bot.action(/^batal_adu\|(.+)$/, async (ctx) => {
+    const duelId = ctx.match[1];
+    const duel = global.activeDuels[duelId];
+
+    if (!duel) return ctx.answerCbQuery("❌ Tantangan sudah tidak berlaku/sudah selesai!", { show_alert: true }).catch(()=>{});
+    if (ctx.from.id !== duel.p1_id) return ctx.answerCbQuery("❌ Hanya pembuat tantangan yang bisa membatalkan!", { show_alert: true }).catch(()=>{});
+
+    delete global.activeDuels[duelId]; // Hapus dari memori
+    
+    try { await ctx.editMessageText(`<i>Tantangan ${formatCoin(duel.nominal)} Coin dari <b>${duel.p1_name}</b> telah dibatalkan.</i> 🏳️`, { parse_mode: "HTML" }); } catch(e){}
+});
+
+// Aksi Menerima Duel (Gacha dimulai)
+bot.action(/^terima_adu\|(.+)\|(.+)$/, async (ctx) => {
+    const userId = ctx.from.id;
+    const duelId = ctx.match[1];
+    const tebakanLawan = ctx.match[2]; // 'garuda' atau 'angka'
+    const duel = global.activeDuels[duelId];
+
+    if (!duel) return ctx.answerCbQuery("❌ Telat bro! Tantangan sudah diambil orang lain atau dibatalkan.", { show_alert: true }).catch(()=>{});
+    if (userId === duel.p1_id) return ctx.answerCbQuery("❌ Lu gak bisa duel lawan diri sendiri kocak!", { show_alert: true }).catch(()=>{});
+
+    let users = loadUsers();
+    
+    // Cek saldo penantang (P1)
+    let p1Index = users.findIndex(u => u.id === duel.p1_id);
+    if (p1Index === -1 || (users[p1Index].balance || 0) < duel.nominal) {
+        delete global.activeDuels[duelId];
+        return ctx.answerCbQuery("❌ Penantang saldonya ga cukup / udah habis duluan dipake slot!", { show_alert: true }).catch(()=>{});
+    }
+
+    // Cek saldo lawan (P2)
+    let p2Index = users.findIndex(u => u.id === userId);
+    if (p2Index === -1) return ctx.answerCbQuery("❌ Akun kamu belum terdaftar.", { show_alert: true }).catch(()=>{});
+    if ((users[p2Index].balance || 0) < duel.nominal) {
+        return ctx.answerCbQuery(`❌ Saldo kamu ga cukup buat nerima duel ${formatCoin(duel.nominal)} Coin!`, { show_alert: true }).catch(()=>{});
+    }
+
+    // Kunci duel biar gak dipencet dobel
+    delete global.activeDuels[duelId]; 
+
+    const p2Name = ctx.from.first_name ? ctx.from.first_name.replace(/[<>&]/g, "") : "Player";
+    const tebakanP1 = tebakanLawan === "garuda" ? "angka" : "garuda";
+
+    // POTONG SALDO KEDUANYA (Uang taruhan di-lock di tengah)
+    users[p1Index].balance -= duel.nominal;
+    users[p2Index].balance -= duel.nominal;
+    saveUsers(users);
+
+    const animasiHeader = `<blockquote>⚔️ <b>ARENA ADU KOIN (PvP)</b> ⚔️</blockquote>\n▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰\n🥊 <b>${duel.p1_name}</b> (Pilih ${tebakanP1.toUpperCase()})\n🆚\n🥊 <b>${p2Name}</b> (Pilih ${tebakanLawan.toUpperCase()})\n▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰\n`;
+    
+    try { await ctx.editMessageText(animasiHeader + `\n      [ 🪙 Mengambil Koin... ]`, { parse_mode: "HTML" }); } catch(e){}
+    await sleep(1000);
+    try { await ctx.editMessageText(animasiHeader + `\n      [ 🔄 Koin dilempar ke udara... ]`, { parse_mode: "HTML" }); } catch(e){}
+    await sleep(1000);
+    try { await ctx.editMessageText(animasiHeader + `\n      [ 💥 Koin jatuh dan berputar... ]`, { parse_mode: "HTML" }); } catch(e){}
+    await sleep(1500);
+
+    // 🎲 HASIL RNG & PEMBAGIAN UANG (PAJAK 5%)
+    const hasilAcak = Math.random() < 0.5 ? "garuda" : "angka";
+    const emojiHasil = hasilAcak === "garuda" ? "🦅 GARUDA" : "🔢 ANGKA";
+    
+    let totalPot = duel.nominal * 2;
+    let pajakBandar = totalPot * 0.05; // Bandar ambil 5% coy!
+    let hadiahBersih = totalPot - pajakBandar;
+
+    let pemenang = "";
+    let pecundang = "";
+    
+    users = loadUsers(); // Reload data anti bentrok
+    p1Index = users.findIndex(u => u.id === duel.p1_id);
+    p2Index = users.findIndex(u => u.id === userId);
+
+    if (tebakanP1 === hasilAcak) {
+        pemenang = duel.p1_name; pecundang = p2Name;
+        users[p1Index].balance += hadiahBersih; 
+    } else {
+        pemenang = p2Name; pecundang = duel.p1_name;
+        users[p2Index].balance += hadiahBersih; 
+    }
+
+    saveUsers(users);
+
+    const hasilTeks = `${animasiHeader}\n✨ <b>HASIL LEMPARAN : ${emojiHasil}</b> ✨\n\n🎉 <b>PEMENANG : ${pemenang}</b>\n💀 <b>RUNGKAD : ${pecundang}</b>\n\n🧾 <b>Struk Hadiah:</b>\n💰 Total Pot : <b>${formatCoin(totalPot)} Coin</b>\n🏦 Pajak (5%) : <b>-${formatCoin(pajakBandar)} Coin</b>\n💸 Diterima   : <b>+${formatCoin(hadiahBersih)} Coin</b>`;
+
+    try { await ctx.editMessageText(hasilTeks, { parse_mode: "HTML" }); } catch(e){}
+});
 
 // ============================================
 // ===== ACTION SCHEDULER (TIMER CHANNEL)
@@ -2436,7 +2752,7 @@ bot.action(/send_ch_voucher\|(.+)/, async (ctx) => {
     try {
         const targetChannel = config.channelIdDaget;
         // MENGIRIM DENGAN FOTO (sendPhoto)
-        await ctx.telegram.sendPhoto(targetChannel, config.postImageChannel, { caption: textChannel, parse_mode: "HTML", reply_markup: keyboard });
+        await ctx.telegram.sendPhoto(targetChannel, config.menuImage, { caption: textChannel, parse_mode: "HTML", reply_markup: keyboard });
         
         await ctx.editMessageReplyMarkup({ inline_keyboard: [[{ text: "✅ Berhasil Terkirim ke Channel", callback_data: "ignore" }]] });
     } catch (err) {
@@ -2481,7 +2797,7 @@ bot.action(/send_ch_ga\|(.+)/, async (ctx) => {
     try {
         const targetChannel = config.channelIdDaget;
         // MENGIRIM DENGAN FOTO (sendPhoto)
-        await ctx.telegram.sendPhoto(targetChannel, config.postImageChannel, { caption: textChannel, parse_mode: "HTML", reply_markup: keyboard });
+        await ctx.telegram.sendPhoto(targetChannel, config.menuImage, { caption: textChannel, parse_mode: "HTML", reply_markup: keyboard });
         
         await ctx.editMessageReplyMarkup({ inline_keyboard: [[{ text: "✅ Berhasil Terkirim ke Channel", callback_data: "ignore" }]] });
     } catch (err) {
@@ -2631,19 +2947,17 @@ bot.action("open_mystery", async (ctx) => {
         users[userIndex].mystery_count += 1;
         saveUsers(users);
 
+// =====================================
+        // 🌀 ANIMASI BUKA BOX (FAST MODE - ANTI LAG)
         // =====================================
-        // 🌀 ANIMASI BUKA BOX 🌀
-        // =====================================
-        const frames = ["📦", "🎁", "✨🎁✨", "🎊"];
-        for(let f of frames) {
-            const animText = `<blockquote>📦 <b>MEMBUKA MYSTERY BOX...</b></blockquote>\n━━━━━━━━━━━━━━━━━━━━━━━━━\n\n        ${f}\n\n<i>Mencari hadiah di dalam database...</i>\n━━━━━━━━━━━━━━━━━━━━━━━━━`;
-            try { 
-                await ctx.editMessageCaption(animText, { parse_mode: "HTML" }); 
-            } catch(e) {
-                await ctx.editMessageText(animText, { parse_mode: "HTML" }).catch(()=>{});
-            }
-            await sleep(600);
+        const animText = `<blockquote>📦 <b>MEMBUKA MYSTERY BOX...</b></blockquote>\n━━━━━━━━━━━━━━━━━━━━━━━━━\n\n        🔄 📦 🔄\n\n<i>Mencari hadiah di dalam database...</i>\n━━━━━━━━━━━━━━━━━━━━━━━━━`;
+        try { 
+            await ctx.editMessageCaption(animText, { parse_mode: "HTML" }); 
+        } catch(e) {
+            await ctx.editMessageText(animText, { parse_mode: "HTML" }).catch(()=>{});
         }
+        
+        await sleep(1500); // Jeda 1.5 detik
 
         // =====================================
         // 🎯 LOGIC GACHA RNG
@@ -2726,178 +3040,471 @@ bot.action("open_mystery", async (ctx) => {
 });
 
 // ============================================
-// ======== FITUR MINIGAME GACHA SLOT ========
+// ======== 🎰 FITUR KASINO VIP (5 GAME SLOT) ====
 // ============================================
 
-// ============================================
-// ======== FITUR MAHJONG WAYS (SLOT) ========
-// ============================================
+const BET_LEVELS = [100000, 500000, 1000000, 5000000, 10000000, 25000000, 50000000, 100000000, 150000000, 250000000, 500000000, 1000000000];
+global.userBets = global.userBets || {}; 
+global.slotHistory = global.slotHistory || {}; // Memori Pola Gacor User
 
+// RTP BANDAR SEIMBANG (5 MESIN SLOT)
+const SLOT_GAMES = {
+    mahjong: {
+        name: "Mahjong Ways", emoji: "🀄", theme: "🎋 🐉 🀄",
+        desc: "Seimbang (Balanced). Gampang menang, Profit Max 150 Juta.",
+        prizes: [
+            { chance: 35, mult: 0, text: "💥 ZONK!", emj: ["🍎 🍋 🍇", "💀 📉 💔", "💩 🗑️ 🤡", "💨 🍂 💀"] },
+            { chance: 55, mult: 0.5, text: "📉 RUGI SETENGAH (x0.5)", emj: ["🎋 🀄 🀣"] },
+            { chance: 75, mult: 1, text: "⚖️ AMAN! (x1)", emj: ["🀣 🀣 🀣"] },
+            { chance: 88, mult: 2, text: "🔥 SUPER WIN! (x2)", emj: ["🎋 🎋 🎋"] },
+            { chance: 97, mult: 5, text: "💸 MEGA WIN! (x5)", emj: ["🀄 🀄 🀄"] },
+            { chance: 101, mult: 10, text: "✨ JACKPOT MAHJONG! (x10) ✨", emj: ["🐉 🐉 🐉"] }
+        ]
+    },
+    olympus: {
+        name: "Gates of Olympus", emoji: "⚡", theme: "💎 👑 ⚡",
+        desc: "Sangat susah menang (High Volatility). Khusus Sultan pencari Maxwin!",
+        prizes: [
+            { chance: 70, mult: 0, text: "💥 PETIR NYANGKUT!", emj: ["💀 ☁️ 🌧️", "💔 📉 💩", "💨 🍂 💀"] },
+            { chance: 80, mult: 0.2, text: "📉 AMPAS! (x0.2)", emj: ["🔵 🟢 🟡"] },
+            { chance: 88, mult: 0.5, text: "📉 RUGI! (x0.5)", emj: ["💍 💍 💍"] },
+            { chance: 95, mult: 2, text: "🔥 LUMAYAN! (x2)", emj: ["⏳ ⏳ ⏳"] },
+            { chance: 98, mult: 10, text: "💸 TUMPAH! (x10)", emj: ["👑 👑 👑"] },
+            { chance: 99.8, mult: 25, text: "👑 PETIR KAKEK ZEUS! (x25)", emj: ["⚡ ⚡ ⚡"] },
+            { chance: 101, mult: 100, text: "⚡ MAXWIN OLYMPUS! (x100) ⚡", emj: ["👴 👴 👴"] }
+        ]
+    },
+    fafafa: {
+        name: "FaFaFa Classic", emoji: "🏮", theme: "🧧 🧨 🪙",
+        desc: "Paling gampang menang! Cocok untuk santai (Profit Max 150 Juta).",
+        prizes: [
+            { chance: 25, mult: 0, text: "💥 ZONK!", emj: ["💨 🍂 💀", "💩 📉 💔"] },
+            { chance: 55, mult: 0.5, text: "📉 RUGI DIKIT (x0.5)", emj: ["🪙 💨 🪙"] }, 
+            { chance: 80, mult: 1, text: "⚖️ BALIK MODAL (x1)", emj: ["🪙 🪙 🪙"] }, 
+            { chance: 92, mult: 1.5, text: "🔥 CENGLI! (x1.5)", emj: ["🧨 🧨 🧨"] }, 
+            { chance: 98, mult: 3, text: "💸 HOKI! (x3)", emj: ["🧧 🧧 🧧"] },
+            { chance: 101, mult: 5, text: "🐉 MAXWIN FAFAFA! (x5)", emj: ["🏮 🈵 🏮"] }
+        ]
+    },
+    bonanza: {
+        name: "Sweet Bonanza", emoji: "🍭", theme: "🍬 🍭 🍇",
+        desc: "Manis tapi mematikan! Sering meledak bom perkalian (Max 150 Juta).",
+        prizes: [
+            { chance: 40, mult: 0, text: "💥 PERMEN PAHIT!", emj: ["💨 🍂 💀", "🍏 🍌 🍉"] },
+            { chance: 60, mult: 0.5, text: "📉 RUGI DIKIT (x0.5)", emj: ["🍇 🍇 🍇"] }, 
+            { chance: 75, mult: 1, text: "⚖️ BALIK MODAL (x1)", emj: ["🍬 🍬 🍬"] }, 
+            { chance: 88, mult: 3, text: "🔥 TASTY! (x3)", emj: ["🍭 🍭 🍭"] }, 
+            { chance: 97, mult: 10, text: "💣 BOM PERKALIAN! (x10)", emj: ["💣 💣 💣"] },
+            { chance: 101, mult: 30, text: "🍭 SENSASIONAL BONANZA! (x30)", emj: ["💖 💖 💖"] }
+        ]
+    },
+    starlight: {
+        name: "Starlight Princess", emoji: "🌟", theme: "👸 ✨ 🪄",
+        desc: "Cucu Kakek Zeus! Volatilitas tinggi, Maxwin x88 menantimu!",
+        prizes: [
+            { chance: 65, mult: 0, text: "💥 BINTANG JATUH!", emj: ["💀 ☁️ 🌧️", "💔 📉 💩"] },
+            { chance: 78, mult: 0.2, text: "📉 AMPAS! (x0.2)", emj: ["🔵 🟢 🟡"] },
+            { chance: 85, mult: 0.5, text: "📉 RUGI! (x0.5)", emj: ["🌙 🌙 🌙"] },
+            { chance: 93, mult: 2, text: "🔥 LUMAYAN! (x2)", emj: ["☀️ ☀️ ☀️"] },
+            { chance: 97, mult: 15, text: "💸 TUMPAH! (x15)", emj: ["❤️ ❤️ ❤️"] },
+            { chance: 99.7, mult: 35, text: "🪄 TONGKAT AJAIB! (x35)", emj: ["✨ ✨ ✨"] },
+            { chance: 101, mult: 88, text: "🌟 MAXWIN PRINCESS! (x88) 🌟", emj: ["👸 👸 👸"] }
+        ]
+    }
+};
 
-// 1. Menu Mahjong Gacha
+// 1. MENU LOBBY KASINO (UI MEWAH + LEADERBOARD)
 bot.action("menu_gacha", async (ctx) => {
     await ctx.answerCbQuery().catch(() => {});
-    await renderMahjongMenu(ctx);
+    const text = `<blockquote>🎰 <b>🆅🅸🅿 🅲🅰🆂🅸🅽🅾 🅲🅻🆄🅱</b> 🎰</blockquote>\n▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰\nSelamat datang di Kasino! Pilih mesin slot yang ingin kamu mainkan.\n\n<b>Daftar Mesin Slot:</b>\n🀄 <b>Mahjong Ways:</b> Stabil (Max x10)\n⚡ <b>Olympus:</b> Susah & Sadis (Max x100)\n🏮 <b>FaFaFa:</b> Gampang Menang (Max x5)\n🍭 <b>Sweet Bonanza:</b> Manis & Gacor (Max x30)\n🌟 <b>Starlight Princess:</b> Cucu Kakek Zeus (Max x88)\n▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰\n⚠️ <i>Sistem membaca POLA TARUHAN. Bermain monoton akan membuat koinmu disedot bandar!</i>`;
+
+    const keyboard = {
+        inline_keyboard: [
+            [{ text: "🀄 MAIN MAHJONG WAYS", callback_data: "menu_slot|mahjong" }],
+            [{ text: "⚡ MAIN GATES OF OLYMPUS", callback_data: "menu_slot|olympus" }],
+            [{ text: "🏮 MAIN FAFAFA CLASSIC", callback_data: "menu_slot|fafafa" }],
+            [{ text: "🍭 MAIN SWEET BONANZA", callback_data: "menu_slot|bonanza" }],
+            [{ text: "🌟 MAIN STARLIGHT PRINCESS", callback_data: "menu_slot|starlight" }],
+            [{ text: "🏆 TOP GLOBAL SLOTTER", callback_data: "top_slot" }], // <-- INI TOMBOL BARUNYA
+            [{ text: "↩️ KEMBALI KE MENU UTAMA", callback_data: "back_to_main_menu" }]
+        ]
+    };
+
+    try { await ctx.editMessageMedia({ type: "photo", media: config.menuImage, caption: text, parse_mode: "HTML" }, { reply_markup: keyboard }); } 
+    catch (err) { await ctx.editMessageText(text, { parse_mode: "HTML", reply_markup: keyboard }).catch(()=>{}); }
 });
 
-// 2. Tombol Naik Turun Bet
-bot.action("bet_up", async (ctx) => {
+// Render Menu Game Spesifik (UI Mewah)
+async function renderSlotGame(ctx, gameId) {
     const userId = ctx.from.id;
-    if (!global.userBets[userId]) global.userBets[userId] = BET_LEVELS[2];
-    
+    const users = loadUsers();
+    const user = users.find(u => u.id === userId);
+    const saldo = user ? (user.balance || 0) : 0;
+    const game = SLOT_GAMES[gameId];
+
+    if (!global.userBets[userId]) global.userBets[userId] = BET_LEVELS[2]; 
+    const currentBet = global.userBets[userId];
+
+    const text = `<blockquote>${game.emoji} <b>${game.name.toUpperCase()}</b> ${game.emoji}</blockquote>\n▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰\nℹ️ <i>${game.desc}</i>\n\n💵 <b>Taruhan Saat Ini :</b> ${currentBet.toLocaleString('id-ID')} Coin\n🪙 <b>Saldo Tersedia  :</b> ${saldo.toLocaleString('id-ID')} Coin\n▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰`;
+
+    const keyboard = {
+        inline_keyboard: [
+            [
+                { text: "➖ BET", callback_data: `bet_d|${gameId}` },
+                { text: "🔥 ALL IN", callback_data: `bet_all|${gameId}` },
+                { text: "➕ BET", callback_data: `bet_u|${gameId}` }
+            ],
+            [{ text: `🎰 SPIN MANUAL (1x)`, callback_data: `play_slot|${gameId}|1` }],
+            [{ text: `🚀 AUTO SPIN (10x)`, callback_data: `play_slot|${gameId}|10` }],
+            [{ text: "↩️ GANTI MESIN", callback_data: "menu_gacha" }]
+        ]
+    };
+
+    try { await ctx.editMessageCaption(text, { parse_mode: "HTML", reply_markup: keyboard }); } 
+    catch (err) { await ctx.editMessageText(text, { parse_mode: "HTML", reply_markup: keyboard }).catch(()=>{}); }
+}
+
+bot.action(/^menu_slot\|([a-z]+)$/, async (ctx) => {
+    await ctx.answerCbQuery().catch(()=>{});
+    await renderSlotGame(ctx, ctx.match[1]);
+});
+
+// Sistem Pengatur Bet
+bot.action(/^bet_u\|([a-z]+)$/, async (ctx) => {
+    const userId = ctx.from.id;
     let idx = BET_LEVELS.indexOf(global.userBets[userId]);
     if (idx < BET_LEVELS.length - 1) {
         global.userBets[userId] = BET_LEVELS[idx + 1];
-        await ctx.answerCbQuery(`💵 Taruhan dinaikkan menjadi: ${formatCoin(global.userBets[userId])} Coin`).catch(()=>{});
-        await renderMahjongMenu(ctx);
-    } else {
-        await ctx.answerCbQuery("🛑 Ini adalah batas Taruhan Maksimal (Max Bet)!", { show_alert: true }).catch(()=>{});
-    }
+        await ctx.answerCbQuery(`💵 Bet Naik: ${formatCoin(global.userBets[userId])} Coin`).catch(()=>{});
+        await renderSlotGame(ctx, ctx.match[1]);
+    } else ctx.answerCbQuery("🛑 Ini adalah batas Taruhan Maksimal (1 Milyar)!", { show_alert: true }).catch(()=>{});
 });
 
-bot.action("bet_down", async (ctx) => {
+bot.action(/^bet_d\|([a-z]+)$/, async (ctx) => {
     const userId = ctx.from.id;
-    if (!global.userBets[userId]) global.userBets[userId] = BET_LEVELS[2];
-    
     let idx = BET_LEVELS.indexOf(global.userBets[userId]);
     if (idx > 0) {
         global.userBets[userId] = BET_LEVELS[idx - 1];
-        await ctx.answerCbQuery(`💵 Taruhan diturunkan menjadi: ${formatCoin(global.userBets[userId])} Coin`).catch(()=>{});
-        await renderMahjongMenu(ctx);
-    } else {
-        await ctx.answerCbQuery("🛑 Ini adalah batas Taruhan Minimal!", { show_alert: true }).catch(()=>{});
-    }
+        await ctx.answerCbQuery(`💵 Bet Turun: ${formatCoin(global.userBets[userId])} Coin`).catch(()=>{});
+        await renderSlotGame(ctx, ctx.match[1]);
+    } else ctx.answerCbQuery("🛑 Ini adalah batas Taruhan Minimal!", { show_alert: true }).catch(()=>{});
 });
 
-// 3. Eksekusi Spin (Dengan Animasi Mahjong & ANTI-BUG)
-bot.action("play_gacha", async (ctx) => {
+bot.action(/^bet_all\|([a-z]+)$/, async (ctx) => {
     const userId = ctx.from.id;
+    const users = loadUsers();
+    const user = users.find(u => u.id === userId);
+    const saldo = user ? (user.balance || 0) : 0;
 
-    // ==========================================
-    // 🛡️ ANTI-SPAM LOCK (Biar gak di-klik dobel)
-    // ==========================================
+    if (saldo < 100000) return ctx.answerCbQuery("❌ Koin terlalu sedikit untuk All In!", { show_alert: true }).catch(()=>{});
+    
+    global.userBets[userId] = saldo; 
+    await ctx.answerCbQuery(`🔥 ALL IN AKTIF! Taruhan: ${formatCoin(saldo)} Coin`, { show_alert: true }).catch(()=>{});
+    await renderSlotGame(ctx, ctx.match[1]);
+});
+
+// ==========================================
+// 🚀 EKSEKUSI SPIN (3 POLA RANDOM + ANTI-SPAM COOLDOWN)
+// ==========================================
+bot.action(/^play_slot\|([a-z]+)\|(\d+)$/, async (ctx) => {
+    const userId = ctx.from.id;
+    const gameId = ctx.match[1];
+    const spinCount = parseInt(ctx.match[2]); 
+    const game = SLOT_GAMES[gameId];
+
     global.spinLock = global.spinLock || new Set();
-    if (global.spinLock.has(userId)) {
-        return ctx.answerCbQuery("⏳ Sabar bos! Mesinnya masih muter...", { show_alert: true }).catch(()=>{});
-    }
+    if (global.spinLock.has(userId)) return ctx.answerCbQuery("⏳ Mesin masih berputar!", { show_alert: true }).catch(()=>{});
 
-    if (!global.userBets[userId]) global.userBets[userId] = BET_LEVELS[2];
-    const cost = global.userBets[userId]; 
+    let cost = global.userBets[userId] || 1000000; 
+    let totalCost = cost * spinCount;
 
     let users = loadUsers();
     let userIndex = users.findIndex(u => u.id === userId);
     
-    if (userIndex === -1) return ctx.answerCbQuery("❌ Akun belum terdaftar.", { show_alert: true });
-    if ((users[userIndex].balance || 0) < cost) {
-        return ctx.answerCbQuery(`❌ Coin tidak cukup!\nKamu butuh ${formatCoin(cost)} Coin untuk Spin di tingkat bet ini. Silakan turunkan bet atau topup.`, { show_alert: true });
+    if (userIndex === -1) return ctx.answerCbQuery("❌ Akun belum terdaftar.", { show_alert: true }).catch(()=>{});
+    if ((users[userIndex].balance || 0) < totalCost) {
+        return ctx.answerCbQuery(`❌ Saldo tidak cukup!\nButuh ${formatCoin(totalCost)} Coin untuk ${spinCount}x Spin.`, { show_alert: true }).catch(()=>{});
     }
 
-    // 🔒 Kunci user biar gak bisa ngetes celah bug
     global.spinLock.add(userId);
 
     try {
         await ctx.answerCbQuery().catch(() => {});
-
-        // Potong koin awal (Uang Taruhan Masuk ke Mesin)
-        users[userIndex].balance -= cost;
+        users[userIndex].balance -= totalCost; 
         saveUsers(users); 
 
-        // ==========================================
-        // 🌀 ANIMASI MESIN MAHJONG MUTER (DIPERLAMA)
-        // ==========================================
-        const spinFrames = [
-            "🀄 🐉 🎋", "✨ 🀣 💀", "🎋 🀄 ✨", 
-            "🐉 🎋 🀣", "🀣 ✨ 🀄", "💀 🐉 🎋",
-            "✨ 🐉 🀄", "🎋 💀 🀣"
-        ];
+        // 🧠 MEMBACA PERGERAKAN USER & COOLDOWN MESIN
+        let history = global.slotHistory[userId] || { loseStreak: 0, lastBet: 0, trend: [], cooldown: 0 };
+        if (!history.trend) history.trend = [];
+        if (!history.cooldown) history.cooldown = 0;
+        
+        // Pilih 1 dari 3 pola random untuk semua game
+        if (!history.polaFaFa) history.polaFaFa = Math.floor(Math.random() * 3) + 1;
+        if (!history.polaMahjong) history.polaMahjong = Math.floor(Math.random() * 3) + 1;
+        if (!history.polaOlympus) history.polaOlympus = Math.floor(Math.random() * 3) + 1; 
+        if (!history.polaBonanza) history.polaBonanza = Math.floor(Math.random() * 3) + 1; 
+        if (!history.polaStarlight) history.polaStarlight = Math.floor(Math.random() * 3) + 1; 
 
-        // Muter 7 kali biar makin deg-degan (sekitar 3.5 detik)
-        for (let i = 0; i < 7; i++) {
-            const randomFrame = spinFrames[Math.floor(Math.random() * spinFrames.length)];
-            const spinText = `<blockquote>🀄 <b>MAHJONG WAYS (SLOT)</b></blockquote>\n━━━━━━━━━━━━━━━━━━━━━━━━━\n\n      [  ${randomFrame}  ]\n\n<b>🔄 Mesin sedang berputar...</b>\n━━━━━━━━━━━━━━━━━━━━━━━━━\n🪙 <b>Taruhan:</b> ${cost.toLocaleString('id-ID')} Coin`;
-            
-            try {
-                await ctx.editMessageCaption(spinText, { parse_mode: "HTML" });
-            } catch (err) {
-                await ctx.editMessageText(spinText, { parse_mode: "HTML" }).catch(()=>{});
+        let currentTrend = "SAME";
+        if (history.lastBet > 0) {
+            if (cost > history.lastBet) currentTrend = "UP";
+            else if (cost < history.lastBet) currentTrend = "DOWN";
+
+            if (currentTrend !== "SAME") {
+                history.trend.push(currentTrend);
+                if (history.trend.length > 6) history.trend.shift();
             }
-            await sleep(500); // Kecepatan muter 0.5 detik per frame
         }
 
-        // ==========================================
-        // 🎯 PENENTUAN HASIL (RNG MAHJONG)
-        // ==========================================
-        const rng = Math.random() * 100;
-        let multiplier = 0;
-        let slotEmoji = "💔 😭 💀";
-        let statusText = "RUNGKAD! Yahh, taruhan kamu hangus 😭";
+        let rtpBoost = 0;
+        let isPolaGacor = false;
+        let trendStr = history.trend.join(","); 
 
-        if (rng < 45) { 
-            multiplier = 0;
-            const zonks = ["🍎 🍋 🍇", "🍉 🍒 🥝", "💔 💀 📉", "🤡 💩 🗑️", "🀄 💀 🐉"];
-            slotEmoji = zonks[Math.floor(Math.random() * zonks.length)];
-            statusText = "RUNGKAD! Taruhanmu ditarik bandar 😭";
-        } else if (rng < 65) { 
-            multiplier = 0.5;
-            slotEmoji = "🎋 🀄 🀣";
-            statusText = "KURENG! Kamu dapat x0.5 (Rugi Setengah) 🥲";
-        } else if (rng < 80) { 
-            multiplier = 1;
-            slotEmoji = "🀣 🀣 🀣";
-            statusText = "AMAN! Kamu dapat x1 (Balik Modal) 😌";
-        } else if (rng < 90) { 
-            multiplier = 2;
-            slotEmoji = "🎋 🎋 🎋";
-            statusText = "SUPER WIN! Taruhan digandakan (x2) 🤩";
-        } else if (rng < 96) { 
-            multiplier = 5;
-            slotEmoji = "🀄 🀄 🀄";
-            statusText = "MEGA WIN!! Cair bandar! (x5) 💸";
-        } else if (rng < 99) { 
-            multiplier = 10;
-            slotEmoji = "🐉 🐉 🐉";
-            statusText = "SENSASIONAL!!! Gacor parah (x10) 👑";
-        } else { 
-            multiplier = 50;
-            slotEmoji = "✨ ✨ ✨";
-            statusText = "✨ SCATTER JACKPOT!!! ✨ MAXWIN (x50) 💥";
+        if (history.cooldown > 0) {
+            history.cooldown -= spinCount;
+            if (history.cooldown < 0) history.cooldown = 0;
         }
 
-        const prize = cost * multiplier;
+        // 🔥 HANYA BISA GACOR KALAU MESIN TIDAK DALAM MASA COOLDOWN!
+        if (history.cooldown === 0) {
+            // 🏮 FAFAFA
+            if (gameId === "fafafa") {
+                if (history.polaFaFa === 1 && history.loseStreak >= 3 && currentTrend === "UP") { isPolaGacor = true; rtpBoost = 35; }
+                else if (history.polaFaFa === 2 && history.loseStreak >= 3 && trendStr.endsWith("DOWN,UP")) { isPolaGacor = true; rtpBoost = 35; }
+                else if (history.polaFaFa === 3 && history.loseStreak >= 2 && trendStr.endsWith("UP,UP")) { isPolaGacor = true; rtpBoost = 35; }
+            }
+            // 🀄 MAHJONG
+            else if (gameId === "mahjong") {
+                if (history.polaMahjong === 1 && history.loseStreak >= 4 && trendStr.endsWith("UP,DOWN,UP")) { isPolaGacor = true; rtpBoost = 50; }
+                else if (history.polaMahjong === 2 && history.loseStreak >= 3 && trendStr.endsWith("DOWN,DOWN,UP")) { isPolaGacor = true; rtpBoost = 50; }
+                else if (history.polaMahjong === 3 && history.loseStreak >= 4 && trendStr.endsWith("UP,UP,DOWN,UP")) { isPolaGacor = true; rtpBoost = 50; }
+            }
+            // 🍭 BONANZA
+            else if (gameId === "bonanza") {
+                if (history.polaBonanza === 1 && history.loseStreak >= 4 && trendStr.endsWith("DOWN,UP,UP")) { isPolaGacor = true; rtpBoost = 60; }
+                else if (history.polaBonanza === 2 && history.loseStreak >= 3 && trendStr.endsWith("UP,UP,DOWN")) { isPolaGacor = true; rtpBoost = 60; }
+                else if (history.polaBonanza === 3 && history.loseStreak >= 5 && trendStr.endsWith("UP,DOWN,UP")) { isPolaGacor = true; rtpBoost = 60; }
+            }
+            // ⚡ OLYMPUS
+            else if (gameId === "olympus") {
+                if (history.polaOlympus === 1 && history.loseStreak >= 5 && trendStr.endsWith("UP,DOWN,UP,DOWN,UP") && cost >= 10000000) { isPolaGacor = true; rtpBoost = 200; }
+                else if (history.polaOlympus === 2 && history.loseStreak >= 6 && trendStr.endsWith("DOWN,DOWN,UP,UP,UP") && cost >= 5000000) { isPolaGacor = true; rtpBoost = 200; }
+                else if (history.polaOlympus === 3 && history.loseStreak >= 4 && trendStr.endsWith("UP,UP,DOWN,DOWN,UP") && cost >= 15000000) { isPolaGacor = true; rtpBoost = 200; }
+            }
+            // 🌟 STARLIGHT PRINCESS
+            else if (gameId === "starlight") {
+                if (history.polaStarlight === 1 && history.loseStreak >= 5 && trendStr.endsWith("DOWN,DOWN,UP,UP") && cost >= 8000000) { isPolaGacor = true; rtpBoost = 200; }
+                else if (history.polaStarlight === 2 && history.loseStreak >= 4 && trendStr.endsWith("UP,DOWN,UP,DOWN") && cost >= 12000000) { isPolaGacor = true; rtpBoost = 200; }
+                else if (history.polaStarlight === 3 && history.loseStreak >= 6 && trendStr.endsWith("UP,UP,UP,DOWN") && cost >= 5000000) { isPolaGacor = true; rtpBoost = 200; }
+            }
+        }
 
-        // ==========================================
-        // 🔄 LOAD ULANG DATABASE (ANTI-TABRAKAN)
-        // ==========================================
-        // Ambil data paling fresh supaya coin user gak kereset kalau ada transaksi lain pas dia lagi nge-spin
+        if (!isPolaGacor) {
+            if (currentTrend === "SAME") rtpBoost = -15; // Monoton? Sedot habis!
+            else rtpBoost = -5; // Acak-acakan? Sedot pelan-pelan
+        }
+
+        let totalPrize = 0;
+        let finalEmoji = "";
+        let finalStatus = "";
+
+        // JIKA AUTO SPIN
+        if (spinCount > 1) {
+            let winCount = 0;
+            for(let i=0; i<spinCount; i++) {
+                let rng = (Math.random() * 100) + rtpBoost;
+                let prizeObj = game.prizes.find(p => rng <= p.chance) || game.prizes[game.prizes.length-1];
+                totalPrize += (cost * prizeObj.mult);
+                if (prizeObj.mult > 0) winCount++;
+            }
+            finalEmoji = `[ 🔄 <b>AUTO SPIN ${spinCount}x SELESAI</b> 🔄 ]`;
+            finalStatus = `Kamu menang ${winCount}x dari ${spinCount} putaran.`;
+            
+            if (totalPrize < totalCost) history.loseStreak += 3; else history.loseStreak = 0;
+        } else {
+            // JIKA MANUAL SPIN (1x)
+            let rng = (Math.random() * 100) + rtpBoost;
+            let prizeObj = game.prizes.find(p => rng <= p.chance) || game.prizes[game.prizes.length-1];
+            
+            totalPrize = cost * prizeObj.mult;
+            finalEmoji = `[  ${prizeObj.emj[Math.floor(Math.random() * prizeObj.emj.length)]}  ]`;
+            finalStatus = prizeObj.text;
+
+            if (prizeObj.mult <= 1) history.loseStreak++; else history.loseStreak = 0;
+        }
+
+        // Reset pola kalau berhasil mancing Jackpot
+        if (isPolaGacor) {
+            history.trend = [];
+            history.loseStreak = 0;
+            history.cooldown = Math.floor(Math.random() * 10) + 15; // 🛑 COOLDOWN AKTIF (15-24 spin ke depan dijamin rungkad)
+            finalStatus += "\n🔥 <i>(POLA RAHASIA AKTIF!)</i>";
+            
+            // ACAK POLA BARU
+            if (gameId === "fafafa") { let polaLama = history.polaFaFa; while(history.polaFaFa === polaLama) history.polaFaFa = Math.floor(Math.random() * 3) + 1; }
+            if (gameId === "mahjong") { let polaLama = history.polaMahjong; while(history.polaMahjong === polaLama) history.polaMahjong = Math.floor(Math.random() * 3) + 1; }
+            if (gameId === "bonanza") { let polaLama = history.polaBonanza; while(history.polaBonanza === polaLama) history.polaBonanza = Math.floor(Math.random() * 3) + 1; }
+            if (gameId === "olympus") { let polaLama = history.polaOlympus; while(history.polaOlympus === polaLama) history.polaOlympus = Math.floor(Math.random() * 3) + 1; }
+            if (gameId === "starlight") { let polaLama = history.polaStarlight; while(history.polaStarlight === polaLama) history.polaStarlight = Math.floor(Math.random() * 3) + 1; }
+        }
+
+        history.lastBet = cost;
+        global.slotHistory[userId] = history;
+
+        // ====================================================
+        // 🛑 SISTEM LIMIT PROFIT BANDAR (MAX 150 JUTA / SPIN)
+        // ====================================================
+        // Olympus & Starlight dikecualikan (Bebas JP Milyaran buat Sultan)
+        if (gameId !== "olympus" && gameId !== "starlight") {
+            let profitKotor = totalPrize - totalCost;
+            let maxProfitAman = 150000000; // LIMIT 150 JUTA
+            
+            if (profitKotor > maxProfitAman) {
+                totalPrize = totalCost + maxProfitAman; 
+                finalStatus += "\n⚠️ <i>(Maksimal Keuntungan Dibatasi +150 Juta Coin)</i>";
+            }
+        }
+        // ====================================================
+
+        // ANIMASI SPIN FAST MODE
+        const spinText = `<blockquote>${game.emoji} <b>${game.name.toUpperCase()}</b> ${game.emoji}</blockquote>\n▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰\n\n        [  🔄 🎰 🔄  ]\n\n<b>🔄 Menganalisis Pola Bet...</b>\n▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰\n💸 <b>Modal Spin:</b> ${formatCoin(totalCost)}`;
+        try { await ctx.editMessageCaption(spinText, { parse_mode: "HTML" }); } catch(e){}
+        await sleep(1500);
+
+// RELOAD DATA (ANTI TABRAKAN KLAIM HARIAN)
         let freshUsers = loadUsers();
         let freshIndex = freshUsers.findIndex(u => u.id === userId);
+        freshUsers[freshIndex].balance += totalPrize;
+        
+        // =================================================
+        // 📊 TRACKER LEADERBOARD (CCTV REKAM JEJAK USER)
+        // =================================================
+        if (!freshUsers[freshIndex].slotStats) {
+            freshUsers[freshIndex].slotStats = { spins: 0, wins: 0, games: {} };
+        }
+        freshUsers[freshIndex].slotStats.spins += spinCount; // Rekam total putaran
+        freshUsers[freshIndex].slotStats.wins += totalPrize; // Rekam total Jackpot yang didapat
+        freshUsers[freshIndex].slotStats.games[gameId] = (freshUsers[freshIndex].slotStats.games[gameId] || 0) + spinCount; // Rekam game favorit
+        
+        // Pastikan nama user tersimpan untuk dipajang di Leaderboard
+        if (ctx.from.first_name) freshUsers[freshIndex].first_name = ctx.from.first_name;
+        // =================================================
+        
+        // Reset bet ke 1 Jt kalau habis All In tapi masih hidup
+        if (global.userBets[userId] > freshUsers[freshIndex].balance && freshUsers[freshIndex].balance > 0) {
+             global.userBets[userId] = BET_LEVELS[2]; 
+        }
+        
+        saveUsers(freshUsers);
 
-        freshUsers[freshIndex].balance += prize;
-        saveUsers(freshUsers); 
+        let untungRugi = totalPrize - totalCost;
+        let pnlText = untungRugi >= 0 ? `+${formatCoin(untungRugi)} Coin 📈` : `${formatCoin(untungRugi)} Coin 📉`;
 
-        let prizeText = prize > 0 ? `+${prize.toLocaleString('id-ID')} Coin` : "0 Coin";
-        const resultText = `<blockquote>🀄 <b>HASIL MAHJONG WAYS</b></blockquote>\n━━━━━━━━━━━━━━━━━━━━━━━━━\n\n      [  ${slotEmoji}  ]\n\n<b>${statusText}</b>\n🎁 <b>Pendapatan:</b> ${prizeText}\n━━━━━━━━━━━━━━━━━━━━━━━━━\n🪙 <b>Sisa Coin Kamu:</b> ${freshUsers[freshIndex].balance.toLocaleString('id-ID')} Coin`;
+        // HASIL AKHIR
+        const resultText = `<blockquote>${game.emoji} <b>HASIL ${game.name.toUpperCase()}</b> ${game.emoji}</blockquote>\n▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰\n\n       ${finalEmoji}\n\n<b>${finalStatus}</b>\n\n🧾 <b>Struk Transaksi:</b>\n💸 Modal Taruhan : <b>${formatCoin(totalCost)}</b>\n🎁 Hasil Jackpot   : <b>${formatCoin(totalPrize)}</b>\n📊 Profit/Loss     : <b>${pnlText}</b>\n▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰\n💳 <b>Sisa Saldo Kamu:</b> ${freshUsers[freshIndex].balance.toLocaleString('id-ID')} Coin`;
 
         const keyboard = {
             inline_keyboard: [
-                [{ text: `🔄 SPIN LAGI (Bet: ${formatCoin(cost)})`, callback_data: "play_gacha" }],
                 [
-                    { text: "➖ Bet", callback_data: "bet_down" },
-                    { text: "➕ Bet", callback_data: "bet_up" }
+                    { text: "➖ BET", callback_data: `bet_d|${gameId}` },
+                    { text: "🔥 ALL IN", callback_data: `bet_all|${gameId}` },
+                    { text: "➕ BET", callback_data: `bet_u|${gameId}` }
                 ],
-                [{ text: "↩️ Kembali ke Menu", callback_data: "menu_gacha" }]
+                [{ text: `🔄 SPIN LAGI (1x)`, callback_data: `play_slot|${gameId}|1` }],
+                [{ text: `🚀 AUTO SPIN (10x)`, callback_data: `play_slot|${gameId}|10` }],
+                [{ text: "↩️ GANTI MESIN", callback_data: "menu_gacha" }]
             ]
         };
 
-        try {
-            await ctx.editMessageCaption(resultText, { parse_mode: "HTML", reply_markup: keyboard });
-        } catch (err) {
-            await ctx.editMessageText(resultText, { parse_mode: "HTML", reply_markup: keyboard }).catch(()=>{});
-        }
+        try { await ctx.editMessageCaption(resultText, { parse_mode: "HTML", reply_markup: keyboard }); } 
+        catch (err) { await ctx.editMessageText(resultText, { parse_mode: "HTML", reply_markup: keyboard }).catch(()=>{}); }
 
     } finally {
-        // 🔓 Buka gemboknya pas mesin udah berhenti berapapun hasilnya
         global.spinLock.delete(userId);
+    }
+});
+
+// ============================================
+// 🏆 FITUR LEADERBOARD TOP GLOBAL SLOT (TOP 3 EXCLUSIVE)
+// ============================================
+bot.action("top_slot", async (ctx) => {
+    await ctx.answerCbQuery("Memuat Papan Peringkat...").catch(()=>{});
+    const users = loadUsers();
+    
+    // Saring dan urutkan
+    const slotters = users.filter(u => u.slotStats && u.slotStats.spins > 0);
+    slotters.sort((a, b) => b.slotStats.wins - a.slotStats.wins);
+    
+    // 🔥 CUMA AMBIL TOP 3 BIAR AMAN DARI LIMIT TELEGRAM!
+    const top = slotters.slice(0, 3); 
+    
+    let text = `<blockquote>🏆 <b>TOP GLOBAL SULTAN SLOT</b> 🏆</blockquote>\n▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰\nBerikut adalah 3 Player paling Gacor di Kasino kita!\n\n`;
+    
+    const keyboard = {
+        inline_keyboard: [
+            [{ text: "🔄 REFRESH LEADERBOARD", callback_data: "top_slot" }],
+            [{ text: "↩️ KEMBALI KE LOBBY", callback_data: "menu_gacha" }]
+        ]
+    };
+
+    if (top.length === 0) {
+        text += `<i>Belum ada data pemain slot. Jadilah yang pertama meraih Jackpot!</i>\n`;
+        try { await ctx.editMessageCaption(text, { parse_mode: "HTML", reply_markup: keyboard }); } 
+        catch (err) { await ctx.editMessageText(text, { parse_mode: "HTML", reply_markup: keyboard }).catch(()=>{}); }
+        return;
+    }
+
+    // Medalinya cukup 3 aja sekarang
+    const medals = ["🥇", "🥈", "🥉"]; 
+    let top1FavGameName = "Belum Ada";
+    
+    top.forEach((u, i) => {
+        // Cari game favorit
+        let favGame = "-";
+        let maxSpins = 0;
+        for (let g in u.slotStats.games) {
+            if (u.slotStats.games[g] > maxSpins) { maxSpins = u.slotStats.games[g]; favGame = g; }
+        }
+        
+        let gameName = favGame;
+        let gameEmoji = "🎰";
+        if (SLOT_GAMES[favGame]) { gameName = SLOT_GAMES[favGame].name; gameEmoji = SLOT_GAMES[favGame].emoji; }
+        
+        // Simpan nama game favorit Rank 1 untuk dicetak di Kartunya
+        if (i === 0) top1FavGameName = gameName; 
+
+        // Ambil Data User (Nama, ID, Username)
+        let name = u.first_name || "Anonymous";
+        name = name.replace(/[<>&]/g, ""); // Anti error HTML
+        if (name.length > 15) name = name.substring(0, 15) + "...";
+        
+        let uid = u.id || "Tidak Diketahui";
+        let uname = u.username ? `@${u.username}` : "<i>Tidak diset</i>";
+        
+        // Desain Teks Papan Peringkat
+        text += `${medals[i]} <b>${name}</b>\n`;
+        text += `   🆔 <b>ID:</b> <code>${uid}</code>\n`;
+        text += `   👤 <b>Username:</b> ${uname}\n`;
+        text += `   🪙 <b>Saldo:</b> ${u.balance.toLocaleString('id-ID')} Coin\n`;
+        text += `   🏆 <b>Total JP:</b> ${u.slotStats.wins.toLocaleString('id-ID')} Coin\n`;
+        text += `   ${gameEmoji} <b>Fav Mesin:</b> ${gameName}\n\n`;
+    });
+    
+    text += `▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰▰\n<i>*Peringkat ditentukan dari <b>Total Jackpot</b> terbesar yang pernah didapat. Gambar di atas adalah Kartu VIP khusus Peringkat #1!</i>`;
+    
+    // 📸 MENCETAK DAN MENGIRIM KARTU VIP UNTUK TOP 1
+    try {
+        const cardBuffer = await createTopSlotCard(top[0], 1, top1FavGameName);
+        
+        await ctx.editMessageMedia(
+            { type: 'photo', media: { source: cardBuffer }, caption: text, parse_mode: "HTML" },
+            { reply_markup: keyboard }
+        );
+    } catch (err) {
+        // Jika gagal edit, hapus pesannya dan kirim ulang pakai Foto VIP
+        await ctx.deleteMessage().catch(()=>{});
+        const cardBuffer = await createTopSlotCard(top[0], 1, top1FavGameName);
+        await ctx.replyWithPhoto({ source: cardBuffer }, { caption: text, parse_mode: "HTML", reply_markup: keyboard }).catch(()=>{});
     }
 });
 
@@ -3321,6 +3928,7 @@ bot.action("cek_join", async (ctx) => {
     try { await ctx.deleteMessage(); } catch(e){}
 
     const userId = ctx.from.id;
+    global.verifiedUsers.add(ctx.from.id);
     
     if (pendingStartArgs[userId]) {
         const arg = pendingStartArgs[userId];

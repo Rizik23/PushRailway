@@ -9,5 +9,6 @@
   "subdo": true,
   "smm": false,
   "topup": false,
-  "nokos": true
+  "nokos": true,
+  "maintenance": false
 }
