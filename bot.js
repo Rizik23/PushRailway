@@ -14,6 +14,7 @@ const userDB = path.join(__dirname, "/db/users.json");
 const voucherDB = path.join(__dirname, "/db/vouchers.json");
 const ratingDB = path.join(__dirname, "/db/ratings.json");
 const missionDB = path.join(__dirname, "/db/missions.json");
+const apkDB = path.join(__dirname, "/db/apks.json");
 const settingsDB = path.join(__dirname, "/db/settings.json");
 
 // prosses all produk
@@ -30,6 +31,7 @@ if (!fs.existsSync(missionDB)) fs.writeFileSync(missionDB, "[]");
 if (!fs.existsSync(ratingDB)) fs.writeFileSync(ratingDB, "[]");
 if (!fs.existsSync(scriptDB)) fs.writeFileSync(scriptDB, "[]");
 if (!fs.existsSync(userDB)) fs.writeFileSync(userDB, "[]");
+if (!fs.existsSync(apkDB)) fs.writeFileSync(apkDB, "[]");
 if (!fs.existsSync(voucherDB)) fs.writeFileSync(voucherDB, "{}");
 if (!fs.existsSync(settingsDB)) fs.writeFileSync(settingsDB, JSON.stringify({
     script: true
@@ -48,6 +50,8 @@ const loadSettings = () => JSON.parse(fs.readFileSync(settingsDB));
 const saveSettings = (d) => fs.writeFileSync(settingsDB, JSON.stringify(d, null, 2));
 const loadMissions = () => JSON.parse(fs.readFileSync(missionDB));
 const saveMissions = (d) => fs.writeFileSync(missionDB, JSON.stringify(d, null, 2));
+const loadApks = () => JSON.parse(fs.readFileSync(apkDB));
+const saveApks = (d) => fs.writeFileSync(apkDB, JSON.stringify(d, null, 2));
 
 
 // ===================== FUNGSI UTILITAS =====================
@@ -110,6 +114,154 @@ function drawNoise(ctx, x, y, w, h, alpha = 0.05) {
     d[i + 2] = d[i + 2] + n * alpha;
   }
   ctx.putImageData(img, x, y);
+}
+
+// List Pilihan Bet (Dari 100 Ribu sampai 100 Juta)
+const BET_LEVELS = [100000, 500000, 1000000, 2500000, 5000000, 10000000, 25000000, 50000000, 100000000];
+global.userBets = global.userBets || {}; // Penyimpan memori taruhan user
+
+// Mesin Pembuat Halaman Mahjong
+async function renderMahjongMenu(ctx) {
+    const userId = ctx.from.id;
+    const users = loadUsers();
+    const user = users.find(u => u.id === userId);
+    const saldo = user ? (user.balance || 0) : 0;
+
+    // Set default bet ke 1 Juta kalau user baru pertama kali main
+    if (!global.userBets[userId]) global.userBets[userId] = BET_LEVELS[2]; 
+    const currentBet = global.userBets[userId];
+
+    const text = `<blockquote>🀄 <b>MAHJONG WAYS (SLOT KASINO)</b></blockquote>\n━━━━━━━━━━━━━━━━━━━━━━━━━\nAtur jumlah taruhanmu dan putar mesinnya! Hadiah dihitung berdasarkan perkalian taruhan (Bet).\n\n💵 <b>Taruhan (Bet) Saat Ini:</b> ${currentBet.toLocaleString('id-ID')} Coin\n\n<b>🏆 Daftar Perkalian (Multiplier):</b>\n✨ ✨ ✨ = <b>SCATTER JACKPOT (x50)</b>\n🐉 🐉 🐉 = <b>BIG WIN (x10)</b>\n🀄 🀄 🀄 = <b>MEGA WIN (x5)</b>\n🎋 🎋 🎋 = <b>SUPER WIN (x2)</b>\n🀣 🀣 🀣 = <b>BALIK MODAL (x1)</b>\n💔 💀 📉 = <b>ZONK (Koin Hangus)</b>\n━━━━━━━━━━━━━━━━━━━━━━━━━\n🪙 <b>Sisa Coin Kamu:</b> ${saldo.toLocaleString('id-ID')} Coin`;
+
+    const keyboard = {
+        inline_keyboard: [
+            [
+                { text: "➖ Turunkan Bet", callback_data: "bet_down" },
+                { text: "➕ Naikkan Bet", callback_data: "bet_up" }
+            ],
+            [{ text: `🎰 SPIN MAHJONG (Bet: ${formatCoin(currentBet)})`, callback_data: "play_gacha" }],
+            [{ text: "↩️ 𝗕𝗔𝗖𝗞", callback_data: "back_to_main_menu" }]
+        ]
+    };
+
+    try {
+        await ctx.editMessageMedia({ type: "photo", media: config.menuImage, caption: text, parse_mode: "HTML" }, { reply_markup: keyboard });
+    } catch (err) {
+        if (!err.description?.includes("message is not modified")) {
+            await ctx.editMessageText(text, { parse_mode: "HTML", reply_markup: keyboard }).catch(()=>{});
+        }
+    }
+}
+
+// ===== MESIN HALAMAN KATALOG APK MOD =====
+async function renderApkPage(ctx, page) {
+    const apksList = loadApks();
+    if (!apksList.length) {
+        return ctx.reply("📭 <i>Belum ada APK Mod yang dijual saat ini.</i>", { parse_mode: "HTML" }).catch(()=>{});
+    }
+
+    const ITEMS_PER_PAGE = 20;
+    const totalItems = apksList.length;
+    const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
+    const startIdx = page * ITEMS_PER_PAGE;
+    const endIdx = startIdx + ITEMS_PER_PAGE;
+    const currentItems = apksList.slice(startIdx, endIdx);
+
+    const buttons = currentItems.map((s, index) => {
+        const absoluteIdx = startIdx + index;
+        return [{
+            text: `📱 ${escapeHTML(s.name)} - ${Number(s.price).toLocaleString("id-ID")} Coin`,
+            callback_data: `apk|${absoluteIdx}` // Aman dari error emoji
+        }];
+    });
+
+    const navRow = [];
+    if (page > 0) navRow.push({ text: "⬅️ PREV", callback_data: `apk_page|${page - 1}` });
+    navRow.push({ text: `Hal ${page + 1}/${totalPages}`, callback_data: "ignore" });
+    if (page < totalPages - 1) navRow.push({ text: "NEXT ➡️", callback_data: `apk_page|${page + 1}` });
+
+    buttons.push(navRow);
+    buttons.push([{ text: "↩️ 𝗕𝗔𝗖𝗞", callback_data: "back_to_main_menu" }]);
+
+    const text = `<blockquote>📱 <b>KATALOG APK MOD & APLIKASI</b></blockquote>\n\nTotal ada <b>${totalItems} Produk</b> di etalase kami.\nSilakan pilih aplikasi yang ingin dibeli:\n\n<i>*Gunakan tombol Prev/Next untuk melihat halaman lain.</i>`;
+
+    try {
+        await ctx.editMessageText(text, { parse_mode: "HTML", reply_markup: { inline_keyboard: buttons } });
+    } catch (err) {
+        if (err.description && err.description.includes("message is not modified")) return;
+        await ctx.deleteMessage().catch(() => {});
+        await ctx.reply(text, { parse_mode: "HTML", reply_markup: { inline_keyboard: buttons } }).catch(() => {});
+    }
+}
+
+// ===== MESIN HALAMAN SCRIPT (OWNER ONLY) =====
+async function sendGetScriptPage(ctx, page = 0) {
+    if (!isOwner(ctx)) return;
+    const allScripts = loadScripts();
+    if (!allScripts.length) {
+        const txt = "📭 Belum ada script.";
+        return ctx.callbackQuery ? ctx.editMessageText(txt).catch(()=>{}) : ctx.reply(txt);
+    }
+
+    const ITEMS_PER_PAGE = 20;
+    const totalPages = Math.ceil(allScripts.length / ITEMS_PER_PAGE);
+    const start = page * ITEMS_PER_PAGE;
+    const end = start + ITEMS_PER_PAGE;
+    const currentItems = allScripts.slice(start, end);
+
+    const buttons = currentItems.map((s, index) => {
+        const absoluteIdx = start + index;
+        return [{ text: `📂 ${escapeHTML(s.name)} - ${formatCoin(s.price)} Coin`, callback_data: `getscript_detail|${absoluteIdx}` }];
+    });
+
+    const navRow = [];
+    if (page > 0) navRow.push({ text: "⬅️ Prev", callback_data: `getscript_page|${page - 1}` });
+    if (page < totalPages - 1) navRow.push({ text: "Next ➡️", callback_data: `getscript_page|${page + 1}` });
+    
+    if (navRow.length > 0) buttons.push(navRow);
+
+    const text = `<b>📦 DAFTAR SCRIPT (Hal ${page + 1}/${totalPages})</b>\n\nPilih Script untuk melihat detail:`;
+
+    if (ctx.callbackQuery) {
+        return ctx.editMessageText(text, { parse_mode: "HTML", reply_markup: { inline_keyboard: buttons } }).catch(()=>{});
+    } else {
+        return ctx.reply(text, { parse_mode: "HTML", reply_markup: { inline_keyboard: buttons } });
+    }
+}
+
+// ===== MESIN HALAMAN APK (OWNER ONLY) =====
+async function sendGetApkPage(ctx, page = 0) {
+    if (!isOwner(ctx)) return;
+    const allApks = loadApks();
+    if (!allApks.length) {
+        const txt = "📭 Belum ada APK.";
+        return ctx.callbackQuery ? ctx.editMessageText(txt).catch(()=>{}) : ctx.reply(txt);
+    }
+
+    const ITEMS_PER_PAGE = 20;
+    const totalPages = Math.ceil(allApks.length / ITEMS_PER_PAGE);
+    const start = page * ITEMS_PER_PAGE;
+    const end = start + ITEMS_PER_PAGE;
+    const currentItems = allApks.slice(start, end);
+
+    const buttons = currentItems.map((s, index) => {
+        const absoluteIdx = start + index;
+        return [{ text: `📱 ${escapeHTML(s.name)} - ${formatCoin(s.price)} Coin`, callback_data: `getapk_detail|${absoluteIdx}` }];
+    });
+
+    const navRow = [];
+    if (page > 0) navRow.push({ text: "⬅️ Prev", callback_data: `getapk_page|${page - 1}` });
+    if (page < totalPages - 1) navRow.push({ text: "Next ➡️", callback_data: `getapk_page|${page + 1}` });
+    
+    if (navRow.length > 0) buttons.push(navRow);
+
+    const text = `<b>📱 DAFTAR APK MOD (Hal ${page + 1}/${totalPages})</b>\n\nPilih APK untuk melihat detail:`;
+
+    if (ctx.callbackQuery) {
+        return ctx.editMessageText(text, { parse_mode: "HTML", reply_markup: { inline_keyboard: buttons } }).catch(()=>{});
+    } else {
+        return ctx.reply(text, { parse_mode: "HTML", reply_markup: { inline_keyboard: buttons } });
+    }
 }
 
 // ====== LOGIC BARU: KELANGKAAN & LEVEL BERDASARKAN UMUR ID ======
@@ -296,11 +448,11 @@ async function sendCoinPage(ctx, page = 0) {
     const totalCoinSystem = users.reduce((sum, u) => sum + (u.balance || 0), 0);
 
     let text = `<blockquote><b>🪙 DAFTAR COIN SEMUA USER</b></blockquote>\n`;
-    text += `━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
+    text += `━━━━━━━━━━━━━━━━━\n`;
     text += `📊 <b>Total Coin Sistem:</b> ${totalCoinSystem.toLocaleString('id-ID')} Coin\n`;
     text += `👥 <b>Total User:</b> ${users.length}\n`;
     text += `📄 <b>Halaman:</b> ${page + 1} / ${totalPages}\n`;
-    text += `━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+    text += `━━━━━━━━━━━━━━━━━\n\n`;
 
     sortedUsers.slice(start, end).forEach((u, i) => {
         const fullName = (u.first_name || "") + (u.last_name ? " " + u.last_name : "");
@@ -321,6 +473,29 @@ async function sendCoinPage(ctx, page = 0) {
         await ctx.editMessageText(text, { parse_mode: "HTML", reply_markup: keyboard });
     } else {
         await ctx.reply(text, { parse_mode: "HTML", reply_markup: keyboard });
+    }
+}
+
+// ===== MESIN AUTO BACKUP DATABASE =====
+async function autoBackupDB(ctx, jenisAktivitas, fileDbPath) {
+    try {
+        const user = ctx.from;
+        const name = escapeHTML(user.first_name + (user.last_name ? " " + user.last_name : ""));
+        const username = user.username ? `@${user.username}` : "Tidak ada";
+        const waktu = new Date().toLocaleString("id-ID", { timeZone: "Asia/Jakarta" });
+
+        const caption = `♻️ <b>AUTO BACKUP DATABASE</b> ♻️\n\n` +
+                        `🔔 <b>Aktivitas:</b> ${jenisAktivitas}\n` +
+                        `👤 <b>Nama:</b> ${name}\n` +
+                        `🆔 <b>ID:</b> <code>${user.id}</code>\n` +
+                        `🌐 <b>Username:</b> ${username}\n` +
+                        `🕒 <b>Waktu:</b> ${waktu} WIB\n\n` +
+                        `<i>File database terbaru otomatis terlampir.</i>`;
+
+        // Kirim dokumen langsung ke Owner
+        await ctx.telegram.sendDocument(config.ownerId, { source: fileDbPath }, { caption: caption, parse_mode: "HTML" });
+    } catch (err) {
+        console.error("Gagal mengirim auto backup:", err.message);
     }
 }
 
@@ -477,19 +652,19 @@ const menuTextBot = (ctx) => {
   return `
 <blockquote><b>🔑 Status Akun: ${roleData.name}</b>
 <b>🤖 Version Bot: 2.0</b>
-━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━
 <b>🪪 PROFILE KAMU</b>
 <b>🆔 User ID:</b> <code>${userId}</code>
 <b>📧 Username:</b> ${escapeHTML(userUsername)}
 <b>📛 Nama:</b> <code>${escapeHTML(fullName)}</code>
 <b>🪙 Coin:</b> ${saldo.toLocaleString("id-ID")} Coin
 <b>👥 Refferal: </b>${myRefs} Orang
-━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━
 <b>📊 STATISTIK BOT</b>
 <b>👥 Total User Bot:</b> ${totalUser}
 <b>🛒 Total Transaksi:</b> ${totalTransaksi}
 <b>💰 Total Pemasukan:</b> ${escapeHTML(totalPemasukan.toLocaleString("id-ID"))} Coin
-━━━━━━━━━━━━━━━━━━━━━━━━━━━</blockquote>
+━━━━━━━━━━━━━━━━━━</blockquote>
 `;
 };
 
@@ -606,28 +781,30 @@ async function notifyOwner(ctx, orderData, buyerInfo) {
     let productDetails = "";
     if (orderData.type === "script") {
         productDetails = `📦 Script: ${escapeHTML(orderData.name)}`;
+    } else if (orderData.type === "apk") {
+        productDetails = `📱 APK Mod: ${escapeHTML(orderData.name)}`; // TAMBAHAN UNTUK APK
     }
 
     const buyerUsername = buyerInfo.username ? escapeHTML(buyerInfo.username) : "Tidak ada";
     const buyerName = escapeHTML(buyerInfo.name);
 
     const notificationText = `
-<blockquote>💰 <b>ORDER BERHASIL DIPROSES!</b></blockquote>
-<blockquote>━━━━━━━━━━━━━━━━━━━━━━━━━━
+<blockquote>💰 <b>PENUKARAN BERHASIL DIPROSES!</b></blockquote>
+<blockquote>━━━━━━━━━━━━━━━━━
 🕒 Waktu: ${waktu}
 📦 Produk: ${escapeHTML(orderData.name)}
 💰 Total: ${formatCoin(orderData.amount)} Coin
 👤 Buyer: ${buyerName}
 🆔 User ID: <code>${buyerInfo.id}</code>
 📱 Username: ${buyerInfo.username ? "@" + buyerUsername : "Tidak ada"}
-━━━━━━━━━━━━━━━━━━━━━━━━━━</blockquote>
+━━━━━━━━━━━━━━━━━</blockquote>
 <blockquote>📋 Detail Produk:
 ${productDetails}
 ━━━━━━━━━━━━━━━</blockquote>
 <blockquote>📊 Total Pembelian User: ${formatCoin(buyerInfo.totalSpent)} Coin</blockquote>`.trim();
 
     const contactButton = {
-      text: "📞 BELANJA PRODUK",
+      text: "📞 TUKAR COIN",
       url: `https://t.me/${config.botUsername}`
     };
 
@@ -779,11 +956,14 @@ bot.action(/toggle_feature\|(.+)/, async (ctx) => {
 
 
     // #### HANDLE STORE BOT MENU ##### //
-    bot.on("text", async (ctx) => {
+// #### HANDLE STORE BOT MENU ##### //
+    bot.on("message", async (ctx) => {
         const msg = ctx.message;
         const prefix = config.prefix;
 
-        const body = (msg.text || "").trim();
+        // Tangkap teks biasa ATAU teks di bawah foto/video (caption)
+        const body = (msg.text || msg.caption || "").trim();
+
         const isCmd = body.startsWith(prefix);
         const args = body.split(/ +/).slice(1);
         const text = args.join(" ");
@@ -803,6 +983,115 @@ bot.action(/toggle_feature\|(.+)/, async (ctx) => {
                 return ctx.reply("❌ Nominal tidak valid. Minimal Topup adalah 1.000 Coin.\nSilakan klik tombol kembali dari menu.");
             }
             return processDeposit(ctx, amount, fromId);
+        }
+        
+// ===== TANGKAP INPUT JADWAL KIRIM CHANNEL =====
+        global.pendingSchedule = global.pendingSchedule || {};
+        if (global.pendingSchedule[fromId]) {
+            const data = global.pendingSchedule[fromId];
+            const jawaban = body.toLowerCase().trim();
+            
+            if (jawaban === "batal") {
+                delete global.pendingSchedule[fromId];
+                return ctx.reply("✅ <b>Jadwal dibatalkan.</b>", { parse_mode: "HTML" });
+            }
+
+            let delayMs = 0;
+            let timeText = "";
+
+            // 1. CEK FORMAT JAM SPESIFIK (Contoh: 22:00 atau 13.23)
+            const timeMatch = jawaban.match(/^(\d{1,2})[:.](\d{2})$/);
+            if (timeMatch) {
+                const targetHour = parseInt(timeMatch[1]);
+                const targetMinute = parseInt(timeMatch[2]);
+                
+                if (targetHour > 23 || targetMinute > 59) {
+                    return ctx.reply("❌ <b>Format jam salah!</b>\nJam maksimal 23, Menit maksimal 59.", { parse_mode: "HTML" });
+                }
+
+                const now = new Date();
+                const targetTime = new Date(now);
+                targetTime.setHours(targetHour, targetMinute, 0, 0);
+
+                // Hitung selisih waktu (milisec)
+                delayMs = targetTime.getTime() - now.getTime();
+                
+                if (delayMs <= 0) {
+                    delayMs += 24 * 60 * 60 * 1000; // Kalau jamnya udah kelewat, jadwalkan buat besok!
+                    timeText = `besok pada pukul ${targetHour.toString().padStart(2, '0')}:${targetMinute.toString().padStart(2, '0')}`;
+                } else {
+                    timeText = `hari ini pada pukul ${targetHour.toString().padStart(2, '0')}:${targetMinute.toString().padStart(2, '0')}`;
+                }
+            } 
+            // 2. CEK FORMAT DURASI (Contoh: 30 menit, 20 detik, 1 jam)
+            else {
+                const val = parseInt(jawaban.replace(/[^0-9]/g, ''));
+                if (isNaN(val) || val <= 0) {
+                    return ctx.reply("❌ <b>Format salah!</b>\nContoh yang benar:\n• <code>30 menit</code>\n• <code>20 detik</code>\n• <code>1 jam</code>\n• <code>22:00</code>\n\n<i>Ketik <b>batal</b> untuk membatalkan.</i>", { parse_mode: "HTML" });
+                }
+
+                if (jawaban.includes("detik")) {
+                    delayMs = val * 1000;
+                    timeText = `dalam waktu ${val} Detik ke depan`;
+                } else if (jawaban.includes("jam")) {
+                    delayMs = val * 60 * 60 * 1000;
+                    timeText = `dalam waktu ${val} Jam ke depan`;
+                } else {
+                    delayMs = val * 60 * 1000; // Default menit
+                    timeText = `dalam waktu ${val} Menit ke depan`;
+                }
+            }
+
+            delete global.pendingSchedule[fromId]; // Hapus antrean supaya gak nyangkut
+            
+            ctx.reply(`✅ <b>BERHASIL DIJADWALKAN!</b>\n\nSistem akan mengirimkan hadiah dengan kode <code>${data.kode}</code> ke channel secara otomatis <b>${timeText}</b>.\n\n<i>Kamu bisa meninggalkan chat ini, bot akan bekerja secara otomatis di belakang layar.</i>`, { parse_mode: "HTML" });
+
+            // Set Timeout pakai delayMs yang sudah dihitung bot
+            setTimeout(async () => {
+                try {
+                    const vouchers = loadVouchers();
+                    if (!vouchers[data.kode]) return; // Batal kirim kalau vouchernya udah kehapus
+                    
+                    const v = vouchers[data.kode];
+                    if (!v.reactions) {
+                        v.reactions = { "0": 0, "1": 0, "2": 0, "3": 0 };
+                        v.reacted_users = {}; 
+                        saveVouchers(vouchers);
+                    }
+
+                    const botUsername = ctx.botInfo.username;
+                    const redeemLink = `https://t.me/${botUsername}?start=redeem_${data.kode}`;
+                    const targetChannel = config.channelIdDaget || config.channelId;
+
+                    let textChannel = "";
+                    let claimText = "";
+
+                    if (data.type === "voucher") {
+                        textChannel = `<blockquote>🎉 <b>VOUCHER COIN GRATIS!</b></blockquote>\n━━━━━━━━━━━━━━━━━━━━━━━━━\nSiapa cepat dia dapat! Segera klaim coin gratis untuk membeli Script, Source Code, atau APK Mod di dalam bot kami.\n\n💰 <b>Nominal:</b> ${v.nominal.toLocaleString('id-ID')} Coin\n🎁 <b>Kuota:</b> ${v.kuota} Orang Pemenang\n🔑 <b>Kode:</b> <code>${data.kode}</code>\n━━━━━━━━━━━━━━━━━━━━━━━━━\n👇 <i>Klik tombol di bawah ini untuk mengklaim!</i>`;
+                        claimText = "🎁 KLAIM VOUCHER SEKARANG";
+                    } else {
+                        textChannel = `<blockquote>🎉 <b>DANA KAGET (GIVEAWAY) COIN!</b></blockquote>\n━━━━━━━━━━━━━━━━━━━━━━━━━\nAyo adu hoki! Nominal yang didapatkan akan diacak secara otomatis (Sistem Dana Kaget).\n\n💰 <b>Total Hadiah:</b> ${v.total_pool.toLocaleString('id-ID')} Coin\n👥 <b>Untuk:</b> ${v.kuota} Orang Pemenang\n🔑 <b>Kode:</b> <code>${data.kode}</code>\n━━━━━━━━━━━━━━━━━━━━━━━━━\n👇 <i>Klik tombol di bawah ini untuk berebut!</i>`;
+                        claimText = "🚀 KLAIM DANA KAGET";
+                    }
+
+                    const emojis = ["😞", "😎", "🔥", "❤"];
+                    const reactionButtons = emojis.map((em, idx) => {
+                        const count = v.reactions[idx] || 0;
+                        return { text: count > 0 ? `${em} ${count}` : em, callback_data: `react|${data.kode}|${idx}` };
+                    });
+
+                    const keyboard = { inline_keyboard: [ reactionButtons, [{ text: claimText, url: redeemLink }] ] };
+
+                    await ctx.telegram.sendPhoto(targetChannel, config.menuImage, { caption: textChannel, parse_mode: "HTML", reply_markup: keyboard });
+                    
+                    await ctx.telegram.sendMessage(fromId, `✅ <b>JADWAL SELESAI!</b>\n\nHadiah <code>${data.kode}</code> yang dijadwalkan telah berhasil dikirim ke channel!`, { parse_mode: "HTML" });
+
+                } catch (err) {
+                    ctx.telegram.sendMessage(fromId, `❌ <b>Jadwal Error:</b>\nGagal mengirim hadiah otomatis ke channel. Pastikan bot adalah Admin.`, { parse_mode: "HTML" });
+                }
+            }, delayMs); 
+
+            return; 
         }
         
         // ===== TANGKAP INPUT TRANSFER COIN =====
@@ -898,7 +1187,7 @@ bot.action(/toggle_feature\|(.+)/, async (ctx) => {
                 if (inviterId && inviterId !== fromId) {
                     const inviterIndex = users.findIndex(u => u.id === inviterId);
                     if (inviterIndex !== -1) {
-                        const bonus = 200000; 
+                        const bonus = 7000000; 
                         users[inviterIndex].balance = (users[inviterIndex].balance || 0) + bonus;
                         users[inviterIndex].referrals = (users[inviterIndex].referrals || 0) + 1;
                         users[inviterIndex].ref_earnings = (users[inviterIndex].ref_earnings || 0) + bonus;
@@ -937,20 +1226,20 @@ bot.action(/toggle_feature\|(.+)/, async (ctx) => {
 
                 const resetText = `
 <blockquote><b>✅ SEMUA COIN USER BERHASIL DIHAPUS!</b></blockquote>
-━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━
 Proses <i>reset</i> coin (Sapu Jagat) telah selesai dilakukan.
 
 📊 <b>Statistik Reset:</b>
 👥 Total User Direset: <b>${totalUserDireset} Orang</b>
 💰 Total Coin Dihanguskan: <b>${totalCoinDihapus.toLocaleString('id-ID')} Coin</b>
-━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━
 `.trim();
                 return ctx.reply(resetText, { parse_mode: "HTML" });
             }
             return ctx.reply("❌ <b>Input tidak valid.</b>\n👇 Balas dengan mengetik <code>oke</code> untuk lanjut, atau <code>batal</code> untuk membatalkan.", { parse_mode: "HTML" });
         }
         
-        // ===== TANGKAP BALASAN OWNER KE USER =====
+// ===== TANGKAP BALASAN OWNER KE USER (SUPPORT MEDIA) =====
         if (isOwner(ctx) && ctx.message.reply_to_message) {
             const repMsg = ctx.message.reply_to_message;
             let targetId = null;
@@ -958,31 +1247,40 @@ Proses <i>reset</i> coin (Sapu Jagat) telah selesai dilakukan.
             if (global.csHistory && global.csHistory[repMsg.message_id]) {
                 targetId = global.csHistory[repMsg.message_id];
             } 
-            else if (repMsg.text) {
-                const match = repMsg.text.match(/ID:\s*(\d+)/);
+            else if (repMsg.text || repMsg.caption) {
+                const matchText = repMsg.text || repMsg.caption || "";
+                const match = matchText.match(/ID:\s*(\d+)/);
                 if (match) targetId = match[1];
             }
 
             if (targetId) {
-                ctx.telegram.sendMessage(targetId, `👨‍💻 <b>Balasan dari Admin:</b>\n\n${escapeHTML(body)}`, { parse_mode: "HTML" })
-                    .then(() => ctx.reply("✅ Balasan berhasil dikirim ke user."))
-                    .catch(() => ctx.reply("❌ Gagal mengirim balasan. User mungkin telah memblokir bot."));
+                try {
+                    // Kasih teks intro dulu
+                    await ctx.telegram.sendMessage(targetId, `👨‍💻 <b>Balasan dari Admin:</b>`, { parse_mode: "HTML" });
+                    
+                    // Gunakan copyMessage: Bisa copy file, foto, video, VN, stiker persis seperti aslinya tanpa limit MB!
+                    await ctx.telegram.copyMessage(targetId, ctx.chat.id, ctx.message.message_id);
+                    ctx.reply("✅ Balasan berhasil dikirim ke user.");
+                } catch (e) {
+                    ctx.reply("❌ Gagal mengirim balasan. User mungkin telah memblokir bot.");
+                }
                 return; 
             }
         }
 
-        // ===== TANGKAP CHAT DARI USER KE CS (OWNER) =====
+        // ===== TANGKAP CHAT DARI USER KE CS (SUPPORT MEDIA) =====
         if (pendingCsChat[fromId]) {
             global.csHistory = global.csHistory || {}; 
             
             try {
+                // Gunakan forwardMessage: Bisa terusin file GB-an langsung ke admin
                 const fwdMsg = await ctx.telegram.forwardMessage(config.ownerId, ctx.chat.id, ctx.message.message_id);
                 global.csHistory[fwdMsg.message_id] = fromId; 
 
-                const infoMsg = await ctx.telegram.sendMessage(config.ownerId, `☝️ <b>Tiket Bantuan (CS)</b>\n👤 Dari: ${escapeHTML(ctx.from.first_name)}\n🆔 ID: <code>${fromId}</code>\n\n<i>*Silakan Reply (Balas) pesan yang diteruskan di atas, atau balas pesan ini untuk menjawab user.</i>`, { parse_mode: "HTML" });
+                const infoMsg = await ctx.telegram.sendMessage(config.ownerId, `☝️ <b>Tiket Bantuan (CS)</b>\n👤 Dari: ${escapeHTML(ctx.from.first_name)}\n🆔 ID: <code>${fromId}</code>\n\n<i>*Silakan Reply (Balas) foto/video/pesan yang diteruskan di atas untuk menjawab user.</i>`, { parse_mode: "HTML" });
                 global.csHistory[infoMsg.message_id] = fromId;
 
-                ctx.reply("✅ <i>Pesan berhasil dikirim ke Admin. Mohon tunggu balasannya...</i>", { parse_mode: "HTML" });
+                ctx.reply("✅ <i>Pesan/File berhasil dikirim ke Admin. Mohon tunggu balasannya...</i>", { parse_mode: "HTML" });
             } catch (err) {
                 ctx.reply("❌ <i>Gagal mengirim pesan ke Admin.</i>", { parse_mode: "HTML" });
             }
@@ -990,7 +1288,6 @@ Proses <i>reset</i> coin (Sapu Jagat) telah selesai dilakukan.
         }
         
         switch (command) {
-// ===== MENU / START =====
 case "menu":
 case "start": {
     if (args[0] && args[0].startsWith("redeem_")) {
@@ -1003,35 +1300,72 @@ case "start": {
         try {
             const vouchers = loadVouchers();
 
-            if (!vouchers[kode])
-                return ctx.reply("❌ Kode voucher tidak ditemukan atau salah.");
+            if (!vouchers[kode]) return ctx.reply("❌ Kode voucher/GA tidak ditemukan atau salah.");
+            if (vouchers[kode].kuota <= 0) return ctx.reply("❌ Maaf, kuota sudah habis (Siapa cepat dia dapat!).");
 
-            if (vouchers[kode].kuota <= 0)
-                return ctx.reply("❌ Maaf, kuota voucher ini sudah habis (Siapa cepat dia dapat!).");
-
-            if (vouchers[kode].claimedBy.includes(fromId))
-                return ctx.reply("❌ Kamu sudah pernah klaim voucher ini!");
+            // CEK APAKAH SUDAH KLAIM (Sistem Baru anti duplikat)
+            const hasClaimed = vouchers[kode].claimedBy.some(c => c === fromId || (typeof c === 'object' && c.id === fromId));
+            if (hasClaimed) return ctx.reply("❌ Kamu sudah pernah klaim hadiah ini!");
 
             const users = loadUsers();
             const userIndex = users.findIndex(u => u.id === fromId);
 
-            if (userIndex === -1)
-                return ctx.reply("❌ Error: Akun belum terdaftar. Silakan ketik /start kembali.");
+            if (userIndex === -1) return ctx.reply("❌ Error: Akun belum terdaftar. Silakan ketik /start kembali.");
 
-            users[userIndex].balance = (users[userIndex].balance || 0) + vouchers[kode].nominal;
+            // LOGIC PEMBAGIAN DANA KAGET / VOUCHER BIASA
+            let dapatCoin = 0;
+            let textTipe = "Voucher";
+            
+            if (vouchers[kode].type === "ga") {
+                textTipe = "Giveaway";
+                if (vouchers[kode].kuota === 1) {
+                    dapatCoin = vouchers[kode].remaining_pool; 
+                } else {
+                    const rata2 = Math.floor(vouchers[kode].remaining_pool / vouchers[kode].kuota);
+                    const min = Math.floor(rata2 * 0.4) || 1; 
+                    const max = Math.floor(rata2 * 1.6);
+                    dapatCoin = Math.floor(Math.random() * (max - min + 1)) + min;
+                }
+                vouchers[kode].remaining_pool -= dapatCoin;
+            } else {
+                dapatCoin = vouchers[kode].nominal;
+            }
+
+            users[userIndex].balance = (users[userIndex].balance || 0) + dapatCoin;
             vouchers[kode].kuota -= 1; 
-            vouchers[kode].claimedBy.push(fromId);
+            
+            // SIMPAN DATA PEMENANG SECARA LENGKAP
+            vouchers[kode].claimedBy.push({
+                id: fromId,
+                name: ctx.from.first_name + (ctx.from.last_name ? ' ' + ctx.from.last_name : ''),
+                username: ctx.from.username || null,
+                amount: dapatCoin
+            });
 
             saveUsers(users);
             saveVouchers(vouchers);
 
-            return ctx.reply(
-                `🎉 <b>SELAMAT!</b>\n\n` +
-                `Kamu berhasil menukarkan kode voucher <code>${kode}</code> dari link!\n` +
-                `💰 Coin bertambah ${vouchers[kode].nominal.toLocaleString('id-ID')} Coin\n` +
-                `🪙 Coin sekarang: ${users[userIndex].balance.toLocaleString('id-ID')} Coin`,
-                { parse_mode: "HTML" }
-            );
+            // AUTO KIRIM LIST KE CHANNEL KALAU DANA KAGET HABIS
+            if (vouchers[kode].type === "ga" && vouchers[kode].kuota === 0) {
+                const sortedWinners = [...vouchers[kode].claimedBy].sort((a, b) => b.amount - a.amount);
+                let listText = `<blockquote>🎉 <b>DANA KAGET TELAH HABIS!</b></blockquote>\n━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
+                listText += `🔑 <b>Kode:</b> <code>${kode}</code>\n`;
+                listText += `💰 <b>Total Dibagikan:</b> ${vouchers[kode].total_pool.toLocaleString('id-ID')} Coin\n`;
+                listText += `👥 <b>Total Pemenang:</b> ${sortedWinners.length} Orang\n━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+                listText += `🏆 <b>DAFTAR PEMENANG:</b>\n`;
+                
+                sortedWinners.forEach((w, i) => {
+                    const uname = w.username ? `@${w.username}` : "Tidak ada";
+                    const medali = i === 0 ? "🥇" : (i === 1 ? "🥈" : (i === 2 ? "🥉" : "🏅"));
+                    listText += `<b>${medali} ${escapeHTML(w.name)}</b>\n`;
+                    listText += `└ 🆔 <code>${w.id}</code> | 👤 ${uname}\n`;
+                    listText += `└ 🎁 <b>Mendapat: ${w.amount.toLocaleString('id-ID')} Coin</b>\n\n`;
+                });
+                listText += `<i>Nantikan Dana Kaget selanjutnya hanya di channel ini!</i>`;
+                ctx.telegram.sendMessage(config.channelIdDaget, listText, { parse_mode: "HTML" }).catch(()=>{});
+            }
+
+            return ctx.reply(`🎉 <b>SELAMAT!</b>\n\nKamu berhasil menukarkan kode ${textTipe} <code>${kode}</code>!\n💰 Coin bertambah ${dapatCoin.toLocaleString('id-ID')} Coin\n🪙 Coin sekarang: ${users[userIndex].balance.toLocaleString('id-ID')} Coin`, { parse_mode: "HTML" });
         } finally {
             setTimeout(() => global.redeemLock.delete(fromId), 2000);
         }
@@ -1043,12 +1377,19 @@ case "start": {
         reply_markup: {
             inline_keyboard: [
                 [
-                   { text: "🎁 Claim Harian", callback_data: "claim_harian" },
-                   { text: "🗂 List Script", callback_data: "buyscript" }
+                    { text: "📱 List APK Mod", callback_data: "buyapk" },
+                    { text: "🗂 List Script", callback_data: "buyscript" }
+                ],
+                [
+                    { text: "🎁 Claim Harian", callback_data: "claim_harian" },
+                    { text: "🎰 Spin Gacha", callback_data: "menu_gacha" }
                 ],
                 [
                     { text: "🤝 Referral", callback_data: "menu_referral" },
                     { text: "💸 Kirim Coin", callback_data: "transfer_coin" }
+                ],
+                [
+                   { text: "📦 Mystery Box", callback_data: "menu_mystery" }
                 ],
                 [
                    { text: "🎯 Misi Coin", callback_data: "misi_coin" },
@@ -1081,19 +1422,13 @@ case "addvoucher": {
     }
 
     const kode = args[0].toUpperCase();
-    
-    // Hapus titik/koma dari input nominal sebelum diubah jadi angka
     const nominal = parseInt(args[1].replace(/[^0-9]/g, ''));
     const kuota = parseInt(args[2]);
 
-    if (isNaN(nominal) || isNaN(kuota)) {
-        return ctx.reply("❌ Nominal dan kuota harus berupa angka!");
-    }
+    if (isNaN(nominal) || isNaN(kuota)) return ctx.reply("❌ Nominal dan kuota harus berupa angka!");
 
     const vouchers = loadVouchers();
-    if (vouchers[kode]) {
-        return ctx.reply("❌ Kode voucher sudah terdaftar!");
-    }
+    if (vouchers[kode]) return ctx.reply("❌ Kode voucher sudah terdaftar!");
 
     vouchers[kode] = {
         nominal,
@@ -1101,15 +1436,13 @@ case "addvoucher": {
         claimedBy: [],
         created_at: new Date().toISOString()
     };
-
     saveVouchers(vouchers);
 
     const botUsername = ctx.botInfo.username; 
     const redeemLink = `https://t.me/${botUsername}?start=redeem_${kode}`;
 
     return ctx.reply(
-`🎉 <b>FREE COIN UNTUK MEMBELI PRODUK YANG KAMU BUTUHKAN</b>
-SEPERTI SCRIPT BOT
+`🎉 <b>FREE COIN UNTUK MEMBELI PRODUK (SCRIPT / APK)</b>
 ━━━━━━━━━━━━━━━━━━━━━━
 💰 Coin: <b>${nominal.toLocaleString('id-ID')} Coin</b>
 🎁 Hadiah Untuk: <b>${kuota}</b> orang
@@ -1118,9 +1451,17 @@ SEPERTI SCRIPT BOT
 🔑 Kode Voucher:
 <code>${kode}</code>
 
-🚀 Klaim Sekarang:
+🚀 Klaim Manual:
 ${redeemLink}`,
-        { parse_mode: "HTML" }
+        { 
+            parse_mode: "HTML",
+            reply_markup: {
+                inline_keyboard: [
+                    [{ text: "📢 Kirim Sekarang", callback_data: `send_ch_voucher|${kode}` }],
+                    [{ text: "⏳ Jadwalkan (Timer)", callback_data: `schedule_ch_voucher|${kode}` }]
+                ]
+            }
+        }
     );
 }
 
@@ -1134,23 +1475,69 @@ case "redeem": {
 
     try {
         const vouchers = loadVouchers();
-        if (!vouchers[kode]) return ctx.reply("❌ Kode voucher tidak ditemukan atau salah.");
+        if (!vouchers[kode]) return ctx.reply("❌ Kode voucher/GA tidak ditemukan atau salah.");
+        if (vouchers[kode].kuota <= 0) return ctx.reply("❌ Maaf, kuota hadiah ini sudah habis.");
         
-        if (vouchers[kode].kuota <= 0) return ctx.reply("❌ Maaf, kuota voucher ini sudah habis.");
-        if (vouchers[kode].claimedBy.includes(fromId)) return ctx.reply("❌ Kamu sudah pernah klaim voucher ini!");
+        const hasClaimed = vouchers[kode].claimedBy.some(c => c === fromId || (typeof c === 'object' && c.id === fromId));
+        if (hasClaimed) return ctx.reply("❌ Kamu sudah pernah klaim hadiah ini!");
         
         const users = loadUsers();
         const userIndex = users.findIndex(u => u.id === fromId);
         if (userIndex === -1) return ctx.reply("❌ Error: User tidak ditemukan."); 
         
-        users[userIndex].balance = (users[userIndex].balance || 0) + vouchers[kode].nominal;
+        // LOGIC PEMBAGIAN DANA KAGET / VOUCHER BIASA
+        let dapatCoin = 0;
+        let textTipe = "Voucher";
+        
+        if (vouchers[kode].type === "ga") {
+            textTipe = "Giveaway";
+            if (vouchers[kode].kuota === 1) {
+                dapatCoin = vouchers[kode].remaining_pool; 
+            } else {
+                const rata2 = Math.floor(vouchers[kode].remaining_pool / vouchers[kode].kuota);
+                const min = Math.floor(rata2 * 0.4) || 1; 
+                const max = Math.floor(rata2 * 1.6);
+                dapatCoin = Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+            vouchers[kode].remaining_pool -= dapatCoin;
+        } else {
+            dapatCoin = vouchers[kode].nominal;
+        }
+
+        users[userIndex].balance = (users[userIndex].balance || 0) + dapatCoin;
         vouchers[kode].kuota -= 1;
-        vouchers[kode].claimedBy.push(fromId);
+        
+        vouchers[kode].claimedBy.push({
+            id: fromId,
+            name: ctx.from.first_name + (ctx.from.last_name ? ' ' + ctx.from.last_name : ''),
+            username: ctx.from.username || null,
+            amount: dapatCoin
+        });
         
         saveUsers(users);
         saveVouchers(vouchers);
         
-        return ctx.reply(`🎉 <b>SELAMAT!</b>\n\nKamu berhasil menukarkan kode voucher <code>${kode}</code>.\n💰 Coin bertambah ${vouchers[kode].nominal.toLocaleString('id-ID')} Coin\n🪙 Coin sekarang: ${users[userIndex].balance.toLocaleString('id-ID')} Coin`, { parse_mode: "HTML" });
+        // AUTO KIRIM LIST KE CHANNEL KALAU DANA KAGET HABIS
+        if (vouchers[kode].type === "ga" && vouchers[kode].kuota === 0) {
+            const sortedWinners = [...vouchers[kode].claimedBy].sort((a, b) => b.amount - a.amount);
+            let listText = `<blockquote>🎉 <b>DANA KAGET TELAH HABIS!</b></blockquote>\n━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
+            listText += `🔑 <b>Kode:</b> <code>${kode}</code>\n`;
+            listText += `💰 <b>Total Dibagikan:</b> ${vouchers[kode].total_pool.toLocaleString('id-ID')} Coin\n`;
+            listText += `👥 <b>Total Pemenang:</b> ${sortedWinners.length} Orang\n━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+            listText += `🏆 <b>DAFTAR PEMENANG:</b>\n`;
+            
+            sortedWinners.forEach((w, i) => {
+                const uname = w.username ? `@${w.username}` : "Tidak ada";
+                const medali = i === 0 ? "🥇" : (i === 1 ? "🥈" : (i === 2 ? "🥉" : "🏅"));
+                listText += `<b>${medali} ${escapeHTML(w.name)}</b>\n`;
+                listText += `└ 🆔 <code>${w.id}</code> | 👤 ${uname}\n`;
+                listText += `└ 🎁 <b>Mendapat: ${w.amount.toLocaleString('id-ID')} Coin</b>\n\n`;
+            });
+            listText += `<i>Nantikan Dana Kaget selanjutnya hanya di channel ini!</i>`;
+            ctx.telegram.sendMessage(config.channelIdDaget, listText, { parse_mode: "HTML" }).catch(()=>{});
+        }
+
+        return ctx.reply(`🎉 <b>SELAMAT!</b>\n\nKamu berhasil menukarkan kode ${textTipe} <code>${kode}</code>.\n💰 Coin bertambah ${dapatCoin.toLocaleString('id-ID')} Coin\n🪙 Coin sekarang: ${users[userIndex].balance.toLocaleString('id-ID')} Coin`, { parse_mode: "HTML" });
     } finally {
         setTimeout(() => global.redeemLock.delete(fromId), 2000);
     }
@@ -1377,7 +1764,7 @@ case "profile": {
 
     const profileText = `
 <blockquote><b>🪪 Profile Kamu</b>
-━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━
 <b>📛 Nama:</b> <code>${escapeHTML(fullName)}</code>
 <b>👤 Nama Depan:</b> <code>${escapeHTML(firstName)}</code>
 <b>👥 Nama Belakang:</b> <code>${escapeHTML(lastName)}</code>
@@ -1386,7 +1773,7 @@ case "profile": {
 <b>📅 Join Date:</b> ${new Date(user.join_date).toLocaleDateString('id-ID')}
 <b>💰 Total Spent:</b> ${formatCoin(user.total_spent || 0)} Coin
 <b>📊 Total Transaksi:</b> ${user.history ? user.history.length : 0}
-━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━
 <b>📋 Last 3 Transactions:</b>\n
 ${lastTransactions}</blockquote>
     `.trim();
@@ -1753,14 +2140,7 @@ case "cekipbot": {
 case "delscript":
 case "getscript": {
     if (!isOwner(ctx)) return ctx.reply("❌ Owner only.");
-    const allScripts = loadScripts();
-    if (!allScripts.length) return ctx.reply("📭 Belum ada script.");
-
-    const buttons = allScripts.map((s, i) => ([
-        { text: `📂 ${escapeHTML(s.name)} - ${s.price} Coin`, callback_data: `getscript_detail|${i}` }
-    ]));
-
-    return ctx.reply(`<b>📦 DAFTAR SCRIPT</b>\n\nPilih Script untuk melihat detail:`, { parse_mode: "HTML", reply_markup: { inline_keyboard: buttons } });
+    return sendGetScriptPage(ctx, 0);
 }
 
 // ===== CEK PING & STATUS SYSTEM =====
@@ -1837,7 +2217,7 @@ case "delallcoin": {
     if (!users || users.length === 0) return ctx.reply("📭 Belum ada user terdaftar di database.");
     pendingDeleteAllCoin[fromId] = true;
 
-    const confirmText = `⚠️ <b>PERINGATAN BAHAYA (SAPU JAGAT)</b> ⚠️\n━━━━━━━━━━━━━━━━━━━━━━━━━━\nApakah Anda yakin ingin <b>MENGHAPUS SEMUA COIN USER</b> menjadi 0 Coin?\nTindakan ini tidak dapat dibatalkan dan coin user akan hangus!\n\n👇 <b>Silakan balas pesan ini:</b>\nKetik <code>oke</code> untuk melanjutkan penghapusan.\nKetik <code>batal</code> untuk membatalkan.`;
+    const confirmText = `⚠️ <b>PERINGATAN BAHAYA (SAPU JAGAT)</b> ⚠️\n━━━━━━━━━━━━━━━━━\nApakah Anda yakin ingin <b>MENGHAPUS SEMUA COIN USER</b> menjadi 0 Coin?\nTindakan ini tidak dapat dibatalkan dan coin user akan hangus!\n\n👇 <b>Silakan balas pesan ini:</b>\nKetik <code>oke</code> untuk melanjutkan penghapusan.\nKetik <code>batal</code> untuk membatalkan.`;
     return ctx.reply(confirmText, { parse_mode: "HTML" });
 }
 
@@ -1862,6 +2242,7 @@ case "rate": {
     } else {
         ratings.push(ratingData); 
         saveRatings(ratings);
+        autoBackupDB(ctx, "RATING BARU MASUK", ratingDB);
         return ctx.reply(`✅ <b>Rating berhasil ditambahkan!</b>\n\nTerima kasih atas ulasan ${star} ⭐ nya!\n\n<i>Cek ulasanmu di Menu Utama -> 🌟 Cek Rating.</i>`, { parse_mode: "HTML" });
     }
     break;
@@ -1893,8 +2274,768 @@ case "delchannel": {
     saveMissions(missions);
     return ctx.reply(`✅ Channel <b>${ch}</b> berhasil dihapus dari Misi Coin!`, { parse_mode: "HTML" });
 }
+
+// ===== ADD APK MOD (CLOUD SYSTEM) =====
+case "addapk": {
+    if (!isOwner(ctx)) return ctx.reply("❌ Owner Only!");
+    const replyMsg = ctx.message.reply_to_message;
+    if (!replyMsg || !replyMsg.document) {
+        return ctx.reply(`❌ <b>GAGAL!</b>\nKamu harus me-reply sebuah File APK dengan:\n<code>${escapeHTML(config.prefix)}addapk [harga]</code>\nAtau\n<code>${escapeHTML(config.prefix)}addapk NAMA|DESKRIPSI|HARGA</code>`, { parse_mode: "HTML" });
+    }
+
+    const doc = replyMsg.document;
+    let name, desk, priceStr;
+
+    if (!text || text.trim() === "") return ctx.reply(`❌ Jangan lupa masukkan harganya bos.`, { parse_mode: "HTML" });
+
+    if (text.includes("|")) {
+        const parts = text.split("|").map(v => v.trim());
+        name = parts[0]; desk = parts[1] || "-"; priceStr = parts.length >= 3 ? parts[2] : (parts[1] || ""); 
+    } else {
+        priceStr = text.trim();
+        name = doc.file_name ? doc.file_name.replace(/\.[^/.]+$/, "") : "APK_Baru"; desk = "-"; 
+    }
+
+    const price = parseInt(String(priceStr || "").replace(/[^0-9]/g, ''));
+    if (isNaN(price) || price <= 0) return ctx.reply(`❌ <b>Harga tidak valid.</b>`, { parse_mode: "HTML" });
+
+    const apks = loadApks();
+    if (apks.find(s => s.name.toLowerCase() === name.toLowerCase())) {
+        return ctx.reply(`❌ APK dengan nama <b>${escapeHTML(name)}</b> sudah ada. Silakan ubah nama file.`, { parse_mode: "HTML" });
+    }
+
+    apks.push({ name, desk, price: price, file_id: doc.file_id, file_name: doc.file_name || "app.apk", added_date: new Date().toISOString() });
+    saveApks(apks);
+
+    return ctx.reply(`✅ <b>APK Berhasil Ditambahkan!</b>\n\n📱 <b>Nama:</b> ${escapeHTML(name)}\n💰 <b>Harga:</b> ${price.toLocaleString('id-ID')} Coin\n☁️ <b>Status:</b> <i>Tersimpan aman di Cloud Telegram</i>`, { parse_mode: "HTML" });
+}
+
+// ===== GET APK =====
+case "delapk":
+case "getapk": {
+    if (!isOwner(ctx)) return ctx.reply("❌ Owner only.");
+    return sendGetApkPage(ctx, 0);
+}
+
+// ===== FITUR GIVEAWAY COIN (DANA KAGET) =====
+case "addga": {
+    if (!isOwner(ctx)) return ctx.reply("❌ Owner Only!");
+
+    if (args.length < 3) {
+        return ctx.reply(`Format: ${config.prefix}addga [kode] [total_coin] [kuota]\nContoh:\n${config.prefix}addga KAGET 100.000 5`);
+    }
+
+    const kode = args[0].toUpperCase();
+    const totalCoin = parseInt(args[1].replace(/[^0-9]/g, ''));
+    const kuota = parseInt(args[2].replace(/[^0-9]/g, ''));
+
+    if (isNaN(totalCoin) || isNaN(kuota) || totalCoin <= 0 || kuota <= 0) return ctx.reply("❌ Total coin dan kuota harus berupa angka valid!");
+    if (totalCoin < kuota) return ctx.reply("❌ Total coin harus lebih besar dari jumlah orang (kuota)!");
+
+    const vouchers = loadVouchers();
+    if (vouchers[kode]) return ctx.reply("❌ Kode tersebut sudah terdaftar!");
+
+    vouchers[kode] = {
+        type: "ga", 
+        total_pool: totalCoin,
+        remaining_pool: totalCoin,
+        kuota: kuota,
+        claimedBy: [],
+        created_at: new Date().toISOString()
+    };
+    saveVouchers(vouchers);
+
+    const botUsername = ctx.botInfo.username; 
+    const redeemLink = `https://t.me/${botUsername}?start=redeem_${kode}`;
+
+    return ctx.reply(
+`🎉 <b>GIVEAWAY / DANA KAGET COIN!</b>
+━━━━━━━━━━━━━━━━━━━━━━
+💰 Total Pembagian: <b>${totalCoin.toLocaleString('id-ID')} Coin</b>
+🎁 Hadiah Acak Untuk: <b>${kuota.toLocaleString('id-ID')}</b> orang
+━━━━━━━━━━━━━━━━━━━━━━
+
+🔑 Kode GA:
+<code>${kode}</code>
+
+🚀 Klaim Manual:
+${redeemLink}`,
+        { 
+            parse_mode: "HTML",
+            reply_markup: {
+                inline_keyboard: [
+                    [{ text: "📢 Kirim Sekarang", callback_data: `send_ch_ga|${kode}` }],
+                    [{ text: "⏳ Jadwalkan (Timer)", callback_data: `schedule_ch_ga|${kode}` }]
+                ]
+            }
+        }
+    );
+}
+
 }
 }); // End of bot.on("text")
+
+// ============================================
+// ===== ACTION SCHEDULER (TIMER CHANNEL)
+// ============================================
+
+bot.action(/schedule_ch_voucher\|(.+)/, async (ctx) => {
+    await ctx.answerCbQuery().catch(()=>{});
+    const kode = ctx.match[1];
+    
+    global.pendingSchedule = global.pendingSchedule || {};
+    global.pendingSchedule[ctx.from.id] = { type: "voucher", kode: kode };
+    
+    ctx.reply(`⏳ <b>JADWALKAN VOUCHER KE CHANNEL</b>\n\nKapan voucher <code>${kode}</code> ingin dikirim otomatis?\n\n<i>Contoh format durasi:\n• <b>30 menit</b>\n• <b>20 detik</b>\n• <b>1 jam</b>\n\nContoh format jam:\n• <b>15:30</b> (Jam 3.30 sore WIB)\n• <b>22:00</b> (Jam 10 malam WIB)\n\nKetik <b>batal</b> untuk membatalkan.</i>`, { parse_mode: "HTML" });
+});
+
+bot.action(/schedule_ch_ga\|(.+)/, async (ctx) => {
+    await ctx.answerCbQuery().catch(()=>{});
+    const kode = ctx.match[1];
+    
+    global.pendingSchedule = global.pendingSchedule || {};
+    global.pendingSchedule[ctx.from.id] = { type: "ga", kode: kode };
+    
+    ctx.reply(`⏳ <b>JADWALKAN DANA KAGET KE CHANNEL</b>\n\nKapan GA <code>${kode}</code> ingin dikirim otomatis?\n\n<i>Contoh format durasi:\n• <b>30 menit</b>\n• <b>20 detik</b>\n• <b>1 jam</b>\n\nContoh format jam:\n• <b>15:30</b> (Jam 3.30 sore WIB)\n• <b>22:00</b> (Jam 10 malam WIB)\n\nKetik <b>batal</b> untuk membatalkan.</i>`, { parse_mode: "HTML" });
+});
+
+bot.action(/send_ch_voucher\|(.+)/, async (ctx) => {
+    await ctx.answerCbQuery("Mengirim ke channel...").catch(() => {});
+    const kode = ctx.match[1];
+    const vouchers = loadVouchers();
+    if (!vouchers[kode]) return ctx.answerCbQuery("❌ Voucher sudah tidak ada di database!", { show_alert: true });
+
+    const v = vouchers[kode];
+    
+    // Siapkan memori untuk nyimpen jumlah klik reaksi
+    if (!v.reactions) {
+        v.reactions = { "0": 0, "1": 0, "2": 0, "3": 0 };
+        v.reacted_users = {}; 
+        saveVouchers(vouchers);
+    }
+
+    const botUsername = ctx.botInfo.username;
+    const redeemLink = `https://t.me/${botUsername}?start=redeem_${kode}`;
+
+    // Desain caption
+    const textChannel = `<blockquote>🎉 <b>VOUCHER COIN GRATIS!</b></blockquote>\n━━━━━━━━━━━━━━━━━━━━━━━━━\nSiapa cepat dia dapat! Segera klaim coin gratis untuk membeli Script, Source Code, atau APK Mod di dalam bot kami.\n\n💰 <b>Nominal:</b> ${v.nominal.toLocaleString('id-ID')} Coin\n🎁 <b>Kuota:</b> ${v.kuota} Orang Pemenang\n🔑 <b>Kode:</b> <code>${kode}</code>\n━━━━━━━━━━━━━━━━━━━━━━━━━\n👇 <i>Klik tombol di bawah ini untuk mengklaim!</i>`;
+
+    const emojis = ["😞", "😎", "🔥", "❤"];
+    const reactionButtons = emojis.map((em, idx) => {
+        const count = v.reactions[idx] || 0;
+        return { text: count > 0 ? `${em} ${count}` : em, callback_data: `react|${kode}|${idx}` };
+    });
+
+    const keyboard = {
+        inline_keyboard: [
+            reactionButtons,
+            [{ text: "🎁 KLAIM VOUCHER SEKARANG", url: redeemLink }]
+        ]
+    };
+
+    try {
+        const targetChannel = config.channelIdDaget;
+        // MENGIRIM DENGAN FOTO (sendPhoto)
+        await ctx.telegram.sendPhoto(targetChannel, config.postImageChannel, { caption: textChannel, parse_mode: "HTML", reply_markup: keyboard });
+        
+        await ctx.editMessageReplyMarkup({ inline_keyboard: [[{ text: "✅ Berhasil Terkirim ke Channel", callback_data: "ignore" }]] });
+    } catch (err) {
+        ctx.reply("❌ Gagal mengirim ke channel. Pastikan bot sudah menjadi admin di channel.");
+    }
+});
+
+bot.action(/send_ch_ga\|(.+)/, async (ctx) => {
+    await ctx.answerCbQuery("Mengirim ke channel...").catch(() => {});
+    const kode = ctx.match[1];
+    const vouchers = loadVouchers();
+    if (!vouchers[kode]) return ctx.answerCbQuery("❌ Dana Kaget sudah tidak ada di database!", { show_alert: true });
+
+    const v = vouchers[kode];
+
+    // Siapkan memori untuk nyimpen jumlah klik reaksi
+    if (!v.reactions) {
+        v.reactions = { "0": 0, "1": 0, "2": 0, "3": 0 };
+        v.reacted_users = {}; 
+        saveVouchers(vouchers);
+    }
+
+    const botUsername = ctx.botInfo.username;
+    const redeemLink = `https://t.me/${botUsername}?start=redeem_${kode}`;
+
+    // Desain caption
+    const textChannel = `<blockquote>🎉 <b>DANA KAGET (GIVEAWAY) COIN!</b></blockquote>\n━━━━━━━━━━━━━━━━━━━━━━━━━\nAyo adu hoki! Nominal yang didapatkan akan diacak secara otomatis (Sistem Dana Kaget).\n\n💰 <b>Total Hadiah:</b> ${v.total_pool.toLocaleString('id-ID')} Coin\n👥 <b>Untuk:</b> ${v.kuota} Orang Pemenang\n🔑 <b>Kode:</b> <code>${kode}</code>\n━━━━━━━━━━━━━━━━━━━━━━━━━\n👇 <i>Klik tombol di bawah ini untuk berebut!</i>`;
+
+    const emojis = ["😞", "😎", "🔥", "❤"];
+    const reactionButtons = emojis.map((em, idx) => {
+        const count = v.reactions[idx] || 0;
+        return { text: count > 0 ? `${em} ${count}` : em, callback_data: `react|${kode}|${idx}` };
+    });
+
+    const keyboard = {
+        inline_keyboard: [
+            reactionButtons,
+            [{ text: "🚀 KLAIM DANA KAGET", url: redeemLink }]
+        ]
+    };
+
+    try {
+        const targetChannel = config.channelIdDaget;
+        // MENGIRIM DENGAN FOTO (sendPhoto)
+        await ctx.telegram.sendPhoto(targetChannel, config.postImageChannel, { caption: textChannel, parse_mode: "HTML", reply_markup: keyboard });
+        
+        await ctx.editMessageReplyMarkup({ inline_keyboard: [[{ text: "✅ Berhasil Terkirim ke Channel", callback_data: "ignore" }]] });
+    } catch (err) {
+        ctx.reply("❌ Gagal mengirim ke channel. Pastikan bot sudah menjadi admin di channel.");
+    }
+});
+
+// ============================================
+// ===== ACTION KLIK REAKSI EMOJI DI CHANNEL
+// ============================================
+
+bot.action(/^react\|(.+)\|(\d+)$/, async (ctx) => {
+    const kode = ctx.match[1];
+    const emoIdx = ctx.match[2]; // Index emoji yang diklik (0, 1, 2, atau 3)
+    const userId = ctx.from.id;
+
+    const vouchers = loadVouchers();
+    if (!vouchers[kode]) return ctx.answerCbQuery("❌ Yahh, voucher ini sudah dihapus / kedaluwarsa.", { show_alert: true });
+
+    const v = vouchers[kode];
+    
+    // Jaga-jaga kalau data reaksinya corrupt
+    if (!v.reactions) {
+        v.reactions = { "0": 0, "1": 0, "2": 0, "3": 0 };
+        v.reacted_users = {};
+    }
+
+    let alertMsg = "";
+
+    // LOGIC ANTI-SPAM & GANTI REAKSI
+    if (v.reacted_users[userId] === emoIdx) {
+        // Kalau dia klik emoji yang sama, berarti dia nge-BATALIN reaksinya (kayak di IG/Tele)
+        v.reactions[emoIdx]--;
+        delete v.reacted_users[userId];
+        alertMsg = "Tanggapan dihapus.";
+    } else {
+        // Kalau dia klik emoji lain, hapus yang lama, tambah yang baru
+        if (v.reacted_users[userId] !== undefined) {
+            v.reactions[v.reacted_users[userId]]--;
+        }
+        v.reactions[emoIdx]++;
+        v.reacted_users[userId] = emoIdx;
+        alertMsg = "Berhasil memberikan tanggapan!";
+    }
+
+    saveVouchers(vouchers); // Simpan perubahan angkanya
+
+    // Jawab klikannya biar loading di tombolnya hilang
+    await ctx.answerCbQuery(alertMsg).catch(() => {});
+
+    // RAKIT ULANG TOMBOLNYA
+    const emojis = ["😞", "😎", "🔥", "❤"];
+    const reactionButtons = emojis.map((em, idx) => {
+        const count = v.reactions[idx] || 0;
+        const text = count > 0 ? `${em} ${count}` : em;
+        return { text: text, callback_data: `react|${kode}|${idx}` };
+    });
+
+    // Cek apakah ini Voucher Biasa atau Giveaway, lalu samakan teks tombol utamanya
+    const botUsername = ctx.botInfo.username;
+    const redeemLink = `https://t.me/${botUsername}?start=redeem_${kode}`;
+    const claimText = v.type === "ga" ? "🚀 KLAIM DANA KAGET" : "🎁 KLAIM VOUCHER SEKARANG";
+
+    const newKeyboard = {
+        inline_keyboard: [
+            reactionButtons,
+            [{ text: claimText, url: redeemLink }]
+        ]
+    };
+
+    // Update pesan di channel secara LIVE!
+    try {
+        await ctx.editMessageReplyMarkup(newKeyboard);
+    } catch (err) {
+        // Abaikan error kalau angkanya nggak berubah
+    }
+});
+
+// ============================================
+// ======== FITUR MYSTERY BOX (GACHA VIP) =====
+// ============================================
+bot.action("menu_mystery", async (ctx) => {
+    await ctx.answerCbQuery().catch(() => {});
+    const users = loadUsers();
+    const user = users.find(u => u.id === ctx.from.id);
+    const saldo = user ? (user.balance || 0) : 0;
+    
+    // Hitung sisa limit harian
+    const todayStr = new Date().toDateString();
+    let limitStr = 3;
+    if (user && user.last_mystery_date === todayStr) {
+        limitStr = 3 - (user.mystery_count || 0);
+    }
+
+    const text = `<blockquote>📦 <b>MYSTERY BOX VIP</b></blockquote>\n━━━━━━━━━━━━━━━━━━━━━━━━━\nBuka kotak misteri ini dan dapatkan kesempatan memenangkan <b>Script / APK Premium</b> secara acak dari database!\n\n💵 <b>Harga 1 Box:</b> 5.000.000 Coin\n⏳ <b>Jatah Harian:</b> Sisa ${limitStr}x buka hari ini.\n\n<b>🎁 Peluang Hadiah:</b>\n📦 <b>Jackpot:</b> Random Script / APK Mod\n💰 <b>Koin:</b> Koin Acak (1Jt - 8Jt)\n💀 <b>Zonk:</b> Kotak Kosong (Hangus)\n━━━━━━━━━━━━━━━━━━━━━━━━━\n🪙 <b>Sisa Coin Kamu:</b> ${saldo.toLocaleString('id-ID')} Coin`;
+
+    const keyboard = {
+        inline_keyboard: [
+            [{ text: `🎁 BUKA MYSTERY BOX (5 Juta)`, callback_data: "open_mystery" }],
+            [{ text: "↩️ 𝗕𝗔𝗖𝗞", callback_data: "back_to_main_menu" }]
+        ]
+    };
+
+    try {
+        await ctx.editMessageMedia({ type: "photo", media: config.menuImage, caption: text, parse_mode: "HTML" }, { reply_markup: keyboard });
+    } catch (err) {
+        await ctx.editMessageText(text, { parse_mode: "HTML", reply_markup: keyboard }).catch(()=>{});
+    }
+});
+
+bot.action("open_mystery", async (ctx) => {
+    const userId = ctx.from.id;
+    const cost = 5000000;
+    
+    // Anti Spam Lock
+    global.boxLock = global.boxLock || new Set();
+    if (global.boxLock.has(userId)) return ctx.answerCbQuery("⏳ Sedang membuka box...", { show_alert: true }).catch(()=>{});
+    
+    let users = loadUsers();
+    let userIndex = users.findIndex(u => u.id === userId);
+    
+    if (userIndex === -1) return ctx.answerCbQuery("❌ Akun belum terdaftar.", { show_alert: true });
+    
+    // Cek Saldo
+    if ((users[userIndex].balance || 0) < cost) {
+        return ctx.answerCbQuery("❌ Coin tidak cukup!\nKamu butuh 5.000.000 Coin untuk membuka Box.", { show_alert: true });
+    }
+
+    // Cek Limit 3x Sehari
+    const todayStr = new Date().toDateString();
+    if (users[userIndex].last_mystery_date !== todayStr) {
+        users[userIndex].mystery_count = 0;
+        users[userIndex].last_mystery_date = todayStr;
+    }
+
+    if (users[userIndex].mystery_count >= 3) {
+        return ctx.answerCbQuery("🛑 Jatah Habis!\n\nKamu sudah membuka Box 3x hari ini. Kasih kesempatan yang lain, coba lagi besok!", { show_alert: true });
+    }
+
+    global.boxLock.add(userId);
+
+    try {
+        await ctx.answerCbQuery().catch(() => {});
+        
+        // Potong coin & catat limit
+        users[userIndex].balance -= cost;
+        users[userIndex].mystery_count += 1;
+        saveUsers(users);
+
+        // =====================================
+        // 🌀 ANIMASI BUKA BOX 🌀
+        // =====================================
+        const frames = ["📦", "🎁", "✨🎁✨", "🎊"];
+        for(let f of frames) {
+            const animText = `<blockquote>📦 <b>MEMBUKA MYSTERY BOX...</b></blockquote>\n━━━━━━━━━━━━━━━━━━━━━━━━━\n\n        ${f}\n\n<i>Mencari hadiah di dalam database...</i>\n━━━━━━━━━━━━━━━━━━━━━━━━━`;
+            try { 
+                await ctx.editMessageCaption(animText, { parse_mode: "HTML" }); 
+            } catch(e) {
+                await ctx.editMessageText(animText, { parse_mode: "HTML" }).catch(()=>{});
+            }
+            await sleep(600);
+        }
+
+        // =====================================
+        // 🎯 LOGIC GACHA RNG
+        // =====================================
+        const rng = Math.random() * 100;
+        let resultText = "";
+        let fileToSend = null;
+        let fileCaption = "";
+
+        if (rng < 25) {
+            // 25% ZONK
+            resultText = `💀 <b>ZONK!</b>\n\nYahh sayang sekali, box kamu ternyata KOSONG! Coba lagi besok atau beli lagi.`;
+        } else if (rng < 50) {
+            // 25% COIN (1 Juta - 8 Juta)
+            const winCoin = Math.floor(Math.random() * 7000000) + 1000000;
+            users[userIndex].balance += winCoin;
+            saveUsers(users);
+            resultText = `💰 <b>DAPAT KOIN!</b>\n\nLumayan! Kamu menemukan <b>${winCoin.toLocaleString('id-ID')} Coin</b> di dalam box.`;
+        } else {
+            // 50% DAPAT PRODUK ACAK (SCRIPT / APK)
+            const scripts = loadScripts();
+            const apks = loadApks();
+            
+            // Gabungkan semua file jualan lu jadi satu list
+            const allProducts = [...scripts.map(s => ({...s, type: 'Script'})), ...apks.map(a => ({...a, type: 'APK Mod'}))];
+            
+            if (allProducts.length === 0) {
+                // Jaga-jaga kalau database jualan lu masih kosong
+                const winCoin = 10000000; 
+                users[userIndex].balance += winCoin;
+                saveUsers(users);
+                resultText = `⚠️ <b>BOX KOSONG (Kompensasi)</b>\n\nKarena belum ada produk di database, bot memberikan kompensasi <b>${winCoin.toLocaleString('id-ID')} Coin</b> untukmu!`;
+            } else {
+                // Milih 1 produk random
+                const randomProduct = allProducts[Math.floor(Math.random() * allProducts.length)];
+                fileToSend = randomProduct.file_id || randomProduct.file;
+                fileCaption = `🎊 <b>SELAMAT! (HADIAH MYSTERY BOX)</b>\n\n📦 <b>Tipe:</b> ${randomProduct.type}\n📛 <b>Nama:</b> ${escapeHTML(randomProduct.name)}\n💰 <b>Harga Asli:</b> ${randomProduct.price.toLocaleString('id-ID')} Coin\n\n<i>Kamu sangat beruntung mendapatkan ini dengan modal 5 Juta Coin!</i>`;
+                
+                resultText = `🎉 <b>JACKPOT PRODUK VIP!</b>\n\nWow! Kamu mendapatkan <b>${randomProduct.type}: ${escapeHTML(randomProduct.name)}</b> senilai ${randomProduct.price.toLocaleString('id-ID')} Coin!\n\n<i>File otomatis dikirim ke chat ini...</i>`;
+                
+                // Masukkan ke history profile user
+                users[userIndex].history = users[userIndex].history || [];
+                users[userIndex].history.push({ product: `Mystery Box: ${randomProduct.name}`, amount: cost, type: "gacha", timestamp: new Date().toISOString() });
+                saveUsers(users);
+            }
+        }
+
+        // Reload data user (Anti-bug coin)
+        let freshUsers = loadUsers();
+        let fIndex = freshUsers.findIndex(u => u.id === userId);
+        let sisaLimit = 3 - freshUsers[fIndex].mystery_count;
+
+        const finalMsg = `<blockquote>📦 <b>HASIL MYSTERY BOX</b></blockquote>\n━━━━━━━━━━━━━━━━━━━━━━━━━\n\n${resultText}\n\n━━━━━━━━━━━━━━━━━━━━━━━━━\n⏳ <b>Jatah Harian:</b> Sisa ${sisaLimit} kali\n🪙 <b>Sisa Coin Kamu:</b> ${freshUsers[fIndex].balance.toLocaleString('id-ID')} Coin`;
+
+        const keyboard = {
+            inline_keyboard: [
+                [{ text: "🎁 BUKA LAGI (5 Juta)", callback_data: "open_mystery" }],
+                [{ text: "↩️ Kembali ke Menu", callback_data: "menu_mystery" }]
+            ]
+        };
+
+        try {
+            await ctx.editMessageCaption(finalMsg, { parse_mode: "HTML", reply_markup: keyboard });
+        } catch (e) {
+            await ctx.editMessageText(finalMsg, { parse_mode: "HTML", reply_markup: keyboard }).catch(()=>{});
+        }
+
+        // Kalau menang file, kirim dokumennya ke chat
+        if (fileToSend) {
+            try {
+                await ctx.telegram.sendDocument(ctx.chat.id, fileToSend, { caption: fileCaption, parse_mode: "HTML" });
+            } catch(e) {
+                ctx.reply("❌ Gagal mengirim file hadiah dari Cloud.");
+            }
+        }
+
+    } finally {
+        global.boxLock.delete(userId);
+    }
+});
+
+// ============================================
+// ======== FITUR MINIGAME GACHA SLOT ========
+// ============================================
+
+// ============================================
+// ======== FITUR MAHJONG WAYS (SLOT) ========
+// ============================================
+
+
+// 1. Menu Mahjong Gacha
+bot.action("menu_gacha", async (ctx) => {
+    await ctx.answerCbQuery().catch(() => {});
+    await renderMahjongMenu(ctx);
+});
+
+// 2. Tombol Naik Turun Bet
+bot.action("bet_up", async (ctx) => {
+    const userId = ctx.from.id;
+    if (!global.userBets[userId]) global.userBets[userId] = BET_LEVELS[2];
+    
+    let idx = BET_LEVELS.indexOf(global.userBets[userId]);
+    if (idx < BET_LEVELS.length - 1) {
+        global.userBets[userId] = BET_LEVELS[idx + 1];
+        await ctx.answerCbQuery(`💵 Taruhan dinaikkan menjadi: ${formatCoin(global.userBets[userId])} Coin`).catch(()=>{});
+        await renderMahjongMenu(ctx);
+    } else {
+        await ctx.answerCbQuery("🛑 Ini adalah batas Taruhan Maksimal (Max Bet)!", { show_alert: true }).catch(()=>{});
+    }
+});
+
+bot.action("bet_down", async (ctx) => {
+    const userId = ctx.from.id;
+    if (!global.userBets[userId]) global.userBets[userId] = BET_LEVELS[2];
+    
+    let idx = BET_LEVELS.indexOf(global.userBets[userId]);
+    if (idx > 0) {
+        global.userBets[userId] = BET_LEVELS[idx - 1];
+        await ctx.answerCbQuery(`💵 Taruhan diturunkan menjadi: ${formatCoin(global.userBets[userId])} Coin`).catch(()=>{});
+        await renderMahjongMenu(ctx);
+    } else {
+        await ctx.answerCbQuery("🛑 Ini adalah batas Taruhan Minimal!", { show_alert: true }).catch(()=>{});
+    }
+});
+
+// 3. Eksekusi Spin (Dengan Animasi Mahjong & ANTI-BUG)
+bot.action("play_gacha", async (ctx) => {
+    const userId = ctx.from.id;
+
+    // ==========================================
+    // 🛡️ ANTI-SPAM LOCK (Biar gak di-klik dobel)
+    // ==========================================
+    global.spinLock = global.spinLock || new Set();
+    if (global.spinLock.has(userId)) {
+        return ctx.answerCbQuery("⏳ Sabar bos! Mesinnya masih muter...", { show_alert: true }).catch(()=>{});
+    }
+
+    if (!global.userBets[userId]) global.userBets[userId] = BET_LEVELS[2];
+    const cost = global.userBets[userId]; 
+
+    let users = loadUsers();
+    let userIndex = users.findIndex(u => u.id === userId);
+    
+    if (userIndex === -1) return ctx.answerCbQuery("❌ Akun belum terdaftar.", { show_alert: true });
+    if ((users[userIndex].balance || 0) < cost) {
+        return ctx.answerCbQuery(`❌ Coin tidak cukup!\nKamu butuh ${formatCoin(cost)} Coin untuk Spin di tingkat bet ini. Silakan turunkan bet atau topup.`, { show_alert: true });
+    }
+
+    // 🔒 Kunci user biar gak bisa ngetes celah bug
+    global.spinLock.add(userId);
+
+    try {
+        await ctx.answerCbQuery().catch(() => {});
+
+        // Potong koin awal (Uang Taruhan Masuk ke Mesin)
+        users[userIndex].balance -= cost;
+        saveUsers(users); 
+
+        // ==========================================
+        // 🌀 ANIMASI MESIN MAHJONG MUTER (DIPERLAMA)
+        // ==========================================
+        const spinFrames = [
+            "🀄 🐉 🎋", "✨ 🀣 💀", "🎋 🀄 ✨", 
+            "🐉 🎋 🀣", "🀣 ✨ 🀄", "💀 🐉 🎋",
+            "✨ 🐉 🀄", "🎋 💀 🀣"
+        ];
+
+        // Muter 7 kali biar makin deg-degan (sekitar 3.5 detik)
+        for (let i = 0; i < 7; i++) {
+            const randomFrame = spinFrames[Math.floor(Math.random() * spinFrames.length)];
+            const spinText = `<blockquote>🀄 <b>MAHJONG WAYS (SLOT)</b></blockquote>\n━━━━━━━━━━━━━━━━━━━━━━━━━\n\n      [  ${randomFrame}  ]\n\n<b>🔄 Mesin sedang berputar...</b>\n━━━━━━━━━━━━━━━━━━━━━━━━━\n🪙 <b>Taruhan:</b> ${cost.toLocaleString('id-ID')} Coin`;
+            
+            try {
+                await ctx.editMessageCaption(spinText, { parse_mode: "HTML" });
+            } catch (err) {
+                await ctx.editMessageText(spinText, { parse_mode: "HTML" }).catch(()=>{});
+            }
+            await sleep(500); // Kecepatan muter 0.5 detik per frame
+        }
+
+        // ==========================================
+        // 🎯 PENENTUAN HASIL (RNG MAHJONG)
+        // ==========================================
+        const rng = Math.random() * 100;
+        let multiplier = 0;
+        let slotEmoji = "💔 😭 💀";
+        let statusText = "RUNGKAD! Yahh, taruhan kamu hangus 😭";
+
+        if (rng < 45) { 
+            multiplier = 0;
+            const zonks = ["🍎 🍋 🍇", "🍉 🍒 🥝", "💔 💀 📉", "🤡 💩 🗑️", "🀄 💀 🐉"];
+            slotEmoji = zonks[Math.floor(Math.random() * zonks.length)];
+            statusText = "RUNGKAD! Taruhanmu ditarik bandar 😭";
+        } else if (rng < 65) { 
+            multiplier = 0.5;
+            slotEmoji = "🎋 🀄 🀣";
+            statusText = "KURENG! Kamu dapat x0.5 (Rugi Setengah) 🥲";
+        } else if (rng < 80) { 
+            multiplier = 1;
+            slotEmoji = "🀣 🀣 🀣";
+            statusText = "AMAN! Kamu dapat x1 (Balik Modal) 😌";
+        } else if (rng < 90) { 
+            multiplier = 2;
+            slotEmoji = "🎋 🎋 🎋";
+            statusText = "SUPER WIN! Taruhan digandakan (x2) 🤩";
+        } else if (rng < 96) { 
+            multiplier = 5;
+            slotEmoji = "🀄 🀄 🀄";
+            statusText = "MEGA WIN!! Cair bandar! (x5) 💸";
+        } else if (rng < 99) { 
+            multiplier = 10;
+            slotEmoji = "🐉 🐉 🐉";
+            statusText = "SENSASIONAL!!! Gacor parah (x10) 👑";
+        } else { 
+            multiplier = 50;
+            slotEmoji = "✨ ✨ ✨";
+            statusText = "✨ SCATTER JACKPOT!!! ✨ MAXWIN (x50) 💥";
+        }
+
+        const prize = cost * multiplier;
+
+        // ==========================================
+        // 🔄 LOAD ULANG DATABASE (ANTI-TABRAKAN)
+        // ==========================================
+        // Ambil data paling fresh supaya coin user gak kereset kalau ada transaksi lain pas dia lagi nge-spin
+        let freshUsers = loadUsers();
+        let freshIndex = freshUsers.findIndex(u => u.id === userId);
+
+        freshUsers[freshIndex].balance += prize;
+        saveUsers(freshUsers); 
+
+        let prizeText = prize > 0 ? `+${prize.toLocaleString('id-ID')} Coin` : "0 Coin";
+        const resultText = `<blockquote>🀄 <b>HASIL MAHJONG WAYS</b></blockquote>\n━━━━━━━━━━━━━━━━━━━━━━━━━\n\n      [  ${slotEmoji}  ]\n\n<b>${statusText}</b>\n🎁 <b>Pendapatan:</b> ${prizeText}\n━━━━━━━━━━━━━━━━━━━━━━━━━\n🪙 <b>Sisa Coin Kamu:</b> ${freshUsers[freshIndex].balance.toLocaleString('id-ID')} Coin`;
+
+        const keyboard = {
+            inline_keyboard: [
+                [{ text: `🔄 SPIN LAGI (Bet: ${formatCoin(cost)})`, callback_data: "play_gacha" }],
+                [
+                    { text: "➖ Bet", callback_data: "bet_down" },
+                    { text: "➕ Bet", callback_data: "bet_up" }
+                ],
+                [{ text: "↩️ Kembali ke Menu", callback_data: "menu_gacha" }]
+            ]
+        };
+
+        try {
+            await ctx.editMessageCaption(resultText, { parse_mode: "HTML", reply_markup: keyboard });
+        } catch (err) {
+            await ctx.editMessageText(resultText, { parse_mode: "HTML", reply_markup: keyboard }).catch(()=>{});
+        }
+
+    } finally {
+        // 🔓 Buka gemboknya pas mesin udah berhenti berapapun hasilnya
+        global.spinLock.delete(userId);
+    }
+});
+
+bot.action("buyapk", async (ctx) => {
+    await ctx.answerCbQuery("⏳ Membuka katalog APK...", { show_alert: false }).catch(() => {});
+    await renderApkPage(ctx, 0); 
+});
+
+bot.action(/apk_page\|(\d+)/, async (ctx) => {
+    await ctx.answerCbQuery().catch(() => {});
+    await renderApkPage(ctx, parseInt(ctx.match[1])); 
+});
+
+// DETAIL APK (OWNER)
+bot.action(/getapk_detail\|(\d+)/, async (ctx) => {
+    await ctx.answerCbQuery().catch(() => {});
+    if (!isOwner(ctx)) return ctx.answerCbQuery('❌ Owner Only!');
+    const index = Number(ctx.match[1]);
+    const apks = loadApks(); const s = apks[index];
+    if (!s) return ctx.editMessageText("❌ APK tidak ditemukan.");
+
+    const detailText = `📋 <b>DETAIL APK</b>\n\n📱 <b>Nama:</b> ${escapeHTML(s.name)}\n💰 <b>Harga:</b> ${formatCoin(s.price)} Coin\n📁 <b>File:</b> ${escapeHTML(s.file_name || "Cloud Telegram")}\n📅 <b>Ditambahkan:</b> ${new Date(s.added_date).toLocaleDateString('id-ID')}\n\n📝 <b>Deskripsi:</b>\n${escapeHTML(s.desk || "-")}`;
+
+    return ctx.editMessageText(detailText, { parse_mode: "HTML", reply_markup: { inline_keyboard: [[{ text: "📤 Download APK", callback_data: `download_apk|${index}` }, { text: "🗑️ Hapus APK", callback_data: `del_apk|${index}` }], [{ text: "↩️ Back ke List APK", callback_data: "back_to_apk_list" }]] } });
+});
+
+bot.action(/download_apk\|(\d+)/, async (ctx) => {
+    await ctx.answerCbQuery().catch(() => {});
+    if (!isOwner(ctx)) return ctx.answerCbQuery('❌ Owner Only!');
+    const s = loadApks()[Number(ctx.match[1])];
+    if (!s) return ctx.reply("❌ APK tidak ditemukan.");
+    return ctx.replyWithDocument(s.file_id, { caption: `📱 APK: ${escapeHTML(s.name)}`, parse_mode: "HTML" }).catch(() => ctx.reply("❌ Gagal mengambil file."));
+});
+
+bot.action("back_to_apk_list", async (ctx) => {
+    await ctx.answerCbQuery().catch(() => {});
+    if (!isOwner(ctx)) return ctx.answerCbQuery('❌ Owner Only!');
+    await sendGetApkPage(ctx, 0);
+});
+
+// ===== ACTION HALAMAN GET SCRIPT & APK =====
+bot.action(/getscript_page\|(\d+)/, async (ctx) => {
+    await ctx.answerCbQuery().catch(() => {});
+    const page = parseInt(ctx.match[1]);
+    await sendGetScriptPage(ctx, page);
+});
+
+bot.action(/getapk_page\|(\d+)/, async (ctx) => {
+    await ctx.answerCbQuery().catch(() => {});
+    const page = parseInt(ctx.match[1]);
+    await sendGetApkPage(ctx, page);
+});
+
+bot.action(/del_apk\|(\d+)/, async (ctx) => {
+    await ctx.answerCbQuery().catch(() => {});
+    if (!isOwner(ctx)) return ctx.answerCbQuery('❌ Owner Only!');
+    const index = Number(ctx.match[1]);
+    let apks = loadApks();
+    if (!apks[index]) return ctx.editMessageText("❌ Tidak ditemukan.");
+
+    const name = apks[index].name; apks.splice(index, 1); saveApks(apks); // Hapus pakai index
+    return ctx.editMessageText(`✅ APK <b>${escapeHTML(name)}</b> berhasil dihapus dari database.`, { parse_mode: "HTML", reply_markup: { inline_keyboard: [[{ text: "↩️ Kembali ke List APK", callback_data: "back_to_apk_list" }]] } });
+});
+
+// TRANSAKSI PEMBELIAN (USER)
+bot.action(/^apk\|(\d+)/, async (ctx) => {
+    await ctx.answerCbQuery().catch(() => {});
+    const index = Number(ctx.match[1]);
+    const sc = loadApks()[index];
+    if (!sc) return ctx.reply("❌ APK tidak ditemukan.");
+
+    const waktu = new Date().toLocaleString("id-ID", { weekday: "long", day: "2-digit", month: "long", year: "numeric", hour: "2-digit", minute: "2-digit", second: "2-digit" }).replace(".", ":");
+    const text = `<blockquote><b>📝 Konfirmasi Pemesanan</b></blockquote>\n━━━━━━━━━━━━━━━━━\n📱 Produk: APK ${escapeHTML(sc.name)}\n\n💰 Harga: ${Number(sc.price).toLocaleString("id-ID")} Coin\n🕒 Waktu: ${waktu}\n━━━━━━━━━━━━━━━━━\n<blockquote><b>📝 Deskripsi:</b></blockquote>\n${escapeHTML(sc.desk || "-")}\n━━━━━━━━━━━━━━━━━\n⚠️ Apakah Anda yakin ingin melanjutkan pembayaran?`.trim();
+
+    await ctx.editMessageText(text, { parse_mode: "HTML", reply_markup: { inline_keyboard: [[{ text: "✅ Konfirmasi", callback_data: `confirm_apk|${index}` }, { text: "❌ Batalkan", callback_data: "back_to_apk" }]] } });
+});
+
+bot.action(/confirm_apk\|(\d+)/, async (ctx) => {
+    await ctx.answerCbQuery().catch(() => {});
+    const index = Number(ctx.match[1]);
+    const userId = ctx.from.id;
+    const sc = loadApks()[index];
+    if (!sc) return ctx.reply("❌ APK tidak ditemukan.");
+
+    const harga = getDiscountPrice(userId, sc.price);
+    const user = loadUsers().find(u => u.id === userId);
+    const saldo = user ? (user.balance || 0) : 0;
+
+    let teksHarga = `💰 <b>Harga Normal:</b> ${sc.price.toLocaleString('id-ID')} Coin`;
+    if (harga.diskonPersen > 0) {
+        teksHarga = `💰 <b>Harga Normal:</b> <s>${sc.price.toLocaleString('id-ID')} Coin</s>\n🏷 <b>Diskon ${harga.roleName} (${harga.diskonPersen}%):</b> -${harga.potongan.toLocaleString('id-ID')} Coin\n💳 <b>Harga Akhir: ${harga.finalPrice.toLocaleString('id-ID')} Coin</b>`;
+    }
+
+    return ctx.editMessageText(`🛒 <b>Pilih Metode Pembayaran</b>\n\n📱 Produk: APK ${escapeHTML(sc.name)}\n${teksHarga}\n\n🪙 Coin Anda: ${saldo.toLocaleString('id-ID')} Coin`, { parse_mode: "html", reply_markup: { inline_keyboard: [[{ text: `💰 Bayar via Coin (${harga.finalPrice.toLocaleString('id-ID')} Coin)`, callback_data: `pay_coin_apk|${index}` }], [{ text: "❌ Batalkan", callback_data: "back_to_apk" }]] } }).catch(()=>{});
+});
+
+bot.action(/pay_coin_apk\|(\d+)/, async (ctx) => {
+    await ctx.answerCbQuery().catch(() => {});
+    await ctx.editMessageText("<blockquote><b>⏳ <i>Sedang menyiapkan APK untukmu...</i></b></blockquote>", { parse_mode: "HTML" }).catch(() => {});
+    
+    const index = Number(ctx.match[1]);
+    const userId = ctx.from.id;
+    const sc = loadApks()[index];
+    if (!sc) return ctx.editMessageText("❌ APK tidak ditemukan.", { parse_mode: "HTML" }).catch(()=>{});
+
+    const harga = getDiscountPrice(userId, sc.price);
+    const price = harga.finalPrice;
+
+    const users = loadUsers();
+    const userIndex = users.findIndex(u => u.id === userId);
+    users[userIndex].balance = users[userIndex].balance || 0;
+    
+    if (users[userIndex].balance < price) {
+        return ctx.editMessageText(`❌ <b>Coin tidak cukup!</b>\nCoin Anda: ${(users[userIndex].balance || 0).toLocaleString('id-ID')} Coin\nHarga Final: ${price.toLocaleString('id-ID')} Coin\n\nSilakan Topup terlebih dahulu.`, { parse_mode: "HTML" }).catch(()=>{});
+    }
+
+    users[userIndex].balance -= price;
+    users[userIndex].total_spent = (users[userIndex].total_spent || 0) + price;
+    users[userIndex].history = users[userIndex].history || [];
+    users[userIndex].history.push({ product: `APK: ${sc.name}`, amount: price, type: "apk", details: sc.desk || "-", timestamp: new Date().toISOString() });
+    saveUsers(users);
+
+    const buyerInfo = { id: userId, name: ctx.from.first_name + (ctx.from.last_name ? ' ' + ctx.from.last_name : ''), username: ctx.from.username, totalSpent: users[userIndex].total_spent };
+    await notifyOwner(ctx, { type: "apk", name: sc.name, amount: price }, buyerInfo);
+
+    await ctx.editMessageText(`<blockquote><b>✅ Pembelian Berhasil!</b></blockquote>\n\n📱 Produk: APK ${escapeHTML(sc.name)}\n💰 Harga Dibayar: ${price.toLocaleString('id-ID')} Coin\n💳 Sisa Coin: ${users[userIndex].balance.toLocaleString('id-ID')} Coin\n\n<i>File APK dikirim secara instan...</i>`, { parse_mode: "html" }).catch(()=>{});
+
+    try {
+        await ctx.telegram.sendDocument(ctx.chat.id, sc.file_id, { caption: `📱 APK: ${escapeHTML(sc.name)}\n🎉 <i>Terima kasih telah berbelanja!</i>`, parse_mode: "html" });
+    } catch (err) {
+        await ctx.reply("❌ Gagal mengirim file APK.");
+    }
+});
+
+bot.action("back_to_apk", async (ctx) => {
+    await ctx.answerCbQuery().catch(() => {});
+    await renderApkPage(ctx, 0); 
+});
 
 // ===== FITUR MISI COIN =====
 bot.action("misi_coin", async (ctx) => {
@@ -2068,7 +3209,7 @@ bot.action("profile", async (ctx) => {
         }).join('\n');
     }
 
-    const profileText = `<blockquote><b>🪪 Profile Kamu</b>\n━━━━━━━━━━━━━━━━━━━━━━━━━━\n<b>📛 Nama:</b> <code>${escapeHTML(fullName)}</code>\n<b>🆔 User ID:</b> <code>${user.id}</code>\n<b>📧 Username:</b> ${escapeHTML(userUsername)}\n<b>📅 Join Date:</b> ${new Date(user.join_date).toLocaleDateString('id-ID')}\n<b>💰 Total Spent:</b> ${formatCoin(user.total_spent || 0)} Coin\n<b>📊 Total Transaksi:</b> ${user.history ? user.history.length : 0}\n━━━━━━━━━━━━━━━━━━━━━━━━━━\n<b>📋 Last 3 Transactions:</b>\n\n${lastTransactions}</blockquote>`;
+    const profileText = `<blockquote><b>🪪 Profile Kamu</b>\n━━━━━━━━━━━━━━━━━\n<b>📛 Nama:</b> <code>${escapeHTML(fullName)}</code>\n<b>🆔 User ID:</b> <code>${user.id}</code>\n<b>📧 Username:</b> ${escapeHTML(userUsername)}\n<b>📅 Join Date:</b> ${new Date(user.join_date).toLocaleDateString('id-ID')}\n<b>💰 Total Spent:</b> ${formatCoin(user.total_spent || 0)} Coin\n<b>📊 Total Transaksi:</b> ${user.history ? user.history.length : 0}\n━━━━━━━━━━━━━━━━━\n<b>📋 Last 3 Transactions:</b>\n\n${lastTransactions}</blockquote>`;
 
     ctx.reply(profileText, { parse_mode: "HTML", disable_web_page_preview: true, reply_markup: { inline_keyboard: [[{ text: "↩️ 𝐁𝐀𝐂𝐊", callback_data: "back_to_main_menu"  }]] } }).catch(() => {});
 });
@@ -2185,7 +3326,7 @@ bot.action("cek_join", async (ctx) => {
         const arg = pendingStartArgs[userId];
         delete pendingStartArgs[userId]; 
 
-        // ===== 1. LOGIC REDEEM VOUCHER =====
+// ===== 1. LOGIC REDEEM VOUCHER & DANA KAGET =====
         if (arg.startsWith("redeem_")) {
             const kode = arg.replace("redeem_", "").toUpperCase();
             global.redeemLock = global.redeemLock || new Set();
@@ -2194,23 +3335,69 @@ bot.action("cek_join", async (ctx) => {
 
             try {
                 const vouchers = loadVouchers();
-                if (!vouchers[kode]) return ctx.reply("❌ Akses diberikan, tapi Kode voucher dari link tidak ditemukan/salah.", {parse_mode:"HTML"});
-                if (vouchers[kode].kuota <= 0) return ctx.reply("❌ Akses diberikan, tapi kuota voucher link ini sudah habis.", {parse_mode:"HTML"});
-                if (vouchers[kode].claimedBy.includes(userId)) return ctx.reply("❌ Akses diberikan. Kamu sudah pernah klaim voucher link ini!", {parse_mode:"HTML"});
+                if (!vouchers[kode]) return ctx.reply("❌ Akses diberikan, tapi Kode voucher/GA tidak ditemukan/salah.", {parse_mode:"HTML"});
+                if (vouchers[kode].kuota <= 0) return ctx.reply("❌ Akses diberikan, tapi kuota hadiah sudah habis.", {parse_mode:"HTML"});
+                
+                const hasClaimed = vouchers[kode].claimedBy.some(c => c === userId || (typeof c === 'object' && c.id === userId));
+                if (hasClaimed) return ctx.reply("❌ Akses diberikan. Kamu sudah pernah klaim hadiah ini!", {parse_mode:"HTML"});
 
                 const users = loadUsers();
                 const userIndex = users.findIndex(u => u.id === userId);
                 
                 if (userIndex === -1) {
-                    return ctx.reply("✅ <b>Akses Diberikan!</b>\n\nKarena kamu pengguna baru, silakan ketik /start atau klik link vouchernya sekali lagi untuk mengaktifkan akun & menerima coin.", { parse_mode: "HTML" });
+                    return ctx.reply("✅ <b>Akses Diberikan!</b>\n\nKarena kamu pengguna baru, silakan ketik /start atau klik linknya sekali lagi untuk mengaktifkan akun & menerima coin.", { parse_mode: "HTML" });
                 }
 
-                users[userIndex].balance = (users[userIndex].balance || 0) + vouchers[kode].nominal;
-                vouchers[kode].kuota -= 1;
-                vouchers[kode].claimedBy.push(userId);
-                saveUsers(users); saveVouchers(vouchers);
+                // LOGIC PEMBAGIAN DANA KAGET / VOUCHER BIASA
+                let dapatCoin = 0;
+                if (vouchers[kode].type === "ga") {
+                    if (vouchers[kode].kuota === 1) {
+                        dapatCoin = vouchers[kode].remaining_pool; 
+                    } else {
+                        const rata2 = Math.floor(vouchers[kode].remaining_pool / vouchers[kode].kuota);
+                        const min = Math.floor(rata2 * 0.4) || 1; 
+                        const max = Math.floor(rata2 * 1.6);
+                        dapatCoin = Math.floor(Math.random() * (max - min + 1)) + min;
+                    }
+                    vouchers[kode].remaining_pool -= dapatCoin;
+                } else {
+                    dapatCoin = vouchers[kode].nominal;
+                }
 
-                return ctx.reply(`🎉 <b>VERIFIKASI & KLAIM SUKSES!</b>\n\nTerima kasih sudah join channel. Kode voucher <code>${kode}</code> otomatis diproses!\n💰 Coin bertambah ${vouchers[kode].nominal.toLocaleString('id-ID')} Coin\n🪙 Coin sekarang: ${users[userIndex].balance.toLocaleString('id-ID')} Coin`, { parse_mode: "HTML" });
+                users[userIndex].balance = (users[userIndex].balance || 0) + dapatCoin;
+                vouchers[kode].kuota -= 1;
+                
+                vouchers[kode].claimedBy.push({
+                    id: userId,
+                    name: ctx.from.first_name + (ctx.from.last_name ? ' ' + ctx.from.last_name : ''),
+                    username: ctx.from.username || null,
+                    amount: dapatCoin
+                });
+                
+                saveUsers(users); 
+                saveVouchers(vouchers);
+
+                // AUTO KIRIM LIST KE CHANNEL KALAU DANA KAGET HABIS
+                if (vouchers[kode].type === "ga" && vouchers[kode].kuota === 0) {
+                    const sortedWinners = [...vouchers[kode].claimedBy].sort((a, b) => b.amount - a.amount);
+                    let listText = `<blockquote>🎉 <b>DANA KAGET TELAH HABIS!</b></blockquote>\n━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
+                    listText += `🔑 <b>Kode:</b> <code>${kode}</code>\n`;
+                    listText += `💰 <b>Total Dibagikan:</b> ${vouchers[kode].total_pool.toLocaleString('id-ID')} Coin\n`;
+                    listText += `👥 <b>Total Pemenang:</b> ${sortedWinners.length} Orang\n━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+                    listText += `🏆 <b>DAFTAR PEMENANG:</b>\n`;
+                    
+                    sortedWinners.forEach((w, i) => {
+                        const uname = w.username ? `@${w.username}` : "Tidak ada";
+                        const medali = i === 0 ? "🥇" : (i === 1 ? "🥈" : (i === 2 ? "🥉" : "🏅"));
+                        listText += `<b>${medali} ${escapeHTML(w.name)}</b>\n`;
+                        listText += `└ 🆔 <code>${w.id}</code> | 👤 ${uname}\n`;
+                        listText += `└ 🎁 <b>Mendapat: ${w.amount.toLocaleString('id-ID')} Coin</b>\n\n`;
+                    });
+                    listText += `<i>Nantikan Dana Kaget selanjutnya hanya di channel ini!</i>`;
+                    ctx.telegram.sendMessage(config.channelIdDaget, listText, { parse_mode: "HTML" }).catch(()=>{});
+                }
+
+                return ctx.reply(`🎉 <b>VERIFIKASI & KLAIM SUKSES!</b>\n\nTerima kasih sudah join channel. Kode <code>${kode}</code> otomatis diproses!\n💰 Coin bertambah ${dapatCoin.toLocaleString('id-ID')} Coin\n🪙 Coin sekarang: ${users[userIndex].balance.toLocaleString('id-ID')} Coin`, { parse_mode: "HTML" });
             } finally {
                 setTimeout(() => global.redeemLock.delete(userId), 2000);
             }
@@ -2245,7 +3432,7 @@ bot.action("cek_join", async (ctx) => {
                 if (inviterId && inviterId !== userId) {
                     const inviterIndex = users.findIndex(u => u.id === inviterId);
                     if (inviterIndex !== -1) {
-                        const bonus = 200000; 
+                        const bonus = 7000000; 
                         users[inviterIndex].balance = (users[inviterIndex].balance || 0) + bonus;
                         users[inviterIndex].referrals = (users[inviterIndex].referrals || 0) + 1;
                         users[inviterIndex].ref_earnings = (users[inviterIndex].ref_earnings || 0) + bonus;
@@ -2254,6 +3441,8 @@ bot.action("cek_join", async (ctx) => {
                     }
                 }
                 saveUsers(users);
+                
+                autoBackupDB(ctx, "PENGGUNA BARU (Register)", userDB);
                 
                 return ctx.reply('🎉 <b>Akses Diberikan!</b>\nKamu berhasil mendaftar melalui link referral teman.\n\nSilakan ketik /menu atau /start untuk mulai menggunakan bot.', { parse_mode: 'HTML' });
             }
@@ -2269,12 +3458,19 @@ bot.action("back_to_main_menu", async (ctx) => {
   const keyboard = {
     inline_keyboard: [
                 [
-                   { text: "🎁 Claim Harian", callback_data: "claim_harian" },
-                   { text: "🗂 List Script", callback_data: "buyscript" }
+                    { text: "📱 List APK Mod", callback_data: "buyapk" },
+                    { text: "🗂 List Script", callback_data: "buyscript" }
+                ],
+                [
+                    { text: "🎁 Claim Harian", callback_data: "claim_harian" },
+                    { text: "🎰 Spin Gacha", callback_data: "menu_gacha" }
                 ],
                 [
                     { text: "🤝 Referral", callback_data: "menu_referral" },
                     { text: "💸 Kirim Coin", callback_data: "transfer_coin" }
+                ],
+                [
+                   { text: "📦 Mystery Box", callback_data: "menu_mystery" }
                 ],
                 [
                    { text: "🎯 Misi Coin", callback_data: "misi_coin" },
@@ -2358,7 +3554,17 @@ bot.action("cs_ai_start", async (ctx) => {
     const fromId = ctx.from.id;
     pendingCsChat[fromId] = true; 
     
-    const captionText = `<blockquote>🎧 <b>LIVE CHAT / TIKET BANTUAN</b></blockquote>\n━━━━━━━━━━━━━━━━━━━━━━━━━\nHalo! Ada yang bisa kami bantu? \n\nSilakan ketik keluhan, pertanyaan, atau kendala kamu (misal: topup nyangkut, pesanan error, dll) dengan membalas pesan ini. \n\nPesanmu akan langsung diteruskan ke Admin / Owner. Admin akan membalas secepat mungkin.\n\n👇 <i>Ketik pesanmu di bawah...</i>`.trim();
+    // ===== AUTO TIMEOUT 1 MENIT =====
+    global.csTimeouts = global.csTimeouts || {};
+    if (global.csTimeouts[fromId]) clearTimeout(global.csTimeouts[fromId]);
+    global.csTimeouts[fromId] = setTimeout(() => {
+        if (pendingCsChat[fromId]) {
+            delete pendingCsChat[fromId]; // Batalkan sesi
+            ctx.telegram.sendMessage(fromId, "⏱️ <b>Sesi CS Berakhir (Timeout)</b>\n\nKarena tidak ada aktivitas/pesan selama 1 menit, sesi Tiket Bantuan otomatis ditutup. Silakan buka menu CS lagi jika masih butuh bantuan.", { parse_mode: "HTML" }).catch(()=>{});
+        }
+    }, 60000); // 60.000 ms = 1 Menit
+
+    const captionText = `<blockquote>🎧 <b>LIVE CHAT / TIKET BANTUAN</b></blockquote>\n━━━━━━━━━━━━━━━━━━━━━━━━━\nHalo! Ada yang bisa kami bantu? \n\nSilakan ketik keluhan, pertanyaan, atau kirim foto/video bukti dengan membalas pesan ini. \n\nPesanmu akan langsung diteruskan ke Admin. Waktu kamu <b>1 Menit</b> (Otomatis batal jika tidak ada pesan).\n\n👇 <i>Kirim pesanmu di bawah...</i>`.trim();
     const keyboard = { inline_keyboard: [[{ text: "🛑 Akhiri Sesi Chat", callback_data: "cs_ai_stop" }]] };
 
     try {
@@ -2376,16 +3582,30 @@ bot.action("cs_ai_stop", async (ctx) => {
     const fromId = ctx.from.id;
     delete pendingCsChat[fromId]; 
     
+    // ===== HAPUS TIMER KARENA SUDAH BERHENTI MANUAL =====
+    if (global.csTimeouts && global.csTimeouts[fromId]) {
+        clearTimeout(global.csTimeouts[fromId]);
+        delete global.csTimeouts[fromId];
+    }
+    // ====================================================
+    
     const captionText = menuTextBot(ctx);
     const keyboard = {
         inline_keyboard: [
                 [
-                   { text: "🎁 Claim Harian", callback_data: "claim_harian" },
-                   { text: "🗂 List Script", callback_data: "buyscript" }
+                    { text: "📱 List APK Mod", callback_data: "buyapk" },
+                    { text: "🗂 List Script", callback_data: "buyscript" }
+                ],
+                [
+                    { text: "🎁 Claim Harian", callback_data: "claim_harian" },
+                    { text: "🎰 Spin Gacha", callback_data: "menu_gacha" }
                 ],
                 [
                     { text: "🤝 Referral", callback_data: "menu_referral" },
                     { text: "💸 Kirim Coin", callback_data: "transfer_coin" }
+                ],
+                [
+                   { text: "📦 Mystery Box", callback_data: "menu_mystery" }
                 ],
                 [
                    { text: "🎯 Misi Coin", callback_data: "misi_coin" },
@@ -2422,7 +3642,7 @@ bot.action("menu_referral", async (ctx) => {
   const refLink = `https://t.me/${config.botUsername}?start=ref_${fromId}`;
 
   const referralKeyboard = { inline_keyboard: [[{ text: "↩️ 𝐁𝐀𝐂𝐊", callback_data: "back_to_main_menu" }]] };
-  const captionText = `<blockquote><b>🤝 PROGRAM REFERRAL</b>\n━━━━━━━━━━━━━━━━━━━━━━━━━\nDapatkan coin gratis dengan cara mengajak temanmu menggunakan bot ini!</blockquote>\n\nSetiap teman yang mendaftar melalui link kamu, kamu akan mendapatkan bonus coin.\n\n🎁 <b>Bonus Reward:</b> 1.000.000 Coin / teman\n(Bonus otomatis masuk ke coin bot kamu)\n\n👇 <b>Link Referral Unik Kamu:</b>\n<code>${refLink}</code>\n<i>(Tap link di atas untuk menyalin)</i>\n\n📊 <b>Statistik Kamu Saat Ini:</b>\n👥 Teman diundang: <b>${myRefs} Orang</b>\n💰 Total pendapatan: <b>${myEarnings.toLocaleString('id-ID')} Coin</b>`.trim();
+  const captionText = `<blockquote><b>🤝 PROGRAM REFERRAL</b>\n━━━━━━━━━━━━━━━━━━━━━━━━━\nDapatkan coin gratis dengan cara mengajak temanmu menggunakan bot ini!</blockquote>\n\nSetiap teman yang mendaftar melalui link kamu, kamu akan mendapatkan bonus coin.\n\n🎁 <b>Bonus Reward:</b> 7.000.000 Coin / teman\n(Bonus otomatis masuk ke coin bot kamu)\n\n👇 <b>Link Referral Unik Kamu:</b>\n<code>${refLink}</code>\n<i>(Tap link di atas untuk menyalin)</i>\n\n📊 <b>Statistik Kamu Saat Ini:</b>\n👥 Teman diundang: <b>${myRefs} Orang</b>\n💰 Total pendapatan: <b>${myEarnings.toLocaleString('id-ID')} Coin</b>`.trim();
 
   try {
     await ctx.editMessageMedia({ type: "photo", media: config.menuImage, caption: captionText, parse_mode: "HTML" }, { reply_markup: referralKeyboard });
@@ -2482,13 +3702,7 @@ bot.action(/download_script\|(\d+)/, async (ctx) => {
 bot.action("back_to_script_list", async (ctx) => {
     await ctx.answerCbQuery().catch(() => {});
     if (!isOwner(ctx)) return ctx.answerCbQuery('❌ Owner Only!');
-
-    const allScripts = loadScripts();
-    if (!allScripts.length) return ctx.editMessageText("📭 Belum ada script.");
-
-    const buttons = allScripts.map((s, i) => ([{ text: `📂 ${escapeHTML(s.name)} - ${formatCoin(s.price)} Coin`, callback_data: `getscript_detail|${i}` }]));
-
-    return ctx.editMessageText("<b>📦 DAFTAR SCRIPT</b>\n\nPilih Script untuk melihat detail:", { parse_mode: "HTML", reply_markup: { inline_keyboard: buttons } });
+    await sendGetScriptPage(ctx, 0);
 });
 
 // ===== DELETE SCRIPT =====
@@ -2518,7 +3732,7 @@ bot.action(/^script\|(.+)/, async (ctx) => {
 
     if (!sc) return ctx.reply("❌ Script tidak ditemukan.");
 
-    const text = `<blockquote><b>📝 Konfirmasi Pemesanan</b></blockquote>\n━━━━━━━━━━━━━━━━━━━━━━━━━━\n📦 Produk: Script ${escapeHTML(sc.name)}\n\n💰 Harga: ${Number(sc.price).toLocaleString("id-ID")} Coin\n🕒 Waktu: ${waktu}\n━━━━━━━━━━━━━━━━━━━━━━━━━━\n<blockquote><b>📝 Deskripsi:</b></blockquote>\n${escapeHTML(sc.desk || "-")}\n━━━━━━━━━━━━━━━━━━━━━━━━━━\n⚠️ Apakah Anda yakin ingin melanjutkan pembayaran?`.trim();
+    const text = `<blockquote><b>📝 Konfirmasi Pemesanan</b></blockquote>\n━━━━━━━━━━━━━━━━━\n📦 Produk: Script ${escapeHTML(sc.name)}\n\n💰 Harga: ${Number(sc.price).toLocaleString("id-ID")} Coin\n🕒 Waktu: ${waktu}\n━━━━━━━━━━━━━━━━━\n<blockquote><b>📝 Deskripsi:</b></blockquote>\n${escapeHTML(sc.desk || "-")}\n━━━━━━━━━━━━━━━━━\n⚠️ Apakah Anda yakin ingin melanjutkan pembayaran?`.trim();
 
     await ctx.editMessageText(text, {
         parse_mode: "HTML",

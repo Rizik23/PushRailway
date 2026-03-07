@@ -7,12 +7,14 @@ module.exports = {
   ownerUsername: "Kaell_Xz", // * username tanpa memakai @
   ownerId: "1402991119", // * ownerid pertama
   channelId: "-1003722756127", // * notifikasi pembelian ke channel memakai id
+  channelIdDaget: "-1001268622478", // * notifikasi ga daget
   wajibJoinChannel: "@MyThe5",
   menuImage: "https://files.catbox.moe/5kiriq.jpg", // * gambar menu utama awala pas /start
   katalogImage: "https://files.catbox.moe/5kiriq.jpg", // * gambar shop menu
   referralImage: "https://files.catbox.moe/5kiriq.jpg", // * gambar menu referral
   helpMenuImage: "https://files.catbox.moe/5kiriq.jpg", //* help faq bantuan
-  pinkInfoImage: "https://files.catbox.moe/5kiriq.jpg", // * gambar ping
+  postImageChannel: "https://files.catbox.moe/4jpyqa.jpg", 
+    pinkInfoImage: "https://files.catbox.moe/5kiriq.jpg", // * gambar ping
   wajibJoinChannels: [
         "@MyThe5",
         "@publicvin6",

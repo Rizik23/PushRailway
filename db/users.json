@@ -302,8 +302,25 @@
     "first_name": "Nt2",
     "last_name": "",
     "join_date": "2026-01-07T06:55:50.117Z",
-    "total_spent": 0,
-    "history": []
+    "total_spent": 11000000,
+    "history": [
+      {
+        "product": "Script: PHISING VIA TELEGRAM",
+        "amount": 11000000,
+        "type": "script",
+        "details": "kosong",
+        "timestamp": "2026-03-06T10:09:01.838Z"
+      }
+    ],
+    "balance": 0,
+    "last_claim": "Fri Mar 06 2026",
+    "claimed_missions": [
+      "@FreeXPromosi",
+      "@VX_Dominion",
+      "@the_endstoryid"
+    ],
+    "referrals": 1,
+    "ref_earnings": 7000000
   },
   {
     "id": 8415239604,
@@ -2499,7 +2516,7 @@
     "first_name": "⏤͟͟͞✚ 𝗞𝗮𝗲𝗹𝗹~𝗩𝗶𝗿𝗲𝘅𖥔𝗩𝗲𝗿𝗱𝗲𝗻🍷!",
     "last_name": "",
     "join_date": "2026-02-19T17:55:50.551Z",
-    "total_spent": 35521968,
+    "total_spent": 47421968,
     "history": [
       {
         "product": "Admin Panel",
@@ -2759,15 +2776,32 @@
         "type": "script",
         "details": "-",
         "timestamp": "2026-03-05T22:57:09.013Z"
+      },
+      {
+        "product": "APK: Manajer MT_2.26.2 (1)",
+        "amount": 5950000,
+        "type": "apk",
+        "details": "-",
+        "timestamp": "2026-03-06T05:59:58.323Z"
+      },
+      {
+        "product": "APK: CAPCUT PRO PREMIUM [ 302,7 MB",
+        "amount": 5950000,
+        "type": "apk",
+        "details": "━━━━━━━━━━━━━━━━━━━━━━━\n✓ Pr0-Prem!um Sudah Terbuka\n✓ Semua !klan Sudah Di Hapus\n✓ Unlocked All Efek & F!lter\n✓ Unlocked All Resolusi & Fps\n✓ Bypassed Not!fy Updated\n✓ Bypassed Detect!on App\n✓ Support No Log!n & Log!n\n✓ Semua F!tur Terbuka\n✓ Armeabi-v7a + Arm64-v8a\n✓ Vers! Pal!ng Terbaru : V16.9.0\n━━━━━━━━━━━━━━━━━━━━━━━",
+        "timestamp": "2026-03-06T15:41:03.717Z"
       }
     ],
     "canceled_count": 1,
-    "balance": 2929266854909,
+    "balance": 8250000,
     "role": "distributor",
     "role_expired": 1775291152081,
-    "last_claim": "Thu Mar 05 2026",
+    "last_claim": "Fri Mar 06 2026",
     "claimed_missions": [
-      "@FreeXPromosi"
+      "@FreeXPromosi",
+      "@VX_Dominion",
+      "@the_endstoryid",
+      "@Kiuarya"
     ]
   },
   {
@@ -2974,7 +3008,7 @@
         "timestamp": "2026-03-05T08:28:14.787Z"
       }
     ],
-    "balance": 960924999,
+    "balance": 20429878,
     "role": "distributor",
     "role_expired": 1775291025091
   },
@@ -3167,12 +3201,12 @@
         "timestamp": "2026-03-05T21:32:30.454Z"
       }
     ],
-    "balance": 560400,
+    "balance": 60400,
     "referrals": 0,
     "ref_earnings": 0,
     "role": "distributor",
     "role_expired": 1775999105449,
-    "last_claim": "Thu Mar 05 2026"
+    "last_claim": "Fri Mar 06 2026"
   },
   {
     "id": 8416995467,
@@ -3194,7 +3228,7 @@
     "join_date": "2026-02-24T21:54:43.863Z",
     "total_spent": 0,
     "history": [],
-    "balance": 1570000,
+    "balance": 40462066,
     "referrals": 0,
     "ref_earnings": 0
   },
@@ -3242,11 +3276,20 @@
     "first_name": "⸙ꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋDanz ⸙ꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋ",
     "last_name": "",
     "join_date": "2026-03-03T00:33:01.058Z",
-    "total_spent": 0,
-    "history": [],
-    "balance": 0,
+    "total_spent": 15000000,
+    "history": [
+      {
+        "product": "Script: BASE APK XTORDCV",
+        "amount": 15000000,
+        "type": "script",
+        "details": "kosong",
+        "timestamp": "2026-03-06T16:34:06.795Z"
+      }
+    ],
+    "balance": 4925409,
     "referrals": 0,
-    "ref_earnings": 0
+    "ref_earnings": 0,
+    "last_claim": "Fri Mar 06 2026"
   },
   {
     "id": 8160023519,
@@ -3302,7 +3345,7 @@
     "first_name": "PUKYY",
     "last_name": "👺👺",
     "join_date": "2026-03-03T07:00:27.491Z",
-    "total_spent": 8613050,
+    "total_spent": 37683050,
     "history": [
       {
         "product": "Panel unlimited",
@@ -3366,14 +3409,40 @@
         "type": "script",
         "details": "Script cek bio whatsapp\nNo enc 100%\n cocok untuk Yang suka gacha nokos\nTampilan Script sangat bagus\n script ini bukan pasaran\nversion script v4.3",
         "timestamp": "2026-03-05T07:07:09.117Z"
+      },
+      {
+        "product": "Script: BASE WEB BUG",
+        "amount": 9520000,
+        "type": "script",
+        "details": "kosong",
+        "timestamp": "2026-03-06T05:28:50.872Z"
+      },
+      {
+        "product": "Script: apk bug",
+        "amount": 9350000,
+        "type": "script",
+        "details": "-",
+        "timestamp": "2026-03-06T07:51:45.004Z"
+      },
+      {
+        "product": "Script: CVPSxINSTALLPANEL",
+        "amount": 10200000,
+        "type": "script",
+        "details": "kosong",
+        "timestamp": "2026-03-06T07:52:28.154Z"
       }
     ],
-    "balance": 2509950,
-    "referrals": 0,
-    "ref_earnings": 0,
+    "balance": 6639950,
+    "referrals": 1,
+    "ref_earnings": 200000,
     "role": "vip",
     "role_expired": 1775193168288,
-    "last_claim": "Fri Mar 06 2026"
+    "last_claim": "Fri Mar 06 2026",
+    "claimed_missions": [
+      "@FreeXPromosi",
+      "@the_endstoryid",
+      "@VX_Dominion"
+    ]
   },
   {
     "id": 8614343065,
@@ -3381,7 +3450,7 @@
     "first_name": "⏤͟͟͞𝙈𝟓 X ⏤͟͟͞𝙈£K|| BAGAS CRUELL",
     "last_name": "",
     "join_date": "2026-03-03T07:08:26.963Z",
-    "total_spent": 30000,
+    "total_spent": 64230000,
     "history": [
       {
         "product": "ALIGHT MOTION - 1 Tahun",
@@ -3395,11 +3464,52 @@
         "type": "script",
         "details": "script base apk real + api via panel\n\nFitur-fitur Apk:\nDdos Menu\nWifi Killer\nBug Sender\nTikTok Downloader\nSpang Ngl\nQr Generator\nNik Parse\nInstagram Downloader\nNonton anime",
         "timestamp": "2026-03-03T12:27:10.871Z"
+      },
+      {
+        "product": "APK: SPEED-X GAMING [ 2,9 MB ]",
+        "amount": 8500000,
+        "type": "apk",
+        "details": "VERSION APK 2.1.1",
+        "timestamp": "2026-03-06T07:21:08.256Z"
+      },
+      {
+        "product": "APK: MANAGER MT MOD [ 27,5 MB ]",
+        "amount": 8500000,
+        "type": "apk",
+        "details": "VERSION APK 2.26.2",
+        "timestamp": "2026-03-06T07:23:19.847Z"
+      },
+      {
+        "product": "Script: BASE WEB BUG",
+        "amount": 11200000,
+        "type": "script",
+        "details": "kosong",
+        "timestamp": "2026-03-06T08:11:46.257Z"
+      },
+      {
+        "product": "Script: BUILD APK FLUTER NO ENC",
+        "amount": 25000000,
+        "type": "script",
+        "details": "kosong",
+        "timestamp": "2026-03-06T13:09:11.614Z"
+      },
+      {
+        "product": "Script: bot getsuzo",
+        "amount": 11000000,
+        "type": "script",
+        "details": "kosong",
+        "timestamp": "2026-03-06T13:10:10.486Z"
       }
     ],
-    "balance": 16120001,
+    "balance": 198275479,
     "referrals": 0,
-    "ref_earnings": 0
+    "ref_earnings": 0,
+    "last_claim": "Fri Mar 06 2026",
+    "claimed_missions": [
+      "@FreeXPromosi",
+      "@VX_Dominion",
+      "@the_endstoryid"
+    ]
   },
   {
     "id": 8263349227,
@@ -3487,12 +3597,12 @@
         "timestamp": "2026-03-04T04:45:36.686Z"
       }
     ],
-    "balance": 1042500,
+    "balance": 22042500,
     "referrals": 0,
     "ref_earnings": 0,
     "role": "vip",
     "role_expired": 1775193292607,
-    "last_claim": "Thu Mar 05 2026"
+    "last_claim": "Fri Mar 06 2026"
   },
   {
     "id": 8414230376,
@@ -3601,7 +3711,7 @@
     "first_name": "ree",
     "last_name": "",
     "join_date": "2026-03-03T10:07:13.766Z",
-    "total_spent": 17000000,
+    "total_spent": 58700000,
     "history": [
       {
         "product": "Panel 10gb",
@@ -3616,14 +3726,44 @@
         "type": "script",
         "details": "-",
         "timestamp": "2026-03-05T23:07:09.933Z"
+      },
+      {
+        "product": "Script: Bahan base web bug+ apk",
+        "amount": 11000000,
+        "type": "script",
+        "details": "-",
+        "timestamp": "2026-03-06T07:18:19.956Z"
+      },
+      {
+        "product": "Script: BASE WEB BUG",
+        "amount": 11200000,
+        "type": "script",
+        "details": "kosong",
+        "timestamp": "2026-03-06T07:22:41.573Z"
+      },
+      {
+        "product": "APK: ALIGHT MOTION PREMIUM [ 96,6 MB ]",
+        "amount": 8500000,
+        "type": "apk",
+        "details": "✓ Prem!um Sudah Terbuka\n✓ Semua !klan Sudah Di Hapus\n✓ Support !mport Preset Sampai 1GB+++\n✓ Support Export Preset My Project\n✓ Bypass Detection App\n✓ Support Import Semua Preset Tautan AlightLink\n✓ Semua Efek & F1lter Terbuka\n✓ Manual Otomat!s Login\n✓ Support Semua Dev!ce\n✓ Unlock All Resolusi & Frame Rate\n✓ Lifetime Prem!um Days\n✓ Export No Error & Fast Render\n✓ Bypass Not!y Updated\n✓ Semua F!tur Terbuka\n✓ Armeabi-v7a + Arm64-v8a\n✓ Vers! Pal!ng Terbaru : V5.0.273.1028416",
+        "timestamp": "2026-03-06T12:25:12.453Z"
+      },
+      {
+        "product": "Script: BASE UNTUK WEB ATAU APK BUG",
+        "amount": 11000000,
+        "type": "script",
+        "details": "-",
+        "timestamp": "2026-03-06T12:39:58.094Z"
       }
     ],
-    "balance": 5000000,
-    "referrals": 0,
-    "ref_earnings": 0,
+    "balance": 11300000,
+    "referrals": 1,
+    "ref_earnings": 7000000,
     "claimed_missions": [
       "@FreeXPromosi",
-      "@VX_Dominion"
+      "@VX_Dominion",
+      "@the_endstoryid",
+      "@Kiuarya"
     ],
     "last_claim": "Fri Mar 06 2026"
   },
@@ -3665,7 +3805,7 @@
     "first_name": "bellavaniaputri",
     "last_name": "",
     "join_date": "2026-03-03T10:33:20.801Z",
-    "total_spent": 12000,
+    "total_spent": 67512000,
     "history": [
       {
         "product": "Script: UBOT 180+ MODULE PYROUBOT",
@@ -3673,11 +3813,60 @@
         "type": "script",
         "details": "userbot PyroUbot\n run via termux, vps, termius\ncocok buat jualan ubot\nmax akun 100 ubot",
         "timestamp": "2026-03-04T02:26:52.647Z"
+      },
+      {
+        "product": "APK: NETFLIX PREMIUM [ 51,8MB ]",
+        "amount": 8500000,
+        "type": "apk",
+        "details": "VERSION APK 9.50.0",
+        "timestamp": "2026-03-06T11:36:31.592Z"
+      },
+      {
+        "product": "Script: PHISING VIA TELEGRAM",
+        "amount": 11000000,
+        "type": "script",
+        "details": "kosong",
+        "timestamp": "2026-03-06T13:04:09.129Z"
+      },
+      {
+        "product": "Script: SCRIPT BOT JASEB V2.0",
+        "amount": 12000000,
+        "type": "script",
+        "details": "-",
+        "timestamp": "2026-03-06T13:07:15.180Z"
+      },
+      {
+        "product": "Script: 200 BASE Rachel",
+        "amount": 11000000,
+        "type": "script",
+        "details": "-",
+        "timestamp": "2026-03-06T13:08:04.584Z"
+      },
+      {
+        "product": "Script: DIANA STORE",
+        "amount": 11000000,
+        "type": "script",
+        "details": "kosong",
+        "timestamp": "2026-03-06T13:09:29.173Z"
+      },
+      {
+        "product": "Script: Animated-Tesla-Landing-Page (1)",
+        "amount": 14000000,
+        "type": "script",
+        "details": "-",
+        "timestamp": "2026-03-06T13:10:45.464Z"
       }
     ],
-    "balance": 8000,
+    "balance": 35728033,
     "referrals": 0,
-    "ref_earnings": 0
+    "ref_earnings": 0,
+    "last_claim": "Fri Mar 06 2026",
+    "claimed_missions": [
+      "@FreeXPromosi",
+      "@the_endstoryid",
+      "@VX_Dominion",
+      "@Kiuarya"
+    ]
   },
   {
     "id": 7103531545,
@@ -3685,9 +3874,38 @@
     "first_name": "zero wut-wut⚡️",
     "last_name": "",
     "join_date": "2026-03-03T11:02:24.032Z",
-    "total_spent": 0,
-    "history": [],
-    "balance": 0,
+    "total_spent": 76500240,
+    "history": [
+      {
+        "product": "Script: CVPSxINSTALLPANEL",
+        "amount": 12000000,
+        "type": "script",
+        "details": "kosong",
+        "timestamp": "2026-03-06T14:10:16.442Z"
+      },
+      {
+        "product": "Script: BUILD APK FLUTER NO ENC",
+        "amount": 25000000,
+        "type": "script",
+        "details": "kosong",
+        "timestamp": "2026-03-06T14:14:35.611Z"
+      },
+      {
+        "product": "Script: AUTO ORDER KAELL",
+        "amount": 14000000,
+        "type": "script",
+        "details": "kosong",
+        "timestamp": "2026-03-06T14:15:11.706Z"
+      },
+      {
+        "product": "Script: #new project",
+        "amount": 25500240,
+        "type": "script",
+        "details": "-",
+        "timestamp": "2026-03-06T14:23:56.563Z"
+      }
+    ],
+    "balance": 23499760,
     "referrals": 0,
     "ref_earnings": 0
   },
@@ -3709,7 +3927,7 @@
     "first_name": "𝒍𝒊𝒍𝒊𝒚 < 𝒛ε𝒑𝒉𝒚𝒓¡𝒏𝒆̄",
     "last_name": "",
     "join_date": "2026-03-03T11:38:01.921Z",
-    "total_spent": 70663000,
+    "total_spent": 123303168,
     "history": [
       {
         "product": "Script: OBF ENCRPYT LATEST",
@@ -3783,13 +4001,56 @@
         "type": "script",
         "details": "kosong",
         "timestamp": "2026-03-06T04:48:46.418Z"
+      },
+      {
+        "product": "Script: AUTO REPPOT AKUN TELEGRAM",
+        "amount": 9100000,
+        "type": "script",
+        "details": "kosong",
+        "timestamp": "2026-03-06T06:05:46.325Z"
+      },
+      {
+        "product": "APK: NETFLIX PREMIUM [ 51,8MB ]",
+        "amount": 5950000,
+        "type": "apk",
+        "details": "VERSION APK 9.50.0",
+        "timestamp": "2026-03-06T11:12:09.084Z"
+      },
+      {
+        "product": "APK: ALIGHT MOTION PREMIUM [ 96,6 MB ]",
+        "amount": 5950000,
+        "type": "apk",
+        "details": "✓ Prem!um Sudah Terbuka\n✓ Semua !klan Sudah Di Hapus\n✓ Support !mport Preset Sampai 1GB+++\n✓ Support Export Preset My Project\n✓ Bypass Detection App\n✓ Support Import Semua Preset Tautan AlightLink\n✓ Semua Efek & F1lter Terbuka\n✓ Manual Otomat!s Login\n✓ Support Semua Dev!ce\n✓ Unlock All Resolusi & Frame Rate\n✓ Lifetime Prem!um Days\n✓ Export No Error & Fast Render\n✓ Bypass Not!y Updated\n✓ Semua F!tur Terbuka\n✓ Armeabi-v7a + Arm64-v8a\n✓ Vers! Pal!ng Terbaru : V5.0.273.1028416",
+        "timestamp": "2026-03-06T11:12:45.540Z"
+      },
+      {
+        "product": "Script: API CLOUD",
+        "amount": 17850168,
+        "type": "script",
+        "details": "-",
+        "timestamp": "2026-03-06T13:15:12.738Z"
+      },
+      {
+        "product": "Script: BASE WEB BUG",
+        "amount": 7840000,
+        "type": "script",
+        "details": "kosong",
+        "timestamp": "2026-03-06T13:16:27.699Z"
+      },
+      {
+        "product": "APK: TERMUX MOD [ 112,3 MB ]",
+        "amount": 5950000,
+        "type": "apk",
+        "details": "8.500.000",
+        "timestamp": "2026-03-06T13:17:45.006Z"
       }
     ],
-    "balance": 12337122,
+    "balance": 0,
     "referrals": 0,
     "ref_earnings": 0,
     "role": "distributor",
-    "role_expired": 1775291011559
+    "role_expired": 1775291011559,
+    "last_claim": "Fri Mar 06 2026"
   },
   {
     "id": 1711172104,
@@ -3821,11 +4082,33 @@
     "first_name": "Ryzz",
     "last_name": "AJAH",
     "join_date": "2026-03-03T12:11:48.699Z",
-    "total_spent": 0,
-    "history": [],
-    "balance": 0,
+    "total_spent": 26000000,
+    "history": [
+      {
+        "product": "Script: CVPSxINSTALLPANEL",
+        "amount": 12000000,
+        "type": "script",
+        "details": "kosong",
+        "timestamp": "2026-03-06T12:29:04.842Z"
+      },
+      {
+        "product": "Script: AUTO ORDER KAELL",
+        "amount": 14000000,
+        "type": "script",
+        "details": "kosong",
+        "timestamp": "2026-03-06T14:20:07.656Z"
+      }
+    ],
+    "balance": 3000000,
     "referrals": 0,
-    "ref_earnings": 0
+    "ref_earnings": 0,
+    "last_claim": "Fri Mar 06 2026",
+    "claimed_missions": [
+      "@FreeXPromosi",
+      "@VX_Dominion",
+      "@the_endstoryid",
+      "@Kiuarya"
+    ]
   },
   {
     "id": 8298672283,
@@ -3900,7 +4183,7 @@
     "first_name": "𝐒𝐗 ⻰ /𝐊𝐳𝐱𝐬𝐲𝐧𝐬𝐞",
     "last_name": "",
     "join_date": "2026-03-03T12:46:19.516Z",
-    "total_spent": 9200500,
+    "total_spent": 103126316,
     "history": [
       {
         "product": "Script: AUTO ORDER YANG GUA PAKE",
@@ -3963,14 +4246,63 @@
         "type": "panel",
         "details": "Username: Kzxsynse, RAM: 1gbGB",
         "timestamp": "2026-03-05T08:30:08.402Z"
+      },
+      {
+        "product": "Script: Revengers ( Base Apps )",
+        "amount": 21675204,
+        "type": "script",
+        "details": "-",
+        "timestamp": "2026-03-06T05:21:58.525Z"
+      },
+      {
+        "product": "Script: base paradox",
+        "amount": 21675204,
+        "type": "script",
+        "details": "-",
+        "timestamp": "2026-03-06T07:19:44.353Z"
+      },
+      {
+        "product": "APK: NETFLIX PREMIUM [ 51,8MB ]",
+        "amount": 7225000,
+        "type": "apk",
+        "details": "VERSION APK 9.50.0",
+        "timestamp": "2026-03-06T07:24:46.703Z"
+      },
+      {
+        "product": "Script: yoshimitsu_optimized",
+        "amount": 21675204,
+        "type": "script",
+        "details": "-",
+        "timestamp": "2026-03-06T12:24:58.896Z"
+      },
+      {
+        "product": "Script: ppk (2)",
+        "amount": 21675204,
+        "type": "script",
+        "details": "-",
+        "timestamp": "2026-03-06T12:30:43.846Z"
+      },
+      {
+        "product": "Mystery Box: GROQ PREMIUM [ 55,0 MB ]",
+        "amount": 5000000,
+        "type": "gacha",
+        "timestamp": "2026-03-06T20:19:23.397Z"
       }
     ],
-    "balance": 1959500,
+    "balance": 3857283,
     "referrals": 0,
     "ref_earnings": 0,
     "role": "vip",
     "role_expired": 1775193485294,
-    "last_claim": "Thu Mar 05 2026"
+    "last_claim": "Fri Mar 06 2026",
+    "claimed_missions": [
+      "@FreeXPromosi",
+      "@VX_Dominion",
+      "@the_endstoryid",
+      "@Kiuarya"
+    ],
+    "mystery_count": 1,
+    "last_mystery_date": "Fri Mar 06 2026"
   },
   {
     "id": 7502679833,
@@ -4036,7 +4368,7 @@
     "first_name": "—͟͞͞𝐒𝐃𝐋| YAMA GUCHI HOST ||",
     "last_name": "𝐓𝟓",
     "join_date": "2026-03-03T17:08:13.935Z",
-    "total_spent": 29369000,
+    "total_spent": 37069000,
     "history": [
       {
         "product": "Script: USERBOT 200 MODULE VIA PANEL",
@@ -4086,9 +4418,16 @@
         "type": "script",
         "details": "Script obf\nNo enc 100%\ncocok untuk menjaga keamanan pribadi\nTampilan Script lumayan bagus\n",
         "timestamp": "2026-03-05T08:32:03.167Z"
+      },
+      {
+        "product": "Script: 200 BASE Rachel",
+        "amount": 7700000,
+        "type": "script",
+        "details": "-",
+        "timestamp": "2026-03-06T10:40:44.560Z"
       }
     ],
-    "balance": 36021122,
+    "balance": 364246154,
     "referrals": 0,
     "ref_earnings": 0,
     "role": "distributor",
@@ -4143,13 +4482,15 @@
         "timestamp": "2026-03-06T03:50:09.603Z"
       }
     ],
-    "balance": 4270000,
-    "referrals": 0,
-    "ref_earnings": 0,
+    "balance": 560990200,
+    "referrals": 5,
+    "ref_earnings": 21400000,
     "last_claim": "Fri Mar 06 2026",
     "claimed_missions": [
       "@FreeXPromosi",
-      "@VX_Dominion"
+      "@VX_Dominion",
+      "@the_endstoryid",
+      "@Kiuarya"
     ]
   },
   {
@@ -4236,11 +4577,17 @@
     "join_date": "2026-03-04T04:53:05.164Z",
     "total_spent": 0,
     "history": [],
-    "balance": 70080000,
+    "balance": 162080000,
     "referrals": 0,
     "ref_earnings": 0,
     "role": "vip",
-    "role_expired": 1775193531395
+    "role_expired": 1775193531395,
+    "claimed_missions": [
+      "@FreeXPromosi",
+      "@VX_Dominion",
+      "@the_endstoryid"
+    ],
+    "last_claim": "Fri Mar 06 2026"
   },
   {
     "id": 1977081795,
@@ -4279,7 +4626,7 @@
         "timestamp": "2026-03-04T08:07:10.608Z"
       }
     ],
-    "balance": 23012122,
+    "balance": 93012122,
     "referrals": 0,
     "ref_earnings": 0,
     "role": "vip",
@@ -4315,7 +4662,7 @@
     "first_name": "jaidan",
     "last_name": "kawe",
     "join_date": "2026-03-04T23:40:30.521Z",
-    "total_spent": 5730000,
+    "total_spent": 26230000,
     "history": [
       {
         "product": "Panel 9gb",
@@ -4329,15 +4676,31 @@
         "amount": 730000,
         "type": "app",
         "timestamp": "2026-03-05T08:10:07.024Z"
+      },
+      {
+        "product": "Script: CVPSxINSTALLPANEL",
+        "amount": 12000000,
+        "type": "script",
+        "details": "kosong",
+        "timestamp": "2026-03-06T08:01:55.980Z"
+      },
+      {
+        "product": "APK: NETFLIX PREMIUM [ 51,8MB ]",
+        "amount": 8500000,
+        "type": "apk",
+        "details": "VERSION APK 9.50.0",
+        "timestamp": "2026-03-06T12:02:51.764Z"
       }
     ],
-    "balance": 28270000,
+    "balance": 270763139,
     "referrals": 0,
     "ref_earnings": 0,
     "last_claim": "Fri Mar 06 2026",
     "claimed_missions": [
       "@FreeXPromosi",
-      "@VX_Dominion"
+      "@VX_Dominion",
+      "@the_endstoryid",
+      "@Kiuarya"
     ]
   },
   {
@@ -4370,11 +4733,33 @@
     "first_name": "Dhanzy",
     "last_name": "Pelwr",
     "join_date": "2026-03-05T06:46:01.780Z",
-    "total_spent": 0,
-    "history": [],
-    "balance": 0,
+    "total_spent": 23500200,
+    "history": [
+      {
+        "product": "Script: kudeta adp",
+        "amount": 12500200,
+        "type": "script",
+        "details": "-",
+        "timestamp": "2026-03-06T15:05:21.776Z"
+      },
+      {
+        "product": "Script: apk bug",
+        "amount": 11000000,
+        "type": "script",
+        "details": "-",
+        "timestamp": "2026-03-06T15:08:37.800Z"
+      }
+    ],
+    "balance": 5499800,
     "referrals": 0,
-    "ref_earnings": 0
+    "ref_earnings": 0,
+    "last_claim": "Fri Mar 06 2026",
+    "claimed_missions": [
+      "@FreeXPromosi",
+      "@VX_Dominion",
+      "@the_endstoryid",
+      "@Kiuarya"
+    ]
   },
   {
     "id": 8193776372,
@@ -4382,11 +4767,34 @@
     "first_name": "𝐂𝐑𝐈𝐙𝐳𝐙(𝐒𝐮𝐤𝐚 𝐓𝐨𝐛𝐫𝐮𝐭)",
     "last_name": "",
     "join_date": "2026-03-05T06:50:13.100Z",
-    "total_spent": 0,
-    "history": [],
-    "balance": 0,
+    "total_spent": 59000240,
+    "history": [
+      {
+        "product": "Script: BUILD APK FLUTER NO ENC",
+        "amount": 25000000,
+        "type": "script",
+        "details": "kosong",
+        "timestamp": "2026-03-06T13:01:40.790Z"
+      },
+      {
+        "product": "Script: #X NULL APK",
+        "amount": 25500240,
+        "type": "script",
+        "details": "-",
+        "timestamp": "2026-03-06T17:58:13.851Z"
+      },
+      {
+        "product": "APK: GROQ PREMIUM [ 55,0 MB ]",
+        "amount": 8500000,
+        "type": "apk",
+        "details": "━━━━━━━━━━━━━━━━━━━━━━━\n✓ Pr0-Prem!um Sudah Terbuka\n✓ Semua !klan Sudah Di Hapus\n✓ Lifet!me Premium Days\n✓ Bypass Detect!on App\n✓ Unlocked Grok 4.20 (Beta)\n✓ Semua F!tur Terbuka\n✓ Armeabi-v7a + Arm64-v8a + x86 + x86_64\n✓ Vers! Pal!ng Terbaru : V1.1.33-release.18\n━━━━━━━━━━━━━━━━━━━━━━━",
+        "timestamp": "2026-03-06T18:00:48.820Z"
+      }
+    ],
+    "balance": 23867004,
     "referrals": 0,
-    "ref_earnings": 0
+    "ref_earnings": 0,
+    "last_claim": "Fri Mar 06 2026"
   },
   {
     "id": 7833395614,
@@ -4448,5 +4856,543 @@
     "referrals": 0,
     "ref_earnings": 0,
     "last_claim": "Fri Mar 06 2026"
+  },
+  {
+    "id": 5757312953,
+    "username": "Zxcroes",
+    "first_name": "Support Group - IB",
+    "last_name": "",
+    "join_date": "2026-03-06T05:23:01.196Z",
+    "total_spent": 25500240,
+    "history": [
+      {
+        "product": "Script: V2",
+        "amount": 25500240,
+        "type": "script",
+        "details": "-",
+        "timestamp": "2026-03-06T05:28:33.760Z"
+      }
+    ],
+    "balance": 0,
+    "referrals": 0,
+    "ref_earnings": 0,
+    "last_claim": "Fri Mar 06 2026",
+    "claimed_missions": [
+      "@FreeXPromosi",
+      "@VX_Dominion"
+    ]
+  },
+  {
+    "id": 8476856739,
+    "username": "「 𝘾𝙍𝘼𝙎𝙃 HANZZZ (100%)",
+    "first_name": "「 𝘾𝙍𝘼𝙎𝙃 HANZZZ (100%)",
+    "last_name": "",
+    "join_date": "2026-03-06T06:07:49.151Z",
+    "total_spent": 0,
+    "history": [],
+    "balance": 0,
+    "referrals": 0,
+    "ref_earnings": 0
+  },
+  {
+    "id": 7712139388,
+    "username": ".. ..",
+    "first_name": "..",
+    "last_name": "..",
+    "join_date": "2026-03-06T06:46:32.555Z",
+    "total_spent": 0,
+    "history": [],
+    "balance": 1000000,
+    "referrals": 0,
+    "ref_earnings": 0,
+    "last_claim": "Fri Mar 06 2026"
+  },
+  {
+    "id": 7443566961,
+    "username": "kakawooww",
+    "first_name": "Kaka",
+    "last_name": "",
+    "join_date": "2026-03-06T07:04:30.535Z",
+    "total_spent": 0,
+    "history": [],
+    "balance": 1000000,
+    "referrals": 0,
+    "ref_earnings": 0,
+    "last_claim": "Fri Mar 06 2026"
+  },
+  {
+    "id": 7272688277,
+    "username": "ZIWWLEGENDS",
+    "first_name": "Z",
+    "last_name": "",
+    "join_date": "2026-03-06T07:07:59.697Z",
+    "total_spent": 26000000,
+    "history": [
+      {
+        "product": "Script: Apollo Cursed V8.0",
+        "amount": 11000000,
+        "type": "script",
+        "details": "-",
+        "timestamp": "2026-03-06T07:17:16.223Z"
+      },
+      {
+        "product": "Script: NATUROM APK BUG V2",
+        "amount": 15000000,
+        "type": "script",
+        "details": "kosong",
+        "timestamp": "2026-03-06T17:18:08.852Z"
+      }
+    ],
+    "balance": 90250000,
+    "referrals": 5,
+    "ref_earnings": 35000000,
+    "claimed_missions": [
+      "@FreeXPromosi",
+      "@VX_Dominion",
+      "@the_endstoryid"
+    ],
+    "last_claim": "Fri Mar 06 2026"
+  },
+  {
+    "id": 8512378540,
+    "username": "⏤͟͟͞͞Yuki",
+    "first_name": "⏤͟͟͞͞Yuki",
+    "last_name": "",
+    "join_date": "2026-03-06T07:26:35.923Z",
+    "total_spent": 0,
+    "history": [],
+    "balance": 21200000,
+    "referrals": 1,
+    "ref_earnings": 200000,
+    "last_claim": "Fri Mar 06 2026",
+    "claimed_missions": [
+      "@FreeXPromosi",
+      "@VX_Dominion",
+      "@the_endstoryid"
+    ]
+  },
+  {
+    "id": 1087968824,
+    "username": "GroupAnonymousBot",
+    "first_name": "Group",
+    "last_name": "",
+    "join_date": "2026-03-06T07:27:45.586Z",
+    "total_spent": 0,
+    "history": [],
+    "balance": 0,
+    "referrals": 0,
+    "ref_earnings": 0
+  },
+  {
+    "id": 8533195993,
+    "username": "Rx Rxx",
+    "first_name": "Rx",
+    "last_name": "Rxx",
+    "join_date": "2026-03-06T07:55:17.377Z",
+    "total_spent": 0,
+    "history": [],
+    "balance": 0,
+    "referrals": 0,
+    "ref_earnings": 0
+  },
+  {
+    "id": 8228989067,
+    "username": "aditsaja33",
+    "first_name": "ABCD😹",
+    "last_name": "",
+    "join_date": "2026-03-06T08:09:40.711Z",
+    "total_spent": 0,
+    "history": [],
+    "balance": 0,
+    "referrals": 0,
+    "ref_earnings": 0
+  },
+  {
+    "id": 8328727709,
+    "username": "𝕳𝖞𝖊𝖑𝖑 𝕿𝖊𝖒𝖕𝖊𝖘𝖙",
+    "first_name": "𝕳𝖞𝖊𝖑𝖑 𝕿𝖊𝖒𝖕𝖊𝖘𝖙",
+    "last_name": "",
+    "join_date": "2026-03-06T08:14:42.803Z",
+    "total_spent": 0,
+    "history": [],
+    "balance": 0,
+    "referrals": 0,
+    "ref_earnings": 0,
+    "last_claim": "Fri Mar 06 2026",
+    "claimed_missions": [
+      "@FreeXPromosi",
+      "@VX_Dominion",
+      "@the_endstoryid"
+    ]
+  },
+  {
+    "id": 6921519534,
+    "username": "elaina12111",
+    "first_name": "¡𝖒 𝕰𝖑𝖆𝖎𝖓𝖆",
+    "last_name": "",
+    "join_date": "2026-03-06T08:17:55.804Z",
+    "total_spent": 0,
+    "history": [],
+    "balance": 0,
+    "referrals": 0,
+    "ref_earnings": 0,
+    "claimed_missions": [
+      "@FreeXPromosi",
+      "@VX_Dominion",
+      "@the_endstoryid"
+    ],
+    "last_claim": "Fri Mar 06 2026"
+  },
+  {
+    "id": 7641398910,
+    "username": "CEWEKIMUTRHMN",
+    "first_name": "⏤͟͟͞͞𝐑𝐆𝐍 || CEWEKIMUTRHMN #o777 47%",
+    "last_name": "",
+    "join_date": "2026-03-06T08:19:24.232Z",
+    "total_spent": 0,
+    "history": [],
+    "balance": 5000000,
+    "referrals": 0,
+    "ref_earnings": 0,
+    "last_claim": "Fri Mar 06 2026",
+    "claimed_missions": [
+      "@the_endstoryid",
+      "@FreeXPromosi"
+    ]
+  },
+  {
+    "id": 8309358373,
+    "username": "Fadhil Abdillah",
+    "first_name": "Fadhil",
+    "last_name": "Abdillah",
+    "join_date": "2026-03-06T08:35:15.288Z",
+    "total_spent": 37500000,
+    "history": [
+      {
+        "product": "Script: SCRIPT OBF",
+        "amount": 11000000,
+        "type": "script",
+        "details": "kosong",
+        "timestamp": "2026-03-06T11:58:43.419Z"
+      },
+      {
+        "product": "Script: INDICTIVE-CORE-V 4 PRO +",
+        "amount": 14000000,
+        "type": "script",
+        "details": "kosong",
+        "timestamp": "2026-03-06T12:01:29.895Z"
+      },
+      {
+        "product": "Script: BASE BUG X MD",
+        "amount": 12500000,
+        "type": "script",
+        "details": "kosong",
+        "timestamp": "2026-03-06T12:04:36.986Z"
+      }
+    ],
+    "balance": 71500000,
+    "referrals": 0,
+    "ref_earnings": 0,
+    "last_claim": "Fri Mar 06 2026"
+  },
+  {
+    "id": 8369472471,
+    "username": "Hariansiyah",
+    "first_name": "A⏤͟͟͞͞DMIN",
+    "last_name": "SC",
+    "join_date": "2026-03-06T08:43:53.166Z",
+    "total_spent": 0,
+    "history": [],
+    "balance": 82000000,
+    "referrals": 0,
+    "ref_earnings": 0,
+    "claimed_missions": [
+      "@FreeXPromosi",
+      "@VX_Dominion",
+      "@the_endstoryid"
+    ],
+    "last_claim": "Fri Mar 06 2026"
+  },
+  {
+    "id": 7651252270,
+    "username": "𝐅𝐀𝐋'𝐒",
+    "first_name": "𝐅𝐀𝐋'𝐒",
+    "last_name": "",
+    "join_date": "2026-03-06T09:29:27.383Z",
+    "total_spent": 0,
+    "history": [],
+    "balance": 1000000,
+    "referrals": 0,
+    "ref_earnings": 0,
+    "last_claim": "Fri Mar 06 2026"
+  },
+  {
+    "id": 8270229714,
+    "username": "zann_st",
+    "first_name": "Zann",
+    "last_name": "",
+    "join_date": "2026-03-06T09:29:36.550Z",
+    "total_spent": 0,
+    "history": [],
+    "balance": 0,
+    "referrals": 0,
+    "ref_earnings": 0
+  },
+  {
+    "id": 8010764408,
+    "username": "RapaelSTR",
+    "first_name": "RAPAEL STORE",
+    "last_name": "[OPEN/MC/JP/REKBER]",
+    "join_date": "2026-03-06T09:30:38.016Z",
+    "total_spent": 0,
+    "history": [],
+    "balance": 0,
+    "referrals": 0,
+    "ref_earnings": 0
+  },
+  {
+    "id": 8047853700,
+    "username": "gundinihboss",
+    "first_name": "⏤͟͟͞𝙓𝟒 || GUNDI!!",
+    "last_name": "",
+    "join_date": "2026-03-06T09:46:31.614Z",
+    "total_spent": 0,
+    "history": [],
+    "balance": 0,
+    "referrals": 0,
+    "ref_earnings": 0
+  },
+  {
+    "id": 7728235882,
+    "username": "احسان الله دانشیار",
+    "first_name": "احسان الله",
+    "last_name": "دانشیار",
+    "join_date": "2026-03-06T10:00:16.929Z",
+    "total_spent": 0,
+    "history": [],
+    "balance": 0,
+    "referrals": 0,
+    "ref_earnings": 0
+  },
+  {
+    "id": 7777092767,
+    "username": "UD1NMT",
+    "first_name": "UDINMT -",
+    "last_name": "OFFICIAL",
+    "join_date": "2026-03-06T10:04:59.326Z",
+    "total_spent": 0,
+    "history": [],
+    "balance": 10000000,
+    "referrals": 0,
+    "ref_earnings": 0,
+    "last_claim": "Fri Mar 06 2026",
+    "claimed_missions": [
+      "@FreeXPromosi",
+      "@VX_Dominion",
+      "@the_endstoryid"
+    ]
+  },
+  {
+    "id": 1662937958,
+    "username": "strikerBoMb",
+    "first_name": "𝙔𝙤𝙯𝙖𝙠𝙪𝙧𝙖",
+    "last_name": "𝙎𝙚𝙣𝙨𝙚𝙞",
+    "join_date": "2026-03-06T10:08:17.091Z",
+    "total_spent": 0,
+    "history": [],
+    "balance": 0,
+    "referrals": 0,
+    "ref_earnings": 0
+  },
+  {
+    "id": 8026569972,
+    "username": "gunzmods",
+    "first_name": "𝐆𝐮𝐧𝐳𝐳",
+    "last_name": "",
+    "join_date": "2026-03-06T11:20:47.870Z",
+    "total_spent": 43500000,
+    "history": [
+      {
+        "product": "Script: CVPSxINSTALLPANEL",
+        "amount": 12000000,
+        "type": "script",
+        "details": "kosong",
+        "timestamp": "2026-03-06T13:34:48.195Z"
+      },
+      {
+        "product": "Script: All Egg Untuk Panel",
+        "amount": 11000000,
+        "type": "script",
+        "details": "kosong",
+        "timestamp": "2026-03-06T13:48:57.499Z"
+      },
+      {
+        "product": "APK: MANAGER MT MOD [ 27,5 MB ]",
+        "amount": 8500000,
+        "type": "apk",
+        "details": "VERSION APK 2.26.2",
+        "timestamp": "2026-03-06T13:53:46.599Z"
+      },
+      {
+        "product": "Script: payment keel",
+        "amount": 12000000,
+        "type": "script",
+        "details": "-",
+        "timestamp": "2026-03-06T13:55:27.426Z"
+      }
+    ],
+    "balance": 52601762,
+    "referrals": 0,
+    "ref_earnings": 0,
+    "claimed_missions": [
+      "@FreeXPromosi",
+      "@VX_Dominion",
+      "@the_endstoryid",
+      "@Kiuarya"
+    ],
+    "last_claim": "Fri Mar 06 2026"
+  },
+  {
+    "id": 8433907538,
+    "username": "CSSProject0",
+    "first_name": "⸙ꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋ𝐂𝐒𝐒𝐏𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭",
+    "last_name": "",
+    "join_date": "2026-03-06T12:58:59.370Z",
+    "total_spent": 0,
+    "history": [],
+    "balance": 0,
+    "referrals": 0,
+    "ref_earnings": 0
+  },
+  {
+    "id": 1905961787,
+    "username": "DannVprem",
+    "first_name": "𝘿𝘼𝙉𝙏𝙕𝙔それから🆅",
+    "last_name": "",
+    "join_date": "2026-03-06T13:00:26.391Z",
+    "total_spent": 0,
+    "history": [],
+    "balance": 0,
+    "referrals": 0,
+    "ref_earnings": 0
+  },
+  {
+    "id": 6363407994,
+    "username": "RIZKXR",
+    "first_name": "RIZKXR",
+    "last_name": "",
+    "join_date": "2026-03-06T13:03:40.786Z",
+    "total_spent": 0,
+    "history": [],
+    "balance": 0,
+    "referrals": 0,
+    "ref_earnings": 0
+  },
+  {
+    "id": 7386716852,
+    "username": "fraxzynobody",
+    "first_name": "𝐅𝐑𝐀𝐗𝐙𝐘",
+    "last_name": "",
+    "join_date": "2026-03-06T14:03:20.967Z",
+    "total_spent": 0,
+    "history": [],
+    "balance": 1000000,
+    "referrals": 0,
+    "ref_earnings": 0,
+    "last_claim": "Fri Mar 06 2026"
+  },
+  {
+    "id": 6989003486,
+    "username": "Jaxsz132",
+    "first_name": "Zaxs'e",
+    "last_name": "",
+    "join_date": "2026-03-06T14:41:09.908Z",
+    "total_spent": 25000000,
+    "history": [
+      {
+        "product": "Script: BUILD APK FLUTER NO ENC",
+        "amount": 25000000,
+        "type": "script",
+        "details": "kosong",
+        "timestamp": "2026-03-06T14:51:20.460Z"
+      }
+    ],
+    "balance": 1000000,
+    "referrals": 0,
+    "ref_earnings": 0,
+    "claimed_missions": [
+      "@FreeXPromosi",
+      "@VX_Dominion",
+      "@the_endstoryid"
+    ]
+  },
+  {
+    "id": 8639361740,
+    "username": "DOHOOFCALFAME",
+    "first_name": "DOHO OFFICIAL ALFAME",
+    "last_name": "GARUDA TERSAKIT",
+    "join_date": "2026-03-06T15:07:47.816Z",
+    "total_spent": 0,
+    "history": [],
+    "balance": 0,
+    "referrals": 0,
+    "ref_earnings": 0
+  },
+  {
+    "id": 7413500299,
+    "username": "Zordvcxx",
+    "first_name": "⏤͟͟͞͞𝗫𝙕𝙔5 || 𝒁𝒐𝒓𝒅𝒂𝒃𝒚𝒔",
+    "last_name": "",
+    "join_date": "2026-03-06T15:47:06.045Z",
+    "total_spent": 12000000,
+    "history": [
+      {
+        "product": "Script: New Script Store",
+        "amount": 12000000,
+        "type": "script",
+        "details": "12.000.000",
+        "timestamp": "2026-03-06T16:40:40.661Z"
+      }
+    ],
+    "balance": 434032,
+    "referrals": 1,
+    "ref_earnings": 7000000,
+    "last_claim": "Fri Mar 06 2026"
+  },
+  {
+    "id": 8430458318,
+    "username": "nousernames00",
+    "first_name": "Promote Rullz",
+    "last_name": "",
+    "join_date": "2026-03-06T16:05:45.625Z",
+    "total_spent": 0,
+    "history": [],
+    "balance": 2000000,
+    "referrals": 0,
+    "ref_earnings": 0
+  },
+  {
+    "id": 7838971187,
+    "username": "SiPrivat22",
+    "first_name": "𝕴𝕸 𝕰𝖑𝖆𝖎𝖓𝖆",
+    "last_name": "",
+    "join_date": "2026-03-06T16:19:32.359Z",
+    "total_spent": 0,
+    "history": [],
+    "balance": 0,
+    "referrals": 0,
+    "ref_earnings": 0
+  },
+  {
+    "id": 8220733085,
+    "username": "kdhsuppuiw",
+    "first_name": "p",
+    "last_name": "dobtol",
+    "join_date": "2026-03-06T16:37:45.336Z",
+    "total_spent": 0,
+    "history": [],
+    "balance": 0,
+    "referrals": 0,
+    "ref_earnings": 0
   }
 ]
