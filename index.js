@@ -30,7 +30,8 @@ const config = require("./config");
       { command: "profile", description: "Mᴇʟɪʜᴀᴛ Pʀᴏғɪʟᴇ Bᴇʟᴀɴᴊᴀ Kᴀᴍᴜ 👤" },
       { command: "referral", description: "Mᴇɴɢᴀᴊᴀᴋ Tᴇᴍᴀɴ Uɴᴛᴜᴋ Mᴇɴᴅᴀᴘᴀᴛᴋᴀɴ Sᴀʟᴅᴏ 💸" },
       { command: "redeem", description: "Cᴏᴅᴇ Rᴇᴅᴇᴇᴍ Mᴇɴᴅᴀᴘᴀᴛᴋᴀɴ Sᴀʟᴅᴏ 💰" },
-      { command: "cekid", description: "Mᴇʟɪʜᴀᴛ Sɪᴍ Cᴀʀᴅ Pʀᴏғɪʟ Kᴀᴍᴜ 💳" }
+      { command: "cekid", description: "Mᴇʟɪʜᴀᴛ Sɪᴍ Cᴀʀᴅ Pʀᴏғɪʟ Kᴀᴍᴜ 💳" },
+      { command: "adu", description: "Tᴀɴɢᴀɴɢ Pʟᴀʏᴇʀ Dɪ Gʀᴏᴜᴘ ⚔️" }
     ];
     
     const ownerCommands = [
@@ -38,7 +39,10 @@ const config = require("./config");
       { command: "broadcast", description: "Kɪʀɪᴍ PᴇsᴀΠ Kᴇ Sᴇʟᴜʀᴜʜ Uꜱᴇʀ 📣" },
       { command: "addscript", description: "Tᴀᴍʙᴀʜ Sᴛᴏᴋ Sᴄʀɪᴘᴛ Bᴀʀᴜ 📜" },
       { command: "getscript", description: "Lɪʜᴀᴛ -Dᴀғᴛᴀʀ Sᴄʀɪᴘᴛ 📂" },
-      { command: "delscript", description: "^Hᴀᴘᴜs Sᴛᴏᴋ Sᴄʀɪᴘᴛ 🗑️" },
+      { command: "delscript", description: "^Hᴀᴘᴜs Sᴛᴏᴋ Aᴘᴋ 🗑️" },
+      { command: "addapk", description: "Tᴀᴍʙᴀʜ Sᴛᴏᴋ Sᴄʀɪᴘᴛ Bᴀʀᴜ 🔋" },
+      { command: "getapk", description: "Lɪʜᴀᴛ -Dᴀғᴛᴀʀ Aᴘᴋ 📱" },
+      { command: "delapk", description: "^Hᴀᴘᴜs Sᴛᴏᴋ Aᴘᴋ 🗑️" },
       { command: "addcoin", description: "Tᴀᴍʙᴀʜ Sᴀʟᴅᴏ ≠Uꜱᴇʀ 💳" },
       { command: "delcoin", description: "Kᴜʀᴀɴɢɪ Sᴀʟᴅᴏ Uꜱᴇʀ 💸" },
       { command: "userlist", description: "Dᴀғᴛᴀʀ »Sᴇʟᴜʀᴜʜ Uꜱᴇʀ 👥" },
@@ -52,6 +56,7 @@ const config = require("./config");
       { command: "addvoucher", description: "Mᴇᴍʙᴜᴀᴛ Rᴇғᴇʀʀᴀʟ Sᴀʟᴅᴏ Dᴀɴ Kᴜᴏᴛᴀ 🪔" },
       { command: "getdb", description: "Bᴀᴄᴋᴜᴘ Hᴀɴʏᴀ Bᴀɢɪᴀɴ Dʙ ( Pᴇɴᴛɪɴɢ ) 🎁" },
       { command: "ganti", description: "Mᴇɴɢɢᴀɴᴛɪ Fɪʟᴇ Dᴀʀɪ Tᴇʟᴇɢʀᴀᴍ 🐇" }
+      { command: "mt", description: "Fɪᴛᴜʀ Mᴀɪɴᴛᴇɴᴀɴᴄᴇ Oɴ/Oғ 🎛" }
     ];
 
     await bot.telegram.setMyCommands(userCommands);

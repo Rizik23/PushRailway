@@ -1520,30 +1520,32 @@ case "start": {
         reply_markup: {
             inline_keyboard: [
                 [
-                    { text: "📱 List APK Mod", callback_data: "buyapk" },
-                    { text: "🗂 List Script", callback_data: "buyscript" }
+                    { text: "📱 List APK Mod", callback_data: "buyapk", style: "primary" },
+                    { text: "🗂 List Script", callback_data: "buyscript", style: "primary" }
                 ],
                 [
-                    { text: "🎁 Claim Harian", callback_data: "claim_harian" },
-                    { text: "🎰 Spin Gacha", callback_data: "menu_gacha" }
+                    { text: "🎁 Claim Harian", callback_data: "claim_harian", style: "danger" }
                 ],
                 [
-                    { text: "🤝 Referral", callback_data: "menu_referral" },
-                    { text: "💸 Kirim Coin", callback_data: "transfer_coin" }
+                    { text: "🤝 Referral", callback_data: "menu_referral", style: "primary" },
+                    { text: "💸 Kirim Coin", callback_data: "transfer_coin", style: "primary" }
                 ],
                 [
-                   { text: "📦 Mystery Box", callback_data: "menu_mystery" }
+                   { text: "📦 Mystery Box", callback_data: "menu_mystery", style: "danger" }
                 ],
                 [
-                   { text: "🎯 Misi Coin", callback_data: "misi_coin" },
-                   { text: "👤 Cek Profil", callback_data: "profile" }
+                   { text: "🎯 Misi Coin", callback_data: "misi_coin", style: "primary" },
+                   { text: "👤 Cek Profil", callback_data: "profile", style: "primary" }
                 ],
                 [
-                    { text: "🌟 Cek Rating", callback_data: "cek_rating" },
-                    { text: "🏆 Top Pengguna", callback_data: "top_users" }
+                   { text: "🎰 Spin Gacha", callback_data: "menu_gacha", style: "danger" }
                 ],
                 [
-                   { text: "🎧 Cs / Tiket Bantuan", callback_data: "cs_ai_start" }
+                    { text: "🌟 Cek Rating", callback_data: "cek_rating", style: "primary" },
+                    { text: "🏆 Top Pengguna", callback_data: "top_users", style: "primary" }
+                ],
+                [
+                   { text: "🎧 Cs / Tiket Bantuan", callback_data: "cs_ai_start", style: "success" }
                ]
             ]
         }
@@ -4066,30 +4068,32 @@ bot.action("back_to_main_menu", async (ctx) => {
   const keyboard = {
     inline_keyboard: [
                 [
-                    { text: "📱 List APK Mod", callback_data: "buyapk" },
-                    { text: "🗂 List Script", callback_data: "buyscript" }
+                    { text: "📱 List APK Mod", callback_data: "buyapk", style: "primary" },
+                    { text: "🗂 List Script", callback_data: "buyscript", style: "primary" }
                 ],
                 [
-                    { text: "🎁 Claim Harian", callback_data: "claim_harian" },
-                    { text: "🎰 Spin Gacha", callback_data: "menu_gacha" }
+                    { text: "🎁 Claim Harian", callback_data: "claim_harian", style: "danger" }
                 ],
                 [
-                    { text: "🤝 Referral", callback_data: "menu_referral" },
-                    { text: "💸 Kirim Coin", callback_data: "transfer_coin" }
+                    { text: "🤝 Referral", callback_data: "menu_referral", style: "primary" },
+                    { text: "💸 Kirim Coin", callback_data: "transfer_coin", style: "primary" }
                 ],
                 [
-                   { text: "📦 Mystery Box", callback_data: "menu_mystery" }
+                   { text: "📦 Mystery Box", callback_data: "menu_mystery", style: "danger" }
                 ],
                 [
-                   { text: "🎯 Misi Coin", callback_data: "misi_coin" },
-                   { text: "👤 Cek Profil", callback_data: "profile" }
+                   { text: "🎯 Misi Coin", callback_data: "misi_coin", style: "primary" },
+                   { text: "👤 Cek Profil", callback_data: "profile", style: "primary" }
                 ],
                 [
-                    { text: "🌟 Cek Rating", callback_data: "cek_rating" },
-                    { text: "🏆 Top Pengguna", callback_data: "top_users" }
+                   { text: "🎰 Spin Gacha", callback_data: "menu_gacha", style: "danger" }
                 ],
                 [
-                   { text: "🎧 Cs / Tiket Bantuan", callback_data: "cs_ai_start" }
+                    { text: "🌟 Cek Rating", callback_data: "cek_rating", style: "primary" },
+                    { text: "🏆 Top Pengguna", callback_data: "top_users", style: "primary" }
+                ],
+                [
+                   { text: "🎧 Cs / Tiket Bantuan", callback_data: "cs_ai_start", style: "success" }
                ]
           ]
   };
@@ -4201,30 +4205,32 @@ bot.action("cs_ai_stop", async (ctx) => {
     const keyboard = {
         inline_keyboard: [
                 [
-                    { text: "📱 List APK Mod", callback_data: "buyapk" },
-                    { text: "🗂 List Script", callback_data: "buyscript" }
+                    { text: "📱 List APK Mod", callback_data: "buyapk", style: "primary" },
+                    { text: "🗂 List Script", callback_data: "buyscript", style: "primary" }
                 ],
                 [
-                    { text: "🎁 Claim Harian", callback_data: "claim_harian" },
-                    { text: "🎰 Spin Gacha", callback_data: "menu_gacha" }
+                    { text: "🎁 Claim Harian", callback_data: "claim_harian", style: "danger" }
                 ],
                 [
-                    { text: "🤝 Referral", callback_data: "menu_referral" },
-                    { text: "💸 Kirim Coin", callback_data: "transfer_coin" }
+                    { text: "🤝 Referral", callback_data: "menu_referral", style: "primary" },
+                    { text: "💸 Kirim Coin", callback_data: "transfer_coin", style: "primary" }
                 ],
                 [
-                   { text: "📦 Mystery Box", callback_data: "menu_mystery" }
+                   { text: "📦 Mystery Box", callback_data: "menu_mystery", style: "danger" }
                 ],
                 [
-                   { text: "🎯 Misi Coin", callback_data: "misi_coin" },
-                   { text: "👤 Cek Profil", callback_data: "profile" }
+                   { text: "🎯 Misi Coin", callback_data: "misi_coin", style: "primary" },
+                   { text: "👤 Cek Profil", callback_data: "profile", style: "primary" }
                 ],
                 [
-                    { text: "🌟 Cek Rating", callback_data: "cek_rating" },
-                    { text: "🏆 Top Pengguna", callback_data: "top_users" }
+                   { text: "🎰 Spin Gacha", callback_data: "menu_gacha", style: "danger" }
                 ],
                 [
-                   { text: "🎧 Cs / Tiket Bantuan", callback_data: "cs_ai_start" }
+                    { text: "🌟 Cek Rating", callback_data: "cek_rating", style: "primary" },
+                    { text: "🏆 Top Pengguna", callback_data: "top_users", style: "primary" }
+                ],
+                [
+                   { text: "🎧 Cs / Tiket Bantuan", callback_data: "cs_ai_start", style: "success" }
                ]
         ]
     };
