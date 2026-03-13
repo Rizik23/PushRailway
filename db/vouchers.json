@@ -1,0 +1,4461 @@
+{
+  "123": {
+    "type": "ga",
+    "total_pool": 150000000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 8762265167,
+        "name": "yes i'm maesax",
+        "username": "maesaxv2",
+        "amount": 28307794
+      },
+      {
+        "id": 8026569972,
+        "name": "𝐆𝐮𝐧𝐳𝐳",
+        "username": "gunzmods",
+        "amount": 40356756
+      },
+      {
+        "id": 5223822990,
+        "name": "⏤͟͟͞͞𝐌𝐚𝐝𝐙𝐡𝐚 ϟ 𝟔𝟗",
+        "username": "ZaaALFyu",
+        "amount": 41646812
+      },
+      {
+        "id": 7686281557,
+        "name": "Nasz #Quartz ¿",
+        "username": "Nasz_06",
+        "amount": 12615446
+      },
+      {
+        "id": 8480202380,
+        "name": "ꦾꦾ ꦽꦽꦽꦽꦽ🄷🄴🄻🅉 🄲🄴🄾",
+        "username": "Helzzzzcupuu",
+        "amount": 27073192
+      }
+    ],
+    "created_at": "2026-03-10T11:51:41.500Z",
+    "reactions": {
+      "0": 0,
+      "1": 1,
+      "2": 1,
+      "3": 0
+    },
+    "reacted_users": {
+      "1402991119": "1",
+      "8480202380": "2"
+    }
+  },
+  "333": {
+    "type": "ga",
+    "total_pool": 300000000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 7122032803,
+        "name": "Maklowh",
+        "username": "Maklowh",
+        "amount": 14682033
+      },
+      {
+        "id": 8655883649,
+        "name": "Hanzz",
+        "username": "HanzzXmc",
+        "amount": 22626338
+      },
+      {
+        "id": 7146667517,
+        "name": "⏤͟͟͞Í𝐥𝐡𝐚𝐦𝐳𝐳 - 𝐫𝐞𝐡𝐚𝐭 𓌳",
+        "username": "hamzzcollabies",
+        "amount": 20030429
+      },
+      {
+        "id": 8506878637,
+        "name": "Dito Aja",
+        "username": null,
+        "amount": 16491717
+      },
+      {
+        "id": 7686281557,
+        "name": "Nasz #Quartz ¿",
+        "username": "Nasz_06",
+        "amount": 32373177
+      },
+      {
+        "id": 7152064072,
+        "name": "—͟͞͞𝐒𝐃𝐋| YAMA GUCHI HOST || 𝐓𝟓",
+        "username": "Yamaguchihost",
+        "amount": 50968828
+      },
+      {
+        "id": 1987857245,
+        "name": "Support Group - IB",
+        "username": "suport_group_i65b",
+        "amount": 39979237
+      },
+      {
+        "id": 8552957313,
+        "name": "DANZZ HOST",
+        "username": null,
+        "amount": 46555300
+      },
+      {
+        "id": 7995916116,
+        "name": "Ryzz AJAH",
+        "username": "RyzzAj",
+        "amount": 39104855
+      },
+      {
+        "id": 8048321004,
+        "name": "</𝙇𝙑𝙂𝙎 || 𝙋𝙖𝙧𝙖𝙙𝙞𝙨𝙚𝙑𝙤𝙞𝙙𝙈𝘿>",
+        "username": "ParadiseVoidMD",
+        "amount": 17188086
+      }
+    ],
+    "created_at": "2026-03-13T06:55:27.711Z"
+  },
+  "8282": {
+    "type": "ga",
+    "total_pool": 350231131,
+    "remaining_pool": 54969789,
+    "kuota": 2,
+    "claimedBy": [
+      {
+        "id": 7797491207,
+        "name": "𝐒𝐱 ⻰ /𝐊𝐳𝐱𝐬𝐲𝐧𝐬𝐞",
+        "username": null,
+        "amount": 11077722
+      },
+      {
+        "id": 7995916116,
+        "name": "Ryzz AJAH",
+        "username": "RyzzAj",
+        "amount": 35358335
+      },
+      {
+        "id": 7122032803,
+        "name": "Maklowh",
+        "username": "Maklowh",
+        "amount": 21574361
+      },
+      {
+        "id": 8366975648,
+        "name": "jaidan kawe",
+        "username": "jaidankawe",
+        "amount": 19274635
+      },
+      {
+        "id": 8414230376,
+        "name": "── RapkiOffc. Ξίμποου _",
+        "username": "WhyBro444",
+        "amount": 32816145
+      },
+      {
+        "id": 8517189333,
+        "name": "Lindaa🌸",
+        "username": "putluvluv1",
+        "amount": 11409856
+      },
+      {
+        "id": 7962454056,
+        "name": "⏤ѕкуzσ ☇ 𝐍𝐞𝐭𝐡𝐫𝐲𝐥 🇲🇾",
+        "username": "skyzoNewEra",
+        "amount": 26711316
+      },
+      {
+        "id": 8655883649,
+        "name": "Hanzz",
+        "username": "HanzzXmc",
+        "amount": 34394981
+      },
+      {
+        "id": 8263349227,
+        "name": "Kaze Suka [Turu]",
+        "username": "dhhst1",
+        "amount": 17298073
+      },
+      {
+        "id": 7295553358,
+        "name": "Fiz",
+        "username": "Fizajaa0",
+        "amount": 31821045
+      },
+      {
+        "id": 8619894650,
+        "name": "Stevennn",
+        "username": "Steven2317",
+        "amount": 9514883
+      },
+      {
+        "id": 1402991119,
+        "name": "⏤͟͟͞ # 𝗞αєℓℓ~✘𝐳𖥔ᴋ𝟺ᴇʟ 𒁍",
+        "username": "Kaell_Xz",
+        "amount": 12680076
+      },
+      {
+        "id": 8384339467,
+        "name": "AlfrianXploit AlfrianXploit",
+        "username": "AlfrianXploit",
+        "amount": 31329914
+      }
+    ],
+    "created_at": "2026-03-13T09:52:23.754Z",
+    "reactions": {
+      "0": 1,
+      "1": 0,
+      "2": 2,
+      "3": 0
+    },
+    "reacted_users": {
+      "1402991119": "0",
+      "7797491207": "2",
+      "6286498442": "2"
+    }
+  },
+  "9181": {
+    "type": "ga",
+    "total_pool": 1000000000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 8366975648,
+        "name": "jaidan kawe",
+        "username": "jaidankawe",
+        "amount": 101171537
+      },
+      {
+        "id": 7000400605,
+        "name": "ree",
+        "username": "drazxxz",
+        "amount": 97931882
+      },
+      {
+        "id": 7797491207,
+        "name": "EXZA ⻰ /𝐊𝐳𝐱𝐬𝐲𝐧𝐬𝐞",
+        "username": null,
+        "amount": 77329761
+      },
+      {
+        "id": 8506878637,
+        "name": "Dito Aja",
+        "username": null,
+        "amount": 53181245
+      },
+      {
+        "id": 8309358373,
+        "name": "Rey",
+        "username": null,
+        "amount": 67071035
+      },
+      {
+        "id": 8762265167,
+        "name": "JembutKontol",
+        "username": "mbudzjmbudz",
+        "amount": 135553437
+      },
+      {
+        "id": 5757312953,
+        "name": "Sanzdemigood",
+        "username": null,
+        "amount": 40802488
+      },
+      {
+        "id": 8328727709,
+        "name": "𝕳𝖞𝖊𝖑𝖑 𝕿𝖊𝖒𝖕𝖊𝖘𝖙",
+        "username": null,
+        "amount": 121994061
+      },
+      {
+        "id": 8048321004,
+        "name": "</𝙇𝙑𝙂𝙎 || 𝙋𝙖𝙧𝙖𝙙𝙞𝙨𝙚𝙑𝙤𝙞𝙙𝙈𝘿>",
+        "username": "ParadiseVoidMD",
+        "amount": 52316952
+      },
+      {
+        "id": 8421114324,
+        "name": "–soobin ✧",
+        "username": "soobin15",
+        "amount": 107514945
+      },
+      {
+        "id": 8517189333,
+        "name": "⏤͟͟͞͞𝗘𝗻𝘁𝗶𝘁𝘆 Lindaa Suka Kamu🌸",
+        "username": "putluvluv1",
+        "amount": 41753885
+      },
+      {
+        "id": 8512378540,
+        "name": "⏤͟͟͞͞Yuki",
+        "username": null,
+        "amount": 103378772
+      }
+    ],
+    "created_at": "2026-03-07T06:35:47.366Z",
+    "reactions": {
+      "0": 0,
+      "1": 0,
+      "2": 1,
+      "3": 1
+    },
+    "reacted_users": {
+      "1402991119": "3",
+      "8160086256": "2"
+    }
+  },
+  "18281": {
+    "type": "ga",
+    "total_pool": 45000000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 8661203722,
+        "name": "bellavaniaputri",
+        "username": "bellavniaaputri",
+        "amount": 13623808
+      },
+      {
+        "id": 8506878637,
+        "name": "Dito Aja",
+        "username": null,
+        "amount": 10852076
+      },
+      {
+        "id": 7797491207,
+        "name": "EXZA ⻰ /𝐊𝐳𝐱𝐬𝐲𝐧𝐬𝐞",
+        "username": null,
+        "amount": 15993151
+      },
+      {
+        "id": 8366975648,
+        "name": "jaidan kawe",
+        "username": "jaidankawe",
+        "amount": 4530965
+      }
+    ],
+    "created_at": "2026-03-07T05:06:28.847Z",
+    "reactions": {
+      "0": 1,
+      "1": 1,
+      "2": 0,
+      "3": 0
+    },
+    "reacted_users": {
+      "1402991119": "0",
+      "8661203722": "1"
+    }
+  },
+  "18716": {
+    "nominal": 150000000,
+    "kuota": 99,
+    "claimedBy": [],
+    "created_at": "2026-03-12T14:23:16.064Z"
+  },
+  "28181": {
+    "type": "ga",
+    "total_pool": 300000000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 7502679833,
+        "name": "⏤͟͟͞͞𝐒𝐏𝐄𝐂𝐓𝐑𝐀𝐙𝐀 𝐃𝐈𝐆𝐈𝐓𝐀𝐋 ☭",
+        "username": "lmexza",
+        "amount": 27769542
+      },
+      {
+        "id": 8506878637,
+        "name": "Dito Aja",
+        "username": null,
+        "amount": 58021105
+      },
+      {
+        "id": 5757312953,
+        "name": "Sanzdemigood",
+        "username": null,
+        "amount": 67330785
+      },
+      {
+        "id": 7103531545,
+        "name": "zero wut-wut⚡️",
+        "username": "gwehdurov",
+        "amount": 39056347
+      },
+      {
+        "id": 8517189333,
+        "name": "⏤͟͟͞͞𝗘𝗻𝘁𝗶𝘁𝘆 Lindaa Suka Kamu🌸",
+        "username": "putluvluv1",
+        "amount": 41999652
+      },
+      {
+        "id": 8048321004,
+        "name": "</𝙇𝙑𝙂𝙎 || 𝙋𝙖𝙧𝙖𝙙𝙞𝙨𝙚𝙑𝙤𝙞𝙙𝙈𝘿>",
+        "username": "ParadiseVoidMD",
+        "amount": 65822569
+      }
+    ],
+    "created_at": "2026-03-07T06:55:19.807Z",
+    "reactions": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0
+    },
+    "reacted_users": {}
+  },
+  "28271": {
+    "type": "ga",
+    "total_pool": 40000000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 5757312953,
+        "name": "Sanzdemigood",
+        "username": null,
+        "amount": 16078588
+      },
+      {
+        "id": 8366975648,
+        "name": "jaidan kawe",
+        "username": "jaidankawe",
+        "amount": 15933285
+      },
+      {
+        "id": 8517189333,
+        "name": "⏤͟͟͞͞𝗘𝗻𝘁𝗶𝘁𝘆 Lindaa Suka Kamu🌸",
+        "username": "putluvluv1",
+        "amount": 7988127
+      }
+    ],
+    "created_at": "2026-03-07T05:43:49.225Z",
+    "reactions": {
+      "0": 1,
+      "1": 0,
+      "2": 0,
+      "3": 1
+    },
+    "reacted_users": {
+      "1402991119": "0",
+      "8048321004": "3"
+    }
+  },
+  "29292": {
+    "type": "ga",
+    "total_pool": 60000000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 7995916116,
+        "name": "Ryzz AJAH",
+        "username": "RyzzAj",
+        "amount": 16425184
+      },
+      {
+        "id": 8539866221,
+        "name": "Ado Be",
+        "username": "Gelowo",
+        "amount": 12219996
+      },
+      {
+        "id": 7502679833,
+        "name": "⏤͟͟͞͞𝐒𝐏𝐄𝐂𝐓𝐑𝐀𝐙𝐀 𝐃𝐈𝐆𝐈𝐓𝐀𝐋 ☭",
+        "username": "lmexza",
+        "amount": 8475733
+      },
+      {
+        "id": 8505278294,
+        "name": "X",
+        "username": "aldiResi",
+        "amount": 11554224
+      },
+      {
+        "id": 8278112817,
+        "name": "Rafzyyy [ Kang stok ]",
+        "username": "Rafzyy15",
+        "amount": 11324863
+      }
+    ],
+    "created_at": "2026-03-12T07:33:51.620Z"
+  },
+  "51927": {
+    "type": "ga",
+    "total_pool": 20000000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 8506878637,
+        "name": "Dito Aja",
+        "username": null,
+        "amount": 6193434
+      },
+      {
+        "id": 5757312953,
+        "name": "Sanzdemigood",
+        "username": null,
+        "amount": 13806566
+      }
+    ],
+    "created_at": "2026-03-07T05:05:22.209Z",
+    "reactions": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0
+    },
+    "reacted_users": {}
+  },
+  "58743": {
+    "type": "ga",
+    "total_pool": 600000000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 8328727709,
+        "name": "𝕳𝖞𝖊𝖑𝖑 𝕿𝖊𝖒𝖕𝖊𝖘𝖙",
+        "username": null,
+        "amount": 28277459
+      },
+      {
+        "id": 8512378540,
+        "name": "⏤͟͟͞͞Yuki",
+        "username": null,
+        "amount": 27105367
+      },
+      {
+        "id": 8302282541,
+        "name": "EDXZVIP 「VØIDSTRIKE」",
+        "username": "EDXZVIP",
+        "amount": 44021478
+      },
+      {
+        "id": 7122032803,
+        "name": "Maklohgwsepong",
+        "username": null,
+        "amount": 45039155
+      },
+      {
+        "id": 6921519534,
+        "name": "¡𝖒 𝕰𝖑𝖆𝖎𝖓𝖆",
+        "username": "elaina12111",
+        "amount": 15658660
+      },
+      {
+        "id": 8517189333,
+        "name": "⏤͟͟͞͞𝗘𝗻𝘁𝗶𝘁𝘆 Lindaa Suka Kamu🌸",
+        "username": "putluvluv1",
+        "amount": 32415020
+      },
+      {
+        "id": 8433907538,
+        "name": "⸙ꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋ𝐂𝐒𝐒𝐏𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭𑲭",
+        "username": "CSSProject0",
+        "amount": 35497939
+      },
+      {
+        "id": 8160086256,
+        "name": "renn",
+        "username": "rennsukajkt",
+        "amount": 42761274
+      },
+      {
+        "id": 7340896634,
+        "name": "𝐍𝐞𝐞𝐝𝐃𝐫𝐚𝐦𝐚 ( ON )",
+        "username": "GausahSokAtasan",
+        "amount": 28715677
+      },
+      {
+        "id": 5002021330,
+        "name": "Raxy Shoft",
+        "username": "Raxyy22",
+        "amount": 31150079
+      },
+      {
+        "id": 8193776372,
+        "name": "𝐂𝐑𝐙",
+        "username": "CriZzzRowrr",
+        "amount": 14307018
+      },
+      {
+        "id": 8533195993,
+        "name": "Rx Rxx",
+        "username": null,
+        "amount": 44564471
+      },
+      {
+        "id": 5054547166,
+        "name": "𐌶𐍅𐍂𐌴𐍇 🅽🅿🅲",
+        "username": "Zyrexoffc3",
+        "amount": 29785943
+      },
+      {
+        "id": 8222315871,
+        "name": "[ 𐌶𐍅𐍂𐌴𐍇 ] 𐌸𐌷𐌴 𐍅𐌹𐌋𐌋𐌰𐌹𐌽",
+        "username": "Zyrexoffc",
+        "amount": 15861905
+      },
+      {
+        "id": 8230203258,
+        "name": "Bosnsks",
+        "username": null,
+        "amount": 32086878
+      },
+      {
+        "id": 7000400605,
+        "name": "ree",
+        "username": "drazxxz",
+        "amount": 32268322
+      },
+      {
+        "id": 8761735649,
+        "name": "ᴍɪʀᴜʟᴢᴛʏᴢᴢ ꜱᴘᴏᴋᴇɴ",
+        "username": "MirulZtyzzSpoken",
+        "amount": 26965223
+      },
+      {
+        "id": 8048321004,
+        "name": "</𝙇𝙑𝙂𝙎 || 𝙋𝙖𝙧𝙖𝙙𝙞𝙨𝙚𝙑𝙤𝙞𝙙𝙈𝘿>",
+        "username": "ParadiseVoidMD",
+        "amount": 22244783
+      },
+      {
+        "id": 8366975648,
+        "name": "jaidan kawe",
+        "username": "jaidankawe",
+        "amount": 40916398
+      },
+      {
+        "id": 7686281557,
+        "name": "Nasz #Quartz ¿",
+        "username": "Nasz_06",
+        "amount": 10356951
+      }
+    ],
+    "created_at": "2026-03-08T08:00:00.939Z",
+    "reactions": {
+      "0": 0,
+      "1": 2,
+      "2": 2,
+      "3": 1
+    },
+    "reacted_users": {
+      "1402991119": "1",
+      "7340896634": "2",
+      "5054547166": "2",
+      "8222315871": "1",
+      "8761735649": "3"
+    }
+  },
+  "81872": {
+    "type": "ga",
+    "total_pool": 50000000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 7413500299,
+        "name": "⏤͟͟͞͞𝗫𝙕𝙔5 || 𝒁𝒐𝒓𝒅𝒂𝒃𝒚𝒔",
+        "username": "Zordvcxx",
+        "amount": 5806105
+      },
+      {
+        "id": 8026569972,
+        "name": "𝐆𝐮𝐧𝐳𝐳",
+        "username": "gunzmods",
+        "amount": 19783405
+      },
+      {
+        "id": 8230203258,
+        "name": "Bosnsks",
+        "username": null,
+        "amount": 17288823
+      },
+      {
+        "id": 8220733085,
+        "name": "p dobtol",
+        "username": "kdhsuppuiw",
+        "amount": 7121667
+      }
+    ],
+    "created_at": "2026-03-07T16:41:13.682Z",
+    "reactions": {
+      "0": 0,
+      "1": 0,
+      "2": 1,
+      "3": 1
+    },
+    "reacted_users": {
+      "1402991119": "3",
+      "8230203258": "2"
+    }
+  },
+  "82828": {
+    "type": "ga",
+    "total_pool": 80000000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 8230203258,
+        "name": "Bosnsks",
+        "username": null,
+        "amount": 18512724
+      },
+      {
+        "id": 8328727709,
+        "name": "𝕳𝖞𝖊𝖑𝖑 𝕿𝖊𝖒𝖕𝖊𝖘𝖙",
+        "username": null,
+        "amount": 23681511
+      },
+      {
+        "id": 8048321004,
+        "name": "</𝙇𝙑𝙂𝙎 || 𝙋𝙖𝙧𝙖𝙙𝙞𝙨𝙚𝙑𝙤𝙞𝙙𝙈𝘿>",
+        "username": "ParadiseVoidMD",
+        "amount": 10326013
+      },
+      {
+        "id": 8512378540,
+        "name": "⏤͟͟͞͞Yuki",
+        "username": null,
+        "amount": 15292558
+      },
+      {
+        "id": 7413500299,
+        "name": "⏤͟͟͞͞𝗫𝙕𝙔5 || 𝒁𝒐𝒓𝒅𝒂𝒃𝒚𝒔",
+        "username": "Zordvcxx",
+        "amount": 12187194
+      }
+    ],
+    "created_at": "2026-03-07T21:18:17.494Z",
+    "reactions": {
+      "0": 0,
+      "1": 1,
+      "2": 0,
+      "3": 0
+    },
+    "reacted_users": {
+      "8230203258": "1"
+    }
+  },
+  "108383": {
+    "type": "ga",
+    "total_pool": 500000000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 8220733085,
+        "name": "p dobtol",
+        "username": "kdhsuppuiw",
+        "amount": 89267664
+      },
+      {
+        "id": 7122032803,
+        "name": "Maklohgwsepong",
+        "username": null,
+        "amount": 80228988
+      },
+      {
+        "id": 8366975648,
+        "name": "jaidan kawe",
+        "username": "jaidankawe",
+        "amount": 102713085
+      },
+      {
+        "id": 7413500299,
+        "name": "⏤͟͟͞͞𝗫𝙕𝙔5 || 𝒁𝒐𝒓𝒅𝒂𝒃𝒚𝒔",
+        "username": "Zordvcxx",
+        "amount": 67141084
+      },
+      {
+        "id": 8762265167,
+        "name": "JembutKontol",
+        "username": "mbudzjmbudz",
+        "amount": 27129097
+      },
+      {
+        "id": 8278112817,
+        "name": "Rafzyyy [ Limit ]",
+        "username": "Rafzyy15",
+        "amount": 57218388
+      },
+      {
+        "id": 8160086256,
+        "name": "renn",
+        "username": "rennsukajkt",
+        "amount": 76301694
+      }
+    ],
+    "created_at": "2026-03-08T12:17:10.047Z",
+    "reactions": {
+      "0": 3,
+      "1": 2,
+      "2": 0,
+      "3": 0
+    },
+    "reacted_users": {
+      "1402991119": "1",
+      "8328727709": "0",
+      "8366975648": "0",
+      "7122032803": "1",
+      "7568747693": "0"
+    }
+  },
+  "181818": {
+    "nominal": 15000000,
+    "kuota": 79,
+    "claimedBy": [
+      {
+        "id": 7000400605,
+        "name": "ree",
+        "username": "drazxxz",
+        "amount": 15000000
+      },
+      {
+        "id": 8517189333,
+        "name": "⏤͟͟͞͞𝗘𝗻𝘁𝗶𝘁𝘆 Lindaa Suka Kamu🌸",
+        "username": "putluvluv1",
+        "amount": 15000000
+      },
+      {
+        "id": 8302282541,
+        "name": "EDXZVIP 「VØIDSTRIKE」",
+        "username": "EDXZVIP",
+        "amount": 15000000
+      },
+      {
+        "id": 7103531545,
+        "name": "zero wut-wut⚡️",
+        "username": "gwehdurov",
+        "amount": 15000000
+      },
+      {
+        "id": 5002021330,
+        "name": "PUKYY 👺👺",
+        "username": "Cicaklodon",
+        "amount": 15000000
+      },
+      {
+        "id": 7932183592,
+        "name": "AGUNG [JARANG ON]",
+        "username": "AGUNGVIP",
+        "amount": 15000000
+      },
+      {
+        "id": 8160086256,
+        "name": "renn",
+        "username": "rennsukajkt",
+        "amount": 15000000
+      },
+      {
+        "id": 8506878637,
+        "name": "Dito Aja",
+        "username": null,
+        "amount": 15000000
+      },
+      {
+        "id": 8048321004,
+        "name": "</𝙇𝙑𝙂𝙎 || 𝙋𝙖𝙧𝙖𝙙𝙞𝙨𝙚𝙑𝙤𝙞𝙙𝙈𝘿>",
+        "username": "ParadiseVoidMD",
+        "amount": 15000000
+      },
+      {
+        "id": 8414230376,
+        "name": "rfkmhd _",
+        "username": "rfkmhd",
+        "amount": 15000000
+      },
+      {
+        "id": 1200928025,
+        "name": "── RapkiOffc. Ξίμποου",
+        "username": "whyBro404",
+        "amount": 15000000
+      },
+      {
+        "id": 8365519013,
+        "name": "FanzzXiterz",
+        "username": "FanzzXiterz",
+        "amount": 15000000
+      },
+      {
+        "id": 6989003486,
+        "name": "Zaxs'e",
+        "username": "Jaxsz132",
+        "amount": 15000000
+      },
+      {
+        "id": 8366975648,
+        "name": "jaidan kawe",
+        "username": "jaidankawe",
+        "amount": 15000000
+      },
+      {
+        "id": 7797491207,
+        "name": "EXZA ⻰ /𝐊𝐳𝐱𝐬𝐲𝐧𝐬𝐞",
+        "username": null,
+        "amount": 15000000
+      },
+      {
+        "id": 7836627369,
+        "name": "Ｉ'Ｍ ＨＵＭＡＮ",
+        "username": "UhaloIBack",
+        "amount": 15000000
+      },
+      {
+        "id": 8230203258,
+        "name": "Bosnsks",
+        "username": null,
+        "amount": 15000000
+      },
+      {
+        "id": 5054547166,
+        "name": "𐌶𐍅𐍂𐌴𐍇 🅽🅿🅲",
+        "username": "Zyrexoffc3",
+        "amount": 15000000
+      },
+      {
+        "id": 8222315871,
+        "name": "[ 𐌶𐍅𐍂𐌴𐍇 ] 𐌸𐌷𐌴 𐍅𐌹𐌋𐌋𐌰𐌹𐌽",
+        "username": "Zyrexoffc",
+        "amount": 15000000
+      },
+      {
+        "id": 6979716487,
+        "name": "alfat.syah",
+        "username": "Alfatedtz28",
+        "amount": 15000000
+      }
+    ],
+    "created_at": "2026-03-07T09:32:33.152Z",
+    "reactions": {
+      "0": 0,
+      "1": 0,
+      "2": 1,
+      "3": 1
+    },
+    "reacted_users": {
+      "1402991119": "3",
+      "8302282541": "2"
+    }
+  },
+  "183828": {
+    "type": "ga",
+    "total_pool": 250000000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 8235663977,
+        "name": "Leon Shirs",
+        "username": "LEONSHIRS",
+        "amount": 49216655
+      },
+      {
+        "id": 7076443573,
+        "name": "☨ ♞𝗫𝗖𝗲𝗻𝘃𝗶𝗻𝘇𝘇 ϟ 𝗗𝗿𝗼𝘅𝘂𝗩𝗼𝗿𝘀🍷",
+        "username": null,
+        "amount": 60087225
+      },
+      {
+        "id": 8328727709,
+        "name": "𝕳𝖞𝖊𝖑𝖑 𝕿𝖊𝖒𝖕𝖊𝖘𝖙",
+        "username": "Pukiiioo1211",
+        "amount": 40970506
+      },
+      {
+        "id": 8302282541,
+        "name": "EDXZVIP 「VØIDSTRIKE」",
+        "username": "EDXZVIP",
+        "amount": 29863641
+      },
+      {
+        "id": 7413500299,
+        "name": "𝐙𝐎𝐑𝐃𝐀𝐁𝐘𝐒 [ OPEN UBOT ]",
+        "username": "seppabys",
+        "amount": 69861973
+      }
+    ],
+    "created_at": "2026-03-08T13:26:48.058Z",
+    "reactions": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0
+    },
+    "reacted_users": {}
+  },
+  "192281": {
+    "type": "ga",
+    "total_pool": 150000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 8661203722,
+        "name": "bellavaniaputri",
+        "username": "bellavniaaputri",
+        "amount": 26747
+      },
+      {
+        "id": 8298672283,
+        "name": "𝘼𝙧𝙨𝙝𝙖𝙙𝙚𝙫𝙖⚚",
+        "username": "arshadeva",
+        "amount": 25098
+      },
+      {
+        "id": 8026569972,
+        "name": "𝐆𝐮𝐧𝐳𝐳",
+        "username": "gunzmods",
+        "amount": 49660
+      },
+      {
+        "id": 8414230376,
+        "name": "rfkmhd _",
+        "username": "rfkmhd",
+        "amount": 35362
+      },
+      {
+        "id": 1200928025,
+        "name": "── RapkiOffc. Ξίμποου",
+        "username": "whyBro404",
+        "amount": 13133
+      }
+    ],
+    "created_at": "2026-03-10T20:28:59.361Z",
+    "reactions": {
+      "0": 0,
+      "1": 1,
+      "2": 0,
+      "3": 0
+    },
+    "reacted_users": {
+      "1402991119": "1"
+    }
+  },
+  "212818": {
+    "type": "ga",
+    "total_pool": 40000000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 8048321004,
+        "name": "</𝙇𝙑𝙂𝙎 || 𝙋𝙖𝙧𝙖𝙙𝙞𝙨𝙚𝙑𝙤𝙞𝙙𝙈𝘿>",
+        "username": "ParadiseVoidMD",
+        "amount": 4512576
+      },
+      {
+        "id": 7122032803,
+        "name": "Maklohgwsepong",
+        "username": null,
+        "amount": 4494860
+      },
+      {
+        "id": 8366975648,
+        "name": "jaidan kawe",
+        "username": "jaidankawe",
+        "amount": 10333024
+      },
+      {
+        "id": 7686281557,
+        "name": "Nasz #Quartz ¿",
+        "username": "Nasz_06",
+        "amount": 7342481
+      },
+      {
+        "id": 7103531545,
+        "name": "zero wut-wut⚡️",
+        "username": "gwehdurov",
+        "amount": 13317059
+      }
+    ],
+    "created_at": "2026-03-09T06:52:52.446Z"
+  },
+  "528262": {
+    "nominal": 50000000,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 5757312953,
+        "name": "Sanzdemigood",
+        "username": null,
+        "amount": 50000000
+      },
+      {
+        "id": 7797491207,
+        "name": "EXZA ⻰ /𝐊𝐳𝐱𝐬𝐲𝐧𝐬𝐞",
+        "username": null,
+        "amount": 50000000
+      },
+      {
+        "id": 8661203722,
+        "name": "bellavaniaputri",
+        "username": "bellavniaaputri",
+        "amount": 50000000
+      }
+    ],
+    "created_at": "2026-03-07T04:59:51.978Z",
+    "reactions": {
+      "0": 1,
+      "1": 0,
+      "2": 1,
+      "3": 0
+    },
+    "reacted_users": {
+      "1402991119": "2",
+      "8506878637": "0"
+    }
+  },
+  "615271": {
+    "type": "ga",
+    "total_pool": 50000000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 7797491207,
+        "name": "EXZA ⻰ /𝐊𝐳𝐱𝐬𝐲𝐧𝐬𝐞",
+        "username": null,
+        "amount": 7110543
+      },
+      {
+        "id": 8506878637,
+        "name": "Dito Aja",
+        "username": null,
+        "amount": 5220715
+      },
+      {
+        "id": 8661203722,
+        "name": "bellavaniaputri",
+        "username": "bellavniaaputri",
+        "amount": 4322464
+      },
+      {
+        "id": 5757312953,
+        "name": "Sanzdemigood",
+        "username": null,
+        "amount": 15731750
+      },
+      {
+        "id": 8614343065,
+        "name": "⏤͟͟͞𝙈𝟓 X ⏤͟͟͞𝙈£K|| BAGAS CRUELL",
+        "username": "bagascruell",
+        "amount": 12943992
+      },
+      {
+        "id": 8517189333,
+        "name": "⏤͟͟͞͞𝗘𝗻𝘁𝗶𝘁𝘆 Lindaa Suka Kamu🌸",
+        "username": "putluvluv1",
+        "amount": 4670536
+      }
+    ],
+    "created_at": "2026-03-07T05:17:38.560Z",
+    "reactions": {
+      "0": 0,
+      "1": 1,
+      "2": 0,
+      "3": 0
+    },
+    "reacted_users": {
+      "1402991119": "1"
+    }
+  },
+  "652931": {
+    "type": "ga",
+    "total_pool": 65550230,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 7000400605,
+        "name": "ree",
+        "username": "drazxxz",
+        "amount": 14269742
+      },
+      {
+        "id": 8026569972,
+        "name": "𝐆𝐮𝐧𝐳𝐳",
+        "username": "gunzmods",
+        "amount": 22665110
+      },
+      {
+        "id": 8506878637,
+        "name": "Dito Aja",
+        "username": null,
+        "amount": 20599365
+      },
+      {
+        "id": 8517189333,
+        "name": "⏤͟͟͞͞𝗘𝗻𝘁𝗶𝘁𝘆 Lindaa Suka Kamu🌸",
+        "username": "putluvluv1",
+        "amount": 8016013
+      }
+    ],
+    "created_at": "2026-03-07T06:10:51.132Z",
+    "reactions": {
+      "0": 0,
+      "1": 1,
+      "2": 0,
+      "3": 0
+    },
+    "reacted_users": {
+      "1402991119": "1"
+    }
+  },
+  "712816": {
+    "type": "ga",
+    "total_pool": 50000000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 7000400605,
+        "name": "ree",
+        "username": "drazxxz",
+        "amount": 12509767
+      },
+      {
+        "id": 8506878637,
+        "name": "Dito Aja",
+        "username": null,
+        "amount": 14708453
+      },
+      {
+        "id": 8661203722,
+        "name": "bellavaniaputri",
+        "username": "bellavniaaputri",
+        "amount": 22781780
+      }
+    ],
+    "created_at": "2026-03-07T02:36:52.982Z",
+    "reactions": {
+      "0": 0,
+      "1": 1,
+      "2": 0,
+      "3": 1
+    },
+    "reacted_users": {
+      "1402991119": "3",
+      "8506878637": "1"
+    }
+  },
+  "715271": {
+    "type": "ga",
+    "total_pool": 30000000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 7000400605,
+        "name": "ree",
+        "username": "drazxxz",
+        "amount": 4325029
+      },
+      {
+        "id": 8517189333,
+        "name": "⏤͟͟͞͞𝗘𝗻𝘁𝗶𝘁𝘆 Lindaa Suka Kamu🌸",
+        "username": "putluvluv1",
+        "amount": 4912587
+      },
+      {
+        "id": 8026569972,
+        "name": "𝐆𝐮𝐧𝐳𝐳",
+        "username": "gunzmods",
+        "amount": 13495635
+      },
+      {
+        "id": 8230203258,
+        "name": "Bosnsks",
+        "username": null,
+        "amount": 7266749
+      }
+    ],
+    "created_at": "2026-03-07T02:29:51.465Z",
+    "reactions": {
+      "0": 0,
+      "1": 2,
+      "2": 0,
+      "3": 0
+    },
+    "reacted_users": {
+      "1402991119": "1",
+      "8026569972": "1"
+    }
+  },
+  "718182": {
+    "type": "ga",
+    "total_pool": 828000000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 7686281557,
+        "name": "Nasz #Quartz ¿",
+        "username": "Nasz_06",
+        "amount": 23117361
+      },
+      {
+        "id": 8505278294,
+        "name": "X",
+        "username": "aldiResi",
+        "amount": 63684284
+      },
+      {
+        "id": 1122207241,
+        "name": "Support Group - IB",
+        "username": "suport_group_i6b",
+        "amount": 21793035
+      },
+      {
+        "id": 1987857245,
+        "name": "Support Group - IB",
+        "username": "suport_group_i65b",
+        "amount": 62120362
+      },
+      {
+        "id": 7000400605,
+        "name": "ree",
+        "username": "drazxxz",
+        "amount": 59396022
+      },
+      {
+        "id": 8517189333,
+        "name": "Lindaa🌸",
+        "username": "putluvluv1",
+        "amount": 24793728
+      },
+      {
+        "id": 8230203258,
+        "name": "Bosnsks",
+        "username": null,
+        "amount": 19515382
+      },
+      {
+        "id": 7899610678,
+        "name": "alfat ky",
+        "username": null,
+        "amount": 18457913
+      },
+      {
+        "id": 6979716487,
+        "name": "alfat.syah",
+        "username": "Alfatedtz28",
+        "amount": 36143084
+      },
+      {
+        "id": 7836627369,
+        "name": "Ｉ'Ｍ ＨＵＭＡＮ",
+        "username": "UhaloIBack",
+        "amount": 54305600
+      },
+      {
+        "id": 7907134865,
+        "name": "PINDAH AKUN",
+        "username": "Rizzxtzy",
+        "amount": 42612091
+      },
+      {
+        "id": 1402991119,
+        "name": "⏤͟͟͞ 🧸 𝗞αєℓℓ~✘𝐳𖥔ᴋ𝟺ᴇʟ 𒁍",
+        "username": "Kaell_Xz",
+        "amount": 36087283
+      },
+      {
+        "id": 7797491207,
+        "name": "𝐒𝐱 ⻰ /𝐊𝐳𝐱𝐬𝐲𝐧𝐬𝐞",
+        "username": null,
+        "amount": 44945713
+      },
+      {
+        "id": 7692230763,
+        "name": "𝗩𝗮𝘆𝘆 ⺓𝗩𝗩𝗜𝗣",
+        "username": "suamiayano",
+        "amount": 64212072
+      },
+      {
+        "id": 7566580432,
+        "name": "ཊླྡྐྗྦྗཥྗཥྗZayyཥཌྤཌྤྖྤྕྤྕྤྕྤྖྤཊཋཎཋྤཉྮྦྮྦྮྦྮྦླྤཌྤཌཌྤཌྤྖྤྕྤྕྤྕྤྖྤཊ ཊླྡྐྗྦྗཥྗཥྗཥཌྤཌྤྖྤྕྤྕྤྕྤྖྤཊཌྤཌྤྖྤྕྤྕྤྕྤྖྤཊཋཎཋྤཉྮྦྮྦྮྦྮྦླྤཌྤཌྤཌྤཌ",
+        "username": "SuamiPhoebe",
+        "amount": 54744325
+      },
+      {
+        "id": 7038001731,
+        "name": "𝐈'𝐌 ☣︎ 𝐋𝐀𝐑𝐒𝐇𝐄𝐍☭",
+        "username": "larshenn",
+        "amount": 59544021
+      },
+      {
+        "id": 7502679833,
+        "name": "⏤͟͟͞͞𝐒𝐏𝐄𝐂𝐓𝐑𝐀𝐙𝐀 𝐃𝐈𝐆𝐈𝐓𝐀𝐋 ☭",
+        "username": "lmexza",
+        "amount": 47405291
+      },
+      {
+        "id": 7152064072,
+        "name": "—͟͞͞𝐒𝐃𝐋| YAMA GUCHI HOST || 𝐓𝟓",
+        "username": "Yamaguchihost",
+        "amount": 35393466
+      },
+      {
+        "id": 7386716852,
+        "name": "𝐅𝐑𝐀𝐗𝐙𝐘",
+        "username": "fraxzynobody",
+        "amount": 29140903
+      },
+      {
+        "id": 6286498442,
+        "name": "𝗦𝘁𝘆𝘇𝗡𝗼𝘁𝗗𝗲𝘃 🪽",
+        "username": null,
+        "amount": 30588064
+      }
+    ],
+    "created_at": "2026-03-09T01:52:02.530Z",
+    "reactions": {
+      "0": 1,
+      "1": 3,
+      "2": 4,
+      "3": 1
+    },
+    "reacted_users": {
+      "1402991119": "3",
+      "8505278294": "1",
+      "8230203258": "2",
+      "7899610678": "2",
+      "6979716487": "2",
+      "7836627369": "0",
+      "7907134865": "1",
+      "8414230376": "1",
+      "6286498442": "2"
+    }
+  },
+  "719281": {
+    "type": "ga",
+    "total_pool": 200000000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 8655883649,
+        "name": "Hanzz",
+        "username": "HanzzXmc",
+        "amount": 7145084
+      },
+      {
+        "id": 8366975648,
+        "name": "jaidan kawe",
+        "username": "jaidankawe",
+        "amount": 16902136
+      },
+      {
+        "id": 8302282541,
+        "name": "EDXZVIP 「VØIDSTRIKE」",
+        "username": "EDXZVIP",
+        "amount": 7206747
+      },
+      {
+        "id": 8026569972,
+        "name": "𝐆𝐮𝐧𝐳𝐳",
+        "username": "gunzmods",
+        "amount": 21342264
+      },
+      {
+        "id": 8230203258,
+        "name": "Bosnsks",
+        "username": null,
+        "amount": 10951775
+      },
+      {
+        "id": 7899610678,
+        "name": "alfat ky",
+        "username": null,
+        "amount": 9223556
+      },
+      {
+        "id": 8235663977,
+        "name": "Leon Shirs",
+        "username": "LEONSHIRS",
+        "amount": 9976809
+      },
+      {
+        "id": 6979716487,
+        "name": "alfat.syah",
+        "username": "Alfatedtz28",
+        "amount": 19269162
+      },
+      {
+        "id": 8614343065,
+        "name": "⏤͟͟͞𝙈𝟓 X ⏤͟͟͞𝙈£K|| BAGAS CRUELL",
+        "username": "bagascruell",
+        "amount": 15288869
+      },
+      {
+        "id": 7836627369,
+        "name": "Ｉ'Ｍ ＨＵＭＡＮ",
+        "username": "UhaloIBack",
+        "amount": 12294257
+      },
+      {
+        "id": 7350953370,
+        "name": "𝐃𝐚𝐲𝐲#3",
+        "username": "Dayy_3",
+        "amount": 11392122
+      },
+      {
+        "id": 8048321004,
+        "name": "</𝙇𝙑𝙂𝙎 || 𝙋𝙖𝙧𝙖𝙙𝙞𝙨𝙚𝙑𝙤𝙞𝙙𝙈𝘿>",
+        "username": "ParadiseVoidMD",
+        "amount": 8644854
+      },
+      {
+        "id": 8517189333,
+        "name": "Lindaa🌸",
+        "username": "putluvluv1",
+        "amount": 18434194
+      },
+      {
+        "id": 7797491207,
+        "name": "𝐒𝐱 ⻰ /𝐊𝐳𝐱𝐬𝐲𝐧𝐬𝐞",
+        "username": null,
+        "amount": 11515305
+      },
+      {
+        "id": 6464541455,
+        "name": "Crimson Nightmare XT",
+        "username": "CrimsonNightmaree",
+        "amount": 20412866
+      }
+    ],
+    "created_at": "2026-03-09T14:17:25.943Z",
+    "reactions": {
+      "0": 1,
+      "1": 4,
+      "2": 1,
+      "3": 1
+    },
+    "reacted_users": {
+      "1402991119": "3",
+      "8230203258": "2",
+      "7899610678": "1",
+      "8655883649": "1",
+      "6979716487": "1",
+      "7836627369": "0",
+      "8614343065": "1"
+    }
+  },
+  "726281": {
+    "type": "ga",
+    "total_pool": 500000000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 1200928025,
+        "name": "── RapkiOffc. Ξίμποου",
+        "username": "whyBro404",
+        "amount": 74198383
+      },
+      {
+        "id": 7122032803,
+        "name": "Maklowh",
+        "username": null,
+        "amount": 36345816
+      },
+      {
+        "id": 8655883649,
+        "name": "Hanzz",
+        "username": "HanzzXmc",
+        "amount": 29327706
+      },
+      {
+        "id": 8414230376,
+        "name": "rfkmhd _",
+        "username": "rfkmhd",
+        "amount": 54409038
+      },
+      {
+        "id": 7686281557,
+        "name": "Nasz #Quartz ¿",
+        "username": "Nasz_06",
+        "amount": 65425439
+      },
+      {
+        "id": 8517189333,
+        "name": "Lindaa🌸",
+        "username": "putluvluv1",
+        "amount": 26487778
+      },
+      {
+        "id": 7146667517,
+        "name": "⏤͟͟͞Í𝐥𝐡𝐚𝐦𝐳𝐳 - 𝐫𝐞𝐡𝐚𝐭 𓌳",
+        "username": "hamzzcollabies",
+        "amount": 40870233
+      },
+      {
+        "id": 7103531545,
+        "name": "zero wut-wut⚡️",
+        "username": "gwehdurov",
+        "amount": 39725079
+      },
+      {
+        "id": 2034311161,
+        "name": "y",
+        "username": "modeoffmatikanfalse",
+        "amount": 58790603
+      },
+      {
+        "id": 8235663977,
+        "name": "Leon Shirs",
+        "username": "LEONSHIRS",
+        "amount": 74419925
+      }
+    ],
+    "created_at": "2026-03-12T12:58:11.277Z"
+  },
+  "727262": {
+    "type": "ga",
+    "total_pool": 600000000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 7103531545,
+        "name": "zero wut-wut⚡️",
+        "username": "gwehdurov",
+        "amount": 38090683
+      },
+      {
+        "id": 8366975648,
+        "name": "jaidan kawe",
+        "username": "jaidankawe",
+        "amount": 32767680
+      },
+      {
+        "id": 8655883649,
+        "name": "Hanzz",
+        "username": "HanzzXmc",
+        "amount": 17028383
+      },
+      {
+        "id": 7413500299,
+        "name": "𝐙𝐎𝐑𝐃𝐀𝐁𝐘𝐒 [ OPEN UBOT ]",
+        "username": "seppabys",
+        "amount": 51315837
+      },
+      {
+        "id": 2034311161,
+        "name": "y",
+        "username": "modeoffmatikanfalse",
+        "amount": 36458936
+      },
+      {
+        "id": 7686281557,
+        "name": "Nasz #Quartz ¿",
+        "username": "Nasz_06",
+        "amount": 42028374
+      },
+      {
+        "id": 7502679833,
+        "name": "⏤͟͟͞͞𝐒𝐏𝐄𝐂𝐓𝐑𝐀𝐙𝐀 𝐃𝐈𝐆𝐈𝐓𝐀𝐋 ☭",
+        "username": "lmexza",
+        "amount": 36047412
+      },
+      {
+        "id": 1987857245,
+        "name": "Support Group - IB",
+        "username": "suport_group_i65b",
+        "amount": 26019424
+      },
+      {
+        "id": 8235663977,
+        "name": "Leon Shirs",
+        "username": "LEONSHIRS",
+        "amount": 47735514
+      },
+      {
+        "id": 8220733085,
+        "name": "𝐙𝐄𝐓𝐙𝐀𝐏𝐎𝐋𝐎 [ OPEN PANEL ]",
+        "username": "Zetzapolo",
+        "amount": 22845593
+      },
+      {
+        "id": 6747350093,
+        "name": "⸙ꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋDanz ⸙ꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋ",
+        "username": "Ygtagkayatai",
+        "amount": 50345420
+      },
+      {
+        "id": 8048321004,
+        "name": "</𝙇𝙑𝙂𝙎 || 𝙋𝙖𝙧𝙖𝙙𝙞𝙨𝙚𝙑𝙤𝙞𝙙𝙈𝘿>",
+        "username": "ParadiseVoidMD",
+        "amount": 65387463
+      },
+      {
+        "id": 8026569972,
+        "name": "𝐆𝐮𝐧𝐳𝐳",
+        "username": "gunzmods",
+        "amount": 18130723
+      },
+      {
+        "id": 5002021330,
+        "name": "Raxy Shoft",
+        "username": "Raxyy22",
+        "amount": 35680093
+      },
+      {
+        "id": 7295553358,
+        "name": "Fiz",
+        "username": "Fizajaa0",
+        "amount": 80118465
+      }
+    ],
+    "created_at": "2026-03-12T13:28:41.230Z"
+  },
+  "816318": {
+    "type": "ga",
+    "total_pool": 60000000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 7000400605,
+        "name": "ree",
+        "username": "drazxxz",
+        "amount": 7891021
+      },
+      {
+        "id": 7675020138,
+        "name": "Support Group - IB",
+        "username": "GroupIB_Support_Fazz",
+        "amount": 12039534
+      },
+      {
+        "id": 8230203258,
+        "name": "Bosnsks",
+        "username": null,
+        "amount": 6367413
+      },
+      {
+        "id": 8506878637,
+        "name": "Dito Aja",
+        "username": null,
+        "amount": 12170093
+      },
+      {
+        "id": 8661203722,
+        "name": "bellavaniaputri",
+        "username": "bellavniaaputri",
+        "amount": 5316508
+      },
+      {
+        "id": 8048321004,
+        "name": "</𝙇𝙑𝙂𝙎 || 𝙋𝙖𝙧𝙖𝙙𝙞𝙨𝙚𝙑𝙤𝙞𝙙𝙈𝘿>",
+        "username": "ParadiseVoidMD",
+        "amount": 8341408
+      },
+      {
+        "id": 8160086256,
+        "name": "renn",
+        "username": "rennsukajkt",
+        "amount": 7874023
+      }
+    ],
+    "created_at": "2026-03-07T10:46:34.465Z",
+    "reactions": {
+      "0": 1,
+      "1": 0,
+      "2": 0,
+      "3": 0
+    },
+    "reacted_users": {
+      "8230203258": "0"
+    }
+  },
+  "817172": {
+    "type": "ga",
+    "total_pool": 200000000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 8328727709,
+        "name": "𝕳𝖞𝖊𝖑𝖑 𝕿𝖊𝖒𝖕𝖊𝖘𝖙",
+        "username": null,
+        "amount": 20169914
+      },
+      {
+        "id": 8506878637,
+        "name": "Dito Aja",
+        "username": null,
+        "amount": 25650140
+      },
+      {
+        "id": 8512378540,
+        "name": "⏤͟͟͞͞Yuki",
+        "username": null,
+        "amount": 25705612
+      },
+      {
+        "id": 8048321004,
+        "name": "</𝙇𝙑𝙂𝙎 || 𝙋𝙖𝙧𝙖𝙙𝙞𝙨𝙚𝙑𝙤𝙞𝙙𝙈𝘿>",
+        "username": "ParadiseVoidMD",
+        "amount": 20670500
+      },
+      {
+        "id": 8235663977,
+        "name": "Leon Shirs",
+        "username": "LEONSHIRS",
+        "amount": 28610209
+      },
+      {
+        "id": 8490275449,
+        "name": "ikyy",
+        "username": "Ikyy_1231",
+        "amount": 18861829
+      },
+      {
+        "id": 8302282541,
+        "name": "EDXZVIP 「VØIDSTRIKE」",
+        "username": "EDXZVIP",
+        "amount": 7013180
+      },
+      {
+        "id": 7413500299,
+        "name": "⏤͟͟͞͞𝗫𝙕𝙔5 || 𝒁𝒐𝒓𝒅𝒂𝒃𝒚𝒔",
+        "username": "Zordvcxx",
+        "amount": 18896669
+      },
+      {
+        "id": 8220733085,
+        "name": "p dobtol",
+        "username": "kdhsuppuiw",
+        "amount": 27013222
+      },
+      {
+        "id": 7000400605,
+        "name": "ree",
+        "username": "drazxxz",
+        "amount": 7408725
+      }
+    ],
+    "created_at": "2026-03-08T04:19:44.809Z",
+    "reactions": {
+      "0": 1,
+      "1": 1,
+      "2": 0,
+      "3": 0
+    },
+    "reacted_users": {
+      "1402991119": "1",
+      "8490275449": "0"
+    }
+  },
+  "817181": {
+    "type": "ga",
+    "total_pool": 35344233,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 8421114324,
+        "name": "–soobin ✧",
+        "username": "soobin15",
+        "amount": 9470498
+      },
+      {
+        "id": 8309358373,
+        "name": "Rey",
+        "username": null,
+        "amount": 5063576
+      },
+      {
+        "id": 8506878637,
+        "name": "Dito Aja",
+        "username": null,
+        "amount": 12818422
+      },
+      {
+        "id": 8048321004,
+        "name": "</𝙇𝙑𝙂𝙎 || 𝙋𝙖𝙧𝙖𝙙𝙞𝙨𝙚𝙑𝙤𝙞𝙙𝙈𝘿>",
+        "username": "ParadiseVoidMD",
+        "amount": 7991737
+      }
+    ],
+    "created_at": "2026-03-07T06:09:34.082Z",
+    "reactions": {
+      "0": 1,
+      "1": 0,
+      "2": 1,
+      "3": 0
+    },
+    "reacted_users": {
+      "1402991119": "0",
+      "8421114324": "2"
+    }
+  },
+  "817262": {
+    "type": "ga",
+    "total_pool": 200000000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 8506878637,
+        "name": "Dito Aja",
+        "username": null,
+        "amount": 40146330
+      },
+      {
+        "id": 7000400605,
+        "name": "ree",
+        "username": "drazxxz",
+        "amount": 55391859
+      },
+      {
+        "id": 8762265167,
+        "name": "JembutKontol",
+        "username": "mbudzjmbudz",
+        "amount": 33290550
+      },
+      {
+        "id": 8328727709,
+        "name": "𝕳𝖞𝖊𝖑𝖑 𝕿𝖊𝖒𝖕𝖊𝖘𝖙",
+        "username": null,
+        "amount": 29188602
+      },
+      {
+        "id": 7675020138,
+        "name": "Support Group - IB",
+        "username": "Fazzs1",
+        "amount": 41982659
+      }
+    ],
+    "created_at": "2026-03-07T06:29:10.901Z",
+    "reactions": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0
+    },
+    "reacted_users": {}
+  },
+  "817272": {
+    "type": "ga",
+    "total_pool": 250000000,
+    "remaining_pool": 250000000,
+    "kuota": 7,
+    "claimedBy": [],
+    "created_at": "2026-03-08T10:31:33.741Z"
+  },
+  "920812": {
+    "nominal": 20000000,
+    "kuota": 9989,
+    "claimedBy": [
+      {
+        "id": 7797491207,
+        "name": "𝐒𝐱 ⻰ /𝐊𝐳𝐱𝐬𝐲𝐧𝐬𝐞",
+        "username": null,
+        "amount": 20000000
+      },
+      {
+        "id": 1402991119,
+        "name": "⏤͟͟͞ 🧸 𝗞αєℓℓ~✘𝐳𖥔ᴋ𝟺ᴇʟ 𒁍",
+        "username": "Kaell_Xz",
+        "amount": 20000000
+      },
+      {
+        "id": 8230203258,
+        "name": "Bosnsks",
+        "username": null,
+        "amount": 20000000
+      },
+      {
+        "id": 7899610678,
+        "name": "alfat ky",
+        "username": null,
+        "amount": 20000000
+      },
+      {
+        "id": 6979716487,
+        "name": "alfat.syah",
+        "username": "Alfatedtz28",
+        "amount": 20000000
+      },
+      {
+        "id": 8366975648,
+        "name": "jaidan kawe",
+        "username": "jaidankawe",
+        "amount": 20000000
+      },
+      {
+        "id": 7656992410,
+        "name": "FINZ store",
+        "username": "finzkolosal",
+        "amount": 20000000
+      },
+      {
+        "id": 5223822990,
+        "name": "⏤͟͟͞͞𝐌𝐚𝐝𝐙𝐡𝐚 ϟ 𝟔𝟗",
+        "username": "ZaaALFyu",
+        "amount": 20000000
+      },
+      {
+        "id": 8048321004,
+        "name": "</𝙇𝙑𝙂𝙎 || 𝙋𝙖𝙧𝙖𝙙𝙞𝙨𝙚𝙑𝙤𝙞𝙙𝙈𝘿>",
+        "username": "ParadiseVoidMD",
+        "amount": 20000000
+      },
+      {
+        "id": 8592342770,
+        "name": "E Elionel mesciii",
+        "username": "Eniolio",
+        "amount": 20000000
+      }
+    ],
+    "created_at": "2026-03-08T12:43:29.732Z"
+  },
+  "1234567": {
+    "type": "ga",
+    "total_pool": 250000000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 8026569972,
+        "name": "𝐆𝐮𝐧𝐳𝐳",
+        "username": "gunzmods",
+        "amount": 23534062
+      },
+      {
+        "id": 7735424276,
+        "name": "Hmm",
+        "username": null,
+        "amount": 17433896
+      },
+      {
+        "id": 7995916116,
+        "name": "Ryzz AJAH",
+        "username": "RyzzAj",
+        "amount": 12836179
+      },
+      {
+        "id": 7295553358,
+        "name": "Fiz",
+        "username": "Fizajaa0",
+        "amount": 17865181
+      },
+      {
+        "id": 7038001731,
+        "name": "𝐈'𝐌 ☣︎ 𝐋𝐀𝐑𝐒𝐇𝐄𝐍☭",
+        "username": "larshenn",
+        "amount": 37552797
+      },
+      {
+        "id": 8414230376,
+        "name": "── RapkiOffc. Ξίμποου _",
+        "username": "WhyBro444",
+        "amount": 37287227
+      },
+      {
+        "id": 1200928025,
+        "name": "── RapkiOffc. Ξίμποου",
+        "username": "whyBro404",
+        "amount": 14547070
+      },
+      {
+        "id": 7502679833,
+        "name": "⏤͟͟͞͞𝐒𝐏𝐄𝐂𝐓𝐑𝐀𝐙𝐀 𝐃𝐈𝐆𝐈𝐓𝐀𝐋 ☭",
+        "username": "lmexza",
+        "amount": 24306502
+      },
+      {
+        "id": 8661203722,
+        "name": "bellavaniaputri",
+        "username": "bellavniaaputri",
+        "amount": 64637086
+      }
+    ],
+    "created_at": "2026-03-13T05:17:09.253Z",
+    "reactions": {
+      "0": 0,
+      "1": 1,
+      "2": 0,
+      "3": 1
+    },
+    "reacted_users": {
+      "1402991119": "3",
+      "7995916116": "1"
+    }
+  },
+  "2382728": {
+    "type": "ga",
+    "total_pool": 300000000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 8517189333,
+        "name": "Lindaa🌸",
+        "username": "putluvluv1",
+        "amount": 26274092
+      },
+      {
+        "id": 8026569972,
+        "name": "𝐆𝐮𝐧𝐳𝐳",
+        "username": "gunzmods",
+        "amount": 30012330
+      },
+      {
+        "id": 8366975648,
+        "name": "jaidan kawe",
+        "username": "jaidankawe",
+        "amount": 17045154
+      },
+      {
+        "id": 8661203722,
+        "name": "bellavaniaputri",
+        "username": "bellavniaaputri",
+        "amount": 16042531
+      },
+      {
+        "id": 7797491207,
+        "name": "𝐒𝐱 ⻰ /𝐊𝐳𝐱𝐬𝐲𝐧𝐬𝐞",
+        "username": null,
+        "amount": 25846856
+      },
+      {
+        "id": 7386716852,
+        "name": "𝐅𝐑𝐀𝐗𝐙𝐘",
+        "username": "fraxzynobody",
+        "amount": 12462647
+      },
+      {
+        "id": 7502679833,
+        "name": "⏤͟͟͞͞𝐒𝐏𝐄𝐂𝐓𝐑𝐀𝐙𝐀 𝐃𝐈𝐆𝐈𝐓𝐀𝐋 ☭",
+        "username": "lmexza",
+        "amount": 29633054
+      },
+      {
+        "id": 7038001731,
+        "name": "𝐈'𝐌 ☣︎ 𝐋𝐀𝐑𝐒𝐇𝐄𝐍☭",
+        "username": "larshenn",
+        "amount": 13306047
+      },
+      {
+        "id": 6107205970,
+        "name": "Xxxxakuji",
+        "username": "Xxxakuji",
+        "amount": 11818227
+      },
+      {
+        "id": 7907134865,
+        "name": "Sexsy",
+        "username": "Rizzxtzy",
+        "amount": 22615273
+      },
+      {
+        "id": 7686281557,
+        "name": "Nasz #Quartz ¿",
+        "username": "Nasz_06",
+        "amount": 13906931
+      },
+      {
+        "id": 1987857245,
+        "name": "Support Group - IB",
+        "username": "suport_group_i65b",
+        "amount": 8533427
+      },
+      {
+        "id": 1122207241,
+        "name": "Support Group - IB",
+        "username": "suport_group_i6b",
+        "amount": 24036350
+      },
+      {
+        "id": 7777092767,
+        "name": "pakyu",
+        "username": "UD1NMT",
+        "amount": 29426141
+      },
+      {
+        "id": 7738322294,
+        "name": "Ganti akun pler",
+        "username": "scp0000000000010",
+        "amount": 19040940
+      }
+    ],
+    "created_at": "2026-03-10T08:53:14.893Z",
+    "reactions": {
+      "0": 0,
+      "1": 0,
+      "2": 1,
+      "3": 4
+    },
+    "reacted_users": {
+      "1402991119": "2",
+      "7907134865": "3",
+      "7777092767": "3",
+      "7738322294": "3",
+      "7349080688": "3"
+    }
+  },
+  "2992728": {
+    "nominal": 200000000,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 2034311161,
+        "name": "y",
+        "username": "modeoffmatikanfalse",
+        "amount": 200000000
+      },
+      {
+        "id": 8298672283,
+        "name": "𝘼𝙧𝙨𝙝𝙖𝙙𝙚𝙫𝙖⚚",
+        "username": "arshadeva",
+        "amount": 200000000
+      },
+      {
+        "id": 8366975648,
+        "name": "jaidan kawe",
+        "username": "jaidankawe",
+        "amount": 200000000
+      },
+      {
+        "id": 1200928025,
+        "name": "── RapkiOffc. Ξίμποου",
+        "username": "whyBro404",
+        "amount": 200000000
+      },
+      {
+        "id": 7932183592,
+        "name": "AGUNG [JARANG ON]",
+        "username": "AGUNGVIP",
+        "amount": 200000000
+      },
+      {
+        "id": 8026569972,
+        "name": "𝐆𝐮𝐧𝐳𝐳",
+        "username": "gunzmods",
+        "amount": 200000000
+      },
+      {
+        "id": 8517189333,
+        "name": "Lindaa🌸",
+        "username": "putluvluv1",
+        "amount": 200000000
+      },
+      {
+        "id": 8048321004,
+        "name": "</𝙇𝙑𝙂𝙎 || 𝙋𝙖𝙧𝙖𝙙𝙞𝙨𝙚𝙑𝙤𝙞𝙙𝙈𝘿>",
+        "username": "ParadiseVoidMD",
+        "amount": 200000000
+      },
+      {
+        "id": 7797491207,
+        "name": "𝐒𝐱 ⻰ /𝐊𝐳𝐱𝐬𝐲𝐧𝐬𝐞",
+        "username": null,
+        "amount": 200000000
+      },
+      {
+        "id": 7350953370,
+        "name": "𝐃𝐚𝐲𝐲#3",
+        "username": "Dayy_3",
+        "amount": 200000000
+      },
+      {
+        "id": 6818302770,
+        "name": "⏤͟͟͞͞Xv7 || Maesax LIMIT PINDAH TELE",
+        "username": "maesaxganteng",
+        "amount": 200000000
+      },
+      {
+        "id": 5757312953,
+        "name": "Sanzdemigood",
+        "username": null,
+        "amount": 200000000
+      },
+      {
+        "id": 8414230376,
+        "name": "rfkmhd _",
+        "username": "rfkmhd",
+        "amount": 200000000
+      },
+      {
+        "id": 8762265167,
+        "name": "yes i'm maesax",
+        "username": "maesaxv2",
+        "amount": 200000000
+      },
+      {
+        "id": 7686281557,
+        "name": "Nasz #Quartz ¿",
+        "username": "Nasz_06",
+        "amount": 200000000
+      },
+      {
+        "id": 1122207241,
+        "name": "Support Group - IB",
+        "username": "suport_group_i6b",
+        "amount": 200000000
+      },
+      {
+        "id": 1987857245,
+        "name": "Support Group - IB",
+        "username": "suport_group_i65b",
+        "amount": 200000000
+      },
+      {
+        "id": 7103531545,
+        "name": "zero wut-wut⚡️",
+        "username": "gwehdurov",
+        "amount": 200000000
+      },
+      {
+        "id": 8534037866,
+        "name": "`JARZY `",
+        "username": "JarzyXx",
+        "amount": 200000000
+      },
+      {
+        "id": 8480202380,
+        "name": "ꦾꦾ ꦽꦽꦽꦽꦽ🄷🄴🄻🅉 🄲🄴🄾",
+        "username": "Helzzzzcupuu",
+        "amount": 200000000
+      }
+    ],
+    "created_at": "2026-03-10T13:31:21.627Z",
+    "reactions": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0
+    },
+    "reacted_users": {}
+  },
+  "3917429": {
+    "type": "ga",
+    "total_pool": 30000000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 8506878637,
+        "name": "Dito Aja",
+        "username": null,
+        "amount": 13845101
+      },
+      {
+        "id": 7000400605,
+        "name": "ree",
+        "username": "drazxxz",
+        "amount": 16154899
+      }
+    ],
+    "created_at": "2026-03-07T02:54:38.103Z",
+    "reactions": {
+      "0": 1,
+      "1": 0,
+      "2": 0,
+      "3": 1
+    },
+    "reacted_users": {
+      "1402991119": "0",
+      "7076443573": "3"
+    }
+  },
+  "7175272": {
+    "type": "ga",
+    "total_pool": 100000000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 5757312953,
+        "name": "Sanzdemigood",
+        "username": null,
+        "amount": 5601288
+      },
+      {
+        "id": 8661203722,
+        "name": "bellavaniaputri",
+        "username": "bellavniaaputri",
+        "amount": 20071646
+      },
+      {
+        "id": 8506878637,
+        "name": "Dito Aja",
+        "username": null,
+        "amount": 11480571
+      },
+      {
+        "id": 7797491207,
+        "name": "EXZA ⻰ /𝐊𝐳𝐱𝐬𝐲𝐧𝐬𝐞",
+        "username": null,
+        "amount": 9469671
+      },
+      {
+        "id": 8614343065,
+        "name": "⏤͟͟͞𝙈𝟓 X ⏤͟͟͞𝙈£K|| BAGAS CRUELL",
+        "username": "bagascruell",
+        "amount": 9358190
+      },
+      {
+        "id": 8230203258,
+        "name": "Bosnsks",
+        "username": null,
+        "amount": 6574872
+      },
+      {
+        "id": 8366975648,
+        "name": "jaidan kawe",
+        "username": "jaidankawe",
+        "amount": 19836401
+      },
+      {
+        "id": 8421114324,
+        "name": "–soobin ✧",
+        "username": "soobin15",
+        "amount": 17607361
+      }
+    ],
+    "created_at": "2026-03-07T05:20:40.805Z",
+    "reactions": {
+      "0": 2,
+      "1": 0,
+      "2": 2,
+      "3": 1
+    },
+    "reacted_users": {
+      "1402991119": "3",
+      "8661203722": "2",
+      "8614343065": "2",
+      "8421114324": "0",
+      "5757312953": "0"
+    }
+  },
+  "8118211": {
+    "type": "ga",
+    "total_pool": 400000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 5002021330,
+        "name": "Raxy Shoft",
+        "username": "Raxyy22",
+        "amount": 75041
+      },
+      {
+        "id": 1402991119,
+        "name": "⏤͟͟͞ 🧸 𝗞αєℓℓ~✘𝐳𖥔ᴋ𝟺ᴇʟ 𒁍",
+        "username": "Kaell_Xz",
+        "amount": 83399
+      },
+      {
+        "id": 8328727709,
+        "name": "𝕳𝖞𝖊𝖑𝖑 𝕿𝖊𝖒𝖕𝖊𝖘𝖙",
+        "username": "Pukiiioo1211",
+        "amount": 60802
+      },
+      {
+        "id": 8026569972,
+        "name": "𝐆𝐮𝐧𝐳𝐳",
+        "username": "gunzmods",
+        "amount": 51297
+      },
+      {
+        "id": 8048321004,
+        "name": "</𝙇𝙑𝙂𝙎 || 𝙋𝙖𝙧𝙖𝙙𝙞𝙨𝙚𝙑𝙤𝙞𝙙𝙈𝘿>",
+        "username": "ParadiseVoidMD",
+        "amount": 69466
+      },
+      {
+        "id": 8366975648,
+        "name": "jaidan kawe",
+        "username": "jaidankawe",
+        "amount": 59995
+      }
+    ],
+    "created_at": "2026-03-08T09:52:33.584Z",
+    "reactions": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0
+    },
+    "reacted_users": {}
+  },
+  "8152818": {
+    "type": "ga",
+    "total_pool": 50000000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 8048321004,
+        "name": "</𝙇𝙑𝙂𝙎 || 𝙋𝙖𝙧𝙖𝙙𝙞𝙨𝙚𝙑𝙤𝙞𝙙𝙈𝘿>",
+        "username": "ParadiseVoidMD",
+        "amount": 11888081
+      },
+      {
+        "id": 7146667517,
+        "name": "⏤͟͟͞Í𝐥𝐡𝐚𝐦𝐳𝐳 - 𝐫𝐞𝐡𝐚𝐭 𓌳",
+        "username": "hamzzcollabies",
+        "amount": 8841054
+      },
+      {
+        "id": 8762265167,
+        "name": "JembutKontol",
+        "username": "mbudzjmbudz",
+        "amount": 29270865
+      }
+    ],
+    "created_at": "2026-03-07T11:52:35.844Z",
+    "reactions": {
+      "0": 0,
+      "1": 1,
+      "2": 2,
+      "3": 0
+    },
+    "reacted_users": {
+      "7146667517": "2",
+      "6286498442": "2",
+      "8230203258": "1"
+    }
+  },
+  "8171717": {
+    "type": "ga",
+    "total_pool": 50000000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 8048321004,
+        "name": "</𝙇𝙑𝙂𝙎 || 𝙋𝙖𝙧𝙖𝙙𝙞𝙨𝙚𝙑𝙤𝙞𝙙𝙈𝘿>",
+        "username": "ParadiseVoidMD",
+        "amount": 8816608
+      },
+      {
+        "id": 8414230376,
+        "name": "rfkmhd _",
+        "username": "rfkmhd",
+        "amount": 5171978
+      },
+      {
+        "id": 7000400605,
+        "name": "ree",
+        "username": "drazxxz",
+        "amount": 4828561
+      },
+      {
+        "id": 8366975648,
+        "name": "jaidan kawe",
+        "username": "jaidankawe",
+        "amount": 11996791
+      },
+      {
+        "id": 8506878637,
+        "name": "Dito Aja",
+        "username": null,
+        "amount": 12113080
+      },
+      {
+        "id": 6989003486,
+        "name": "Zaxs'e",
+        "username": "Jaxsz132",
+        "amount": 7072982
+      }
+    ],
+    "created_at": "2026-03-07T09:49:59.581Z",
+    "reactions": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0
+    },
+    "reacted_users": {}
+  },
+  "8181728": {
+    "type": "ga",
+    "total_pool": 100000000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 7272688277,
+        "name": "Z",
+        "username": "ZIWWLEGENDS",
+        "amount": 19018416
+      },
+      {
+        "id": 8661203722,
+        "name": "bellavaniaputri",
+        "username": "bellavniaaputri",
+        "amount": 15215826
+      },
+      {
+        "id": 8762265167,
+        "name": "JembutKontol",
+        "username": "mbudzjmbudz",
+        "amount": 11551901
+      },
+      {
+        "id": 8302282541,
+        "name": "EDXZVIP 「VØIDSTRIKE」",
+        "username": "EDXZVIP",
+        "amount": 15714763
+      },
+      {
+        "id": 8048321004,
+        "name": "</𝙇𝙑𝙂𝙎 || 𝙋𝙖𝙧𝙖𝙙𝙞𝙨𝙚𝙑𝙤𝙞𝙙𝙈𝘿>",
+        "username": "ParadiseVoidMD",
+        "amount": 13897223
+      },
+      {
+        "id": 8160086256,
+        "name": "renn",
+        "username": "rennsukajkt",
+        "amount": 11036726
+      },
+      {
+        "id": 8230203258,
+        "name": "Bosnsks",
+        "username": null,
+        "amount": 8230410
+      },
+      {
+        "id": 7932183592,
+        "name": "AGUNG [JARANG ON]",
+        "username": "AGUNGVIP",
+        "amount": 5334735
+      }
+    ],
+    "created_at": "2026-03-07T10:59:30.153Z",
+    "reactions": {
+      "0": 3,
+      "1": 0,
+      "2": 0,
+      "3": 1
+    },
+    "reacted_users": {
+      "1402991119": "0",
+      "8230203258": "3",
+      "8302282541": "0",
+      "7350953370": "0"
+    }
+  },
+  "8181828": {
+    "type": "ga",
+    "total_pool": 100000000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 8160086256,
+        "name": "renn",
+        "username": "rennsukajkt",
+        "amount": 11980153
+      },
+      {
+        "id": 8302282541,
+        "name": "EDXZVIP 「VØIDSTRIKE」",
+        "username": "EDXZVIP",
+        "amount": 8964185
+      },
+      {
+        "id": 7000400605,
+        "name": "ree",
+        "username": "drazxxz",
+        "amount": 16688358
+      },
+      {
+        "id": 7675020138,
+        "name": "Support Group - IB",
+        "username": "GroupIB_Support_Fazz",
+        "amount": 18147656
+      },
+      {
+        "id": 7502679833,
+        "name": "⏤͟͟͞͞𝐒𝐏𝐄𝐂𝐓𝐑𝐀𝐙𝐀 𝐃𝐈𝐆𝐈𝐓𝐀𝐋 ☭",
+        "username": "lmexza",
+        "amount": 6039051
+      },
+      {
+        "id": 8048321004,
+        "name": "</𝙇𝙑𝙂𝙎 || 𝙋𝙖𝙧𝙖𝙙𝙞𝙨𝙚𝙑𝙤𝙞𝙙𝙈𝘿>",
+        "username": "ParadiseVoidMD",
+        "amount": 19437422
+      },
+      {
+        "id": 7386716852,
+        "name": "𝐅𝐑𝐀𝐗𝐙𝐘",
+        "username": "fraxzynobody",
+        "amount": 13942002
+      },
+      {
+        "id": 7932183592,
+        "name": "AGUNG [JARANG ON]",
+        "username": "AGUNGVIP",
+        "amount": 4801173
+      }
+    ],
+    "created_at": "2026-03-07T10:16:18.565Z",
+    "reactions": {
+      "0": 1,
+      "1": 0,
+      "2": 1,
+      "3": 1
+    },
+    "reacted_users": {
+      "1402991119": "3",
+      "8160086256": "2",
+      "8400214865": "0"
+    }
+  },
+  "8272828": {
+    "type": "ga",
+    "total_pool": 250000000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 7340896634,
+        "name": "𝐌𝐢𝐫𝐮𝐥𝐙𝐭𝐲𝐳𝐳 ( ALWAYS ON )",
+        "username": "MirulZtyzz",
+        "amount": 22921052
+      },
+      {
+        "id": 8328727709,
+        "name": "𝕳𝖞𝖊𝖑𝖑 𝕿𝖊𝖒𝖕𝖊𝖘𝖙",
+        "username": "hyelltempest0121",
+        "amount": 17328400
+      },
+      {
+        "id": 8512378540,
+        "name": "⏤͟͟͞͞Yuki",
+        "username": null,
+        "amount": 12951389
+      },
+      {
+        "id": 6921519534,
+        "name": "¡𝖒 𝕰𝖑𝖆𝖎𝖓𝖆",
+        "username": "elaina12111",
+        "amount": 19168038
+      },
+      {
+        "id": 8655883649,
+        "name": "Hanzz",
+        "username": "HanzzXmc",
+        "amount": 15521042
+      },
+      {
+        "id": 8048321004,
+        "name": "</𝙇𝙑𝙂𝙎 || 𝙋𝙖𝙧𝙖𝙙𝙞𝙨𝙚𝙑𝙤𝙞𝙙𝙈𝘿>",
+        "username": "ParadiseVoidMD",
+        "amount": 42216418
+      },
+      {
+        "id": 6747350093,
+        "name": "⸙ꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋDanz ⸙ꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋ",
+        "username": "Ygtagkayatai",
+        "amount": 19537173
+      },
+      {
+        "id": 7686281557,
+        "name": "Nasz #Quartz ¿",
+        "username": "Nasz_06",
+        "amount": 36009683
+      },
+      {
+        "id": 1987857245,
+        "name": "Support Group - IB",
+        "username": "suport_group_i65b",
+        "amount": 40525463
+      },
+      {
+        "id": 1122207241,
+        "name": "Support Group - IB",
+        "username": "suport_group_i6b",
+        "amount": 23821342
+      }
+    ],
+    "created_at": "2026-03-09T20:05:47.542Z",
+    "reactions": {
+      "0": 0,
+      "1": 1,
+      "2": 1,
+      "3": 1
+    },
+    "reacted_users": {
+      "8365519013": "1",
+      "7340896634": "3",
+      "8400214865": "2"
+    }
+  },
+  "12113191": {
+    "type": "ga",
+    "total_pool": 700000000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 8328727709,
+        "name": "𝕳𝖞𝖊𝖑𝖑 𝕿𝖊𝖒𝖕𝖊𝖘𝖙",
+        "username": null,
+        "amount": 125286233
+      },
+      {
+        "id": 8160086256,
+        "name": "renn",
+        "username": "rennsukajkt",
+        "amount": 159118103
+      },
+      {
+        "id": 8278112817,
+        "name": "Rafzyyy [ Limit ]",
+        "username": "Rafzyy15",
+        "amount": 157789523
+      },
+      {
+        "id": 8366975648,
+        "name": "jaidan kawe",
+        "username": "jaidankawe",
+        "amount": 127532638
+      },
+      {
+        "id": 7122032803,
+        "name": "Maklohgwsepong",
+        "username": null,
+        "amount": 130273503
+      }
+    ],
+    "created_at": "2026-03-08T08:51:45.239Z",
+    "reactions": {
+      "0": 0,
+      "1": 1,
+      "2": 2,
+      "3": 0
+    },
+    "reacted_users": {
+      "1402991119": "1",
+      "8278112817": "2",
+      "8160086256": "2"
+    }
+  },
+  "82817161": {
+    "type": "ga",
+    "total_pool": 300000000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 5757312953,
+        "name": "Sanzdemigood",
+        "username": null,
+        "amount": 23693275
+      },
+      {
+        "id": 8614343065,
+        "name": "⏤͟͟͞𝙈𝟓 X ⏤͟͟͞𝙈£K|| BAGAS CRUELL",
+        "username": "bagascruell",
+        "amount": 33563060
+      },
+      {
+        "id": 8309358373,
+        "name": "Rey",
+        "username": null,
+        "amount": 38782522
+      },
+      {
+        "id": 7797491207,
+        "name": "EXZA ⻰ /𝐊𝐳𝐱𝐬𝐲𝐧𝐬𝐞",
+        "username": null,
+        "amount": 28310505
+      },
+      {
+        "id": 8421114324,
+        "name": "–soobin ✧",
+        "username": "soobin15",
+        "amount": 17060803
+      },
+      {
+        "id": 8517189333,
+        "name": "⏤͟͟͞͞𝗘𝗻𝘁𝗶𝘁𝘆 Lindaa Suka Kamu🌸",
+        "username": "putluvluv1",
+        "amount": 21989815
+      },
+      {
+        "id": 8661203722,
+        "name": "bellavaniaputri",
+        "username": "bellavniaaputri",
+        "amount": 22341633
+      },
+      {
+        "id": 7692230763,
+        "name": "𝗩𝗮𝘆𝘆 ⺓𝗩𝗩𝗜𝗣",
+        "username": "suamiayano",
+        "amount": 34895142
+      },
+      {
+        "id": 7899610678,
+        "name": "alfat ky",
+        "username": null,
+        "amount": 50183007
+      },
+      {
+        "id": 8230203258,
+        "name": "Bosnsks",
+        "username": null,
+        "amount": 29180238
+      }
+    ],
+    "created_at": "2026-03-07T05:27:08.496Z",
+    "reactions": {
+      "0": 1,
+      "1": 1,
+      "2": 0,
+      "3": 1
+    },
+    "reacted_users": {
+      "1402991119": "1",
+      "8365519013": "0",
+      "8048321004": "3"
+    }
+  },
+  "91726417": {
+    "type": "ga",
+    "total_pool": 60000000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 8048321004,
+        "name": "</𝙇𝙑𝙂𝙎 || 𝙋𝙖𝙧𝙖𝙙𝙞𝙨𝙚𝙑𝙤𝙞𝙙𝙈𝘿>",
+        "username": "ParadiseVoidMD",
+        "amount": 9540062
+      },
+      {
+        "id": 7000400605,
+        "name": "ree",
+        "username": "drazxxz",
+        "amount": 17434567
+      },
+      {
+        "id": 8506878637,
+        "name": "Dito Aja",
+        "username": null,
+        "amount": 13843533
+      },
+      {
+        "id": 5002021330,
+        "name": "PUKYY 👺👺",
+        "username": "Cicaklodon",
+        "amount": 4324117
+      },
+      {
+        "id": 7686281557,
+        "name": "Nasz #Quartz ¿",
+        "username": "Nasz_06",
+        "amount": 14857721
+      }
+    ],
+    "created_at": "2026-03-07T12:11:48.775Z",
+    "reactions": {
+      "0": 0,
+      "1": 0,
+      "2": 2,
+      "3": 0
+    },
+    "reacted_users": {
+      "1402991119": "2",
+      "7000400605": "2"
+    }
+  },
+  "123456152": {
+    "type": "ga",
+    "total_pool": 500000000,
+    "remaining_pool": 293238713,
+    "kuota": 9,
+    "claimedBy": [
+      {
+        "id": 8655883649,
+        "name": "Hanzz",
+        "username": "HanzzXmc",
+        "amount": 50045935
+      },
+      {
+        "id": 8517189333,
+        "name": "Lindaa🌸",
+        "username": "putluvluv1",
+        "amount": 26505177
+      },
+      {
+        "id": 6743880383,
+        "name": "𝕾 𒐬 | 𝐃𝐬𝐥𝐰𝐓𝐳𝐲",
+        "username": "yttajancok556",
+        "amount": 50332281
+      },
+      {
+        "id": 1402991119,
+        "name": "⏤͟͟͞ # 𝗞αєℓℓ~✘𝐳𖥔ᴋ𝟺ᴇʟ 𒁍",
+        "username": "Kaell_Xz",
+        "amount": 13806138
+      },
+      {
+        "id": 7103531545,
+        "name": "zero wut-wut⚡️",
+        "username": "gwehdurov",
+        "amount": 25502050
+      },
+      {
+        "id": 2034311161,
+        "name": "y",
+        "username": "modeoffmatikanfalse",
+        "amount": 40569706
+      }
+    ],
+    "created_at": "2026-03-11T20:53:28.843Z"
+  },
+  "123920812": {
+    "nominal": 250000000,
+    "kuota": 956,
+    "claimedBy": [
+      {
+        "id": 7995916116,
+        "name": "Ryzz AJAH",
+        "username": "RyzzAj",
+        "amount": 250000000
+      },
+      {
+        "id": 1402991119,
+        "name": "⏤͟͟͞ # 𝗞αєℓℓ~✘𝐳𖥔ᴋ𝟺ᴇʟ 𒁍",
+        "username": "Kaell_Xz",
+        "amount": 250000000
+      },
+      {
+        "id": 7295553358,
+        "name": "Fiz",
+        "username": "Fizajaa0",
+        "amount": 250000000
+      },
+      {
+        "id": 8048321004,
+        "name": "</𝙇𝙑𝙂𝙎 || 𝙋𝙖𝙧𝙖𝙙𝙞𝙨𝙚𝙑𝙤𝙞𝙙𝙈𝘿>",
+        "username": "ParadiseVoidMD",
+        "amount": 250000000
+      },
+      {
+        "id": 1200928025,
+        "name": "── RapkiOffc. Ξίμποου",
+        "username": "whyBro404",
+        "amount": 250000000
+      },
+      {
+        "id": 8480202380,
+        "name": "zyne 𒀱𒐫𒀱𒐫𒀱𒐫𒐫𒐫𒀱𖠁𒐫𒀱𒐫𒐫𒐫𒀱𒐫𒀱𒐫𒀱𒐫𒀱𒐫𒀱𒐫𒐫𒐫𒀱𒐫𒐫𒐫𒀱𒐫𒐫𒐫𒀱𒀱𒀱𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒀱𒀱𒀱𒐫🄷🄴🄻🅉 🄲🄴🄾",
+        "username": "Helzzzzcupuu",
+        "amount": 250000000
+      },
+      {
+        "id": 8414230376,
+        "name": "rfkmhd _",
+        "username": "rfkmhd",
+        "amount": 250000000
+      },
+      {
+        "id": 7656992410,
+        "name": "FINZ store",
+        "username": "finzkolosal",
+        "amount": 250000000
+      },
+      {
+        "id": 5669304702,
+        "name": "Sorsaki | FARZZSTECU",
+        "username": "Farz_stecu",
+        "amount": 250000000
+      },
+      {
+        "id": 8592342770,
+        "name": "E Elionel mesciii",
+        "username": "Eniolio",
+        "amount": 250000000
+      },
+      {
+        "id": 8540814298,
+        "name": "𝐃𝐢𝐧𝐳 𝐗𝐢𝐭𝐞𝐫𝐳",
+        "username": "DinzXitz",
+        "amount": 250000000
+      },
+      {
+        "id": 8534037866,
+        "name": "`JARZY `",
+        "username": "JarzyXx",
+        "amount": 250000000
+      },
+      {
+        "id": 8169587523,
+        "name": "Alok",
+        "username": "Asep_hacked",
+        "amount": 250000000
+      },
+      {
+        "id": 7735424276,
+        "name": "Hmm",
+        "username": null,
+        "amount": 250000000
+      },
+      {
+        "id": 6747350093,
+        "name": "⸙ꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋDanz ⸙ꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋ",
+        "username": "Ygtagkayatai",
+        "amount": 250000000
+      },
+      {
+        "id": 5223822990,
+        "name": "⏤͟͟͞͞𝐌𝐚𝐝𝐙𝐡𝐚 ϟ 𝟔𝟗",
+        "username": "ZaaALFyu",
+        "amount": 250000000
+      },
+      {
+        "id": 8517189333,
+        "name": "Lindaa🌸",
+        "username": "putluvluv1",
+        "amount": 250000000
+      },
+      {
+        "id": 8210000015,
+        "name": "Dhanzy Pelwr",
+        "username": null,
+        "amount": 250000000
+      },
+      {
+        "id": 1974927893,
+        "name": "𝐃𝐢𝐧𝐳 𝐗𝐢𝐭𝐞𝐫𝐳 ⺓𝗩𝗩𝗜𝗣",
+        "username": "dinzzxitz",
+        "amount": 250000000
+      },
+      {
+        "id": 8526555382,
+        "name": "𝐙𝐲𝐫𝐞𝐱 [𝗖𝗜𝗘𝗢]",
+        "username": "Zyrex2_id",
+        "amount": 250000000
+      },
+      {
+        "id": 1340783455,
+        "name": "𝐈𝐦𝐦𝐢𝐦𝐢𝐲𝐮𝐭☄︎",
+        "username": "Imimiyut",
+        "amount": 250000000
+      },
+      {
+        "id": 8521996943,
+        "name": "𝐙𝐲𝐫𝐞𝐗 [𝗖𝗜𝗘𝗢] ᵘʷᵃˢᵘ",
+        "username": "Zyrex_ID",
+        "amount": 250000000
+      },
+      {
+        "id": 8655883649,
+        "name": "Hanzz",
+        "username": "HanzzXmc",
+        "amount": 250000000
+      },
+      {
+        "id": 7797491207,
+        "name": "𝐒𝐱 ⻰ /𝐊𝐳𝐱𝐬𝐲𝐧𝐬𝐞",
+        "username": null,
+        "amount": 250000000
+      },
+      {
+        "id": 6299536713,
+        "name": "Kakoin",
+        "username": null,
+        "amount": 250000000
+      },
+      {
+        "id": 6743880383,
+        "name": "𝕾 𒐬 | 𝐃𝐬𝐥𝐰𝐓𝐳𝐲",
+        "username": "yttajancok556",
+        "amount": 250000000
+      },
+      {
+        "id": 8263349227,
+        "name": "Kaze Suka [Turu]",
+        "username": "dhhst1",
+        "amount": 250000000
+      },
+      {
+        "id": 5002021330,
+        "name": "Raxy Shoft",
+        "username": "Raxyy22",
+        "amount": 250000000
+      },
+      {
+        "id": 8533195993,
+        "name": "Rx Rxx",
+        "username": null,
+        "amount": 250000000
+      },
+      {
+        "id": 8085593314,
+        "name": "seraphim",
+        "username": "whiskeysocket",
+        "amount": 250000000
+      },
+      {
+        "id": 2034311161,
+        "name": "y",
+        "username": "modeoffmatikanfalse",
+        "amount": 250000000
+      },
+      {
+        "id": 7103531545,
+        "name": "zero wut-wut⚡️",
+        "username": "gwehdurov",
+        "amount": 250000000
+      },
+      {
+        "id": 7000400605,
+        "name": "ree",
+        "username": "drazxxz",
+        "amount": 250000000
+      },
+      {
+        "id": 7272688277,
+        "name": "Z",
+        "username": "ZIWWLEGENDS",
+        "amount": 250000000
+      },
+      {
+        "id": 7845987771,
+        "name": "𝙯𝙖𝙣𝙇𝙮𝙤̀𝙧𝙖̀𝙖̀",
+        "username": "gua_zan",
+        "amount": 250000000
+      },
+      {
+        "id": 8520938729,
+        "name": "𝙇𝙔𝙊𝙍𝘼 x 𝙆𝘼𝙃𝙁𝙄",
+        "username": "Kahfing",
+        "amount": 250000000
+      },
+      {
+        "id": 6464541455,
+        "name": "Crimson Nightmare XT",
+        "username": "CrimsonNightmaree",
+        "amount": 250000000
+      },
+      {
+        "id": 7697594824,
+        "name": "Янц Кошмар ( Русский ) 🍷",
+        "username": "Yanz_Russian",
+        "amount": 250000000
+      },
+      {
+        "id": 1218063383,
+        "name": "𝗤𝘂𝗲𝗲𝗻 𝗟𝗶𝗹𝗶𝘁𝗵 | 𝙈𝙖𝙜𝙞𝙘 𝙨𝙬𝙤𝙧𝙙𝙬𝙤𝙢𝙚𝙣 XT",
+        "username": "Queen_Lilithh",
+        "amount": 250000000
+      },
+      {
+        "id": 7732376713,
+        "name": "Queenzz",
+        "username": "queenherees",
+        "amount": 250000000
+      },
+      {
+        "id": 8552957313,
+        "name": "DANZZ HOST",
+        "username": null,
+        "amount": 250000000
+      },
+      {
+        "id": 7962454056,
+        "name": "⏤ѕкуzσ ☇ 𝐍𝐞𝐭𝐡𝐫𝐲𝐥 🇲🇾",
+        "username": "skyzoNewEra",
+        "amount": 250000000
+      },
+      {
+        "id": 8661203722,
+        "name": "bellavaniaputri",
+        "username": "bellavniaaputri",
+        "amount": 250000000
+      }
+    ],
+    "created_at": "2026-03-11T14:52:11.185Z"
+  },
+  "JDOAOKAN": {
+    "nominal": 1500000,
+    "kuota": 0,
+    "claimedBy": [
+      8230203258,
+      7899610678,
+      6979716487
+    ],
+    "created_at": "2026-03-04T23:33:57.939Z"
+  },
+  "KAELLGANTENG": {
+    "nominal": 10000000,
+    "kuota": 0,
+    "claimedBy": [
+      7675020138,
+      7707567220,
+      8366975648
+    ],
+    "created_at": "2026-03-05T06:25:08.505Z"
+  },
+  "GUERJEY": {
+    "nominal": 6000000,
+    "kuota": 0,
+    "claimedBy": [
+      7000400605,
+      8614343065
+    ],
+    "created_at": "2026-03-05T06:45:04.446Z"
+  },
+  "JAIAOSUHA": {
+    "nominal": 23000000,
+    "kuota": 0,
+    "claimedBy": [
+      7152064072
+    ],
+    "created_at": "2026-03-05T06:58:27.672Z"
+  },
+  "JAIHZVA": {
+    "nominal": 10000000,
+    "kuota": 42,
+    "claimedBy": [
+      7675020138,
+      7152064072,
+      8614343065,
+      7000400605,
+      7797491207,
+      8517189333,
+      1450800056,
+      1402991119
+    ],
+    "created_at": "2026-03-05T07:17:25.059Z"
+  },
+  "NAIAOJAJJW": {
+    "nominal": 15617222,
+    "kuota": 0,
+    "claimedBy": [
+      8263349227,
+      6107205970
+    ],
+    "created_at": "2026-03-05T21:23:03.606Z"
+  },
+  "IANGTUQ": {
+    "nominal": 23000122,
+    "kuota": 0,
+    "claimedBy": [
+      7152064072,
+      1450800056,
+      1977081795
+    ],
+    "created_at": "2026-03-06T04:44:59.826Z"
+  },
+  "KIWKIWOM": {
+    "type": "ga",
+    "total_pool": 15000000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 8517189333,
+        "name": "⏤͟͟͞͞𝗘𝗻𝘁𝗶𝘁𝘆 Lindaa Suka Kamu🌸",
+        "username": "putluvluv1",
+        "amount": 7926161
+      },
+      {
+        "id": 7797491207,
+        "name": "EXZA ⻰ /𝐊𝐳𝐱𝐬𝐲𝐧𝐬𝐞",
+        "username": null,
+        "amount": 7073839
+      }
+    ],
+    "created_at": "2026-03-06T20:15:26.882Z",
+    "reactions": {
+      "0": 1,
+      "1": 1,
+      "2": 0,
+      "3": 0
+    },
+    "reacted_users": {
+      "1402991119": "1",
+      "6025239285": "0"
+    }
+  },
+  "KAELLIMUT2": {
+    "type": "ga",
+    "total_pool": 50000000,
+    "remaining_pool": 50000000,
+    "kuota": 5,
+    "claimedBy": [],
+    "created_at": "2026-03-06T20:26:34.164Z"
+  },
+  "IAKAIAIA": {
+    "type": "ga",
+    "total_pool": 200000000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 8230203258,
+        "name": "Bosnsks",
+        "username": null,
+        "amount": 10149793
+      },
+      {
+        "id": 8661203722,
+        "name": "bellavaniaputri",
+        "username": "bellavniaaputri",
+        "amount": 27970069
+      },
+      {
+        "id": 7413500299,
+        "name": "⏤͟͟͞͞𝗫𝙕𝙔5 || 𝒁𝒐𝒓𝒅𝒂𝒃𝒚𝒔",
+        "username": "Zordvcxx",
+        "amount": 39815463
+      },
+      {
+        "id": 8220733085,
+        "name": "p dobtol",
+        "username": "kdhsuppuiw",
+        "amount": 32085325
+      },
+      {
+        "id": 8338035764,
+        "name": "⏤͟͟͞͞𝗫𝙕𝙔5 || 𝑻𝒐𝒎𝒐𝒇𝒇𝒄",
+        "username": "Tomvcxx",
+        "amount": 12765774
+      },
+      {
+        "id": 8480202380,
+        "name": "ꦾꦾꦾꦾꦾꦾꦾꦾꦾꦾꦾꦾ🄷🄴🄻🅉 🄲🄴🄾 .",
+        "username": "Helzzzzcupuu",
+        "amount": 20240243
+      },
+      {
+        "id": 7665403124,
+        "name": "#995 fimm. (Fokus Rl)",
+        "username": "kyzzexX",
+        "amount": 39458762
+      },
+      {
+        "id": 1402991119,
+        "name": "⏤͟͟͞ 🧸 𝗞αєℓℓ~✘𝐳𖥔ᴋ𝟺ᴇʟ 𒁍",
+        "username": "Kaell_Xz",
+        "amount": 17514571
+      }
+    ],
+    "created_at": "2026-03-07T17:06:17.959Z",
+    "reactions": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 1
+    },
+    "reacted_users": {
+      "8230203258": "3"
+    }
+  },
+  "OANENEK": {
+    "type": "ga",
+    "total_pool": 70000000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 8048321004,
+        "name": "</𝙇𝙑𝙂𝙎 || 𝙋𝙖𝙧𝙖𝙙𝙞𝙨𝙚𝙑𝙤𝙞𝙙𝙈𝘿>",
+        "username": "ParadiseVoidMD",
+        "amount": 5688078
+      },
+      {
+        "id": 7152064072,
+        "name": "—͟͞͞𝐒𝐃𝐋| YAMA GUCHI HOST || 𝐓𝟓",
+        "username": "Yamaguchihost",
+        "amount": 24545165
+      },
+      {
+        "id": 8230203258,
+        "name": "Bosnsks",
+        "username": null,
+        "amount": 6296973
+      },
+      {
+        "id": 7797491207,
+        "name": "𝐒𝐱 ⻰ /𝐊𝐳𝐱𝐬𝐲𝐧𝐬𝐞",
+        "username": null,
+        "amount": 16443411
+      },
+      {
+        "id": 8384339467,
+        "name": "AlfrianXploit AlfrianXploit",
+        "username": "AlfrianXploit",
+        "amount": 17026373
+      }
+    ],
+    "created_at": "2026-03-07T20:58:01.266Z",
+    "reactions": {
+      "0": 3,
+      "1": 0,
+      "2": 0,
+      "3": 1
+    },
+    "reacted_users": {
+      "1402991119": "3",
+      "8661203722": "0",
+      "8328727709": "0",
+      "8384339467": "0"
+    }
+  },
+  "KDBAUSHAH": {
+    "type": "ga",
+    "total_pool": 400000000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 1402991119,
+        "name": "⏤͟͟͞ 🧸 𝗞αєℓℓ~✘𝐳𖥔ᴋ𝟺ᴇʟ 𒁍",
+        "username": "Kaell_Xz",
+        "amount": 105925347
+      },
+      {
+        "id": 7076443573,
+        "name": "☨ ♞𝗫𝗖𝗲𝗻𝘃𝗶𝗻𝘇𝘇 ϟ 𝗗𝗿𝗼𝘅𝘂𝗩𝗼𝗿𝘀🍷",
+        "username": null,
+        "amount": 71886676
+      },
+      {
+        "id": 8302282541,
+        "name": "EDXZVIP 「VØIDSTRIKE」",
+        "username": "EDXZVIP",
+        "amount": 69365750
+      },
+      {
+        "id": 7686281557,
+        "name": "Nasz #Quartz ¿",
+        "username": "Nasz_06",
+        "amount": 71802049
+      },
+      {
+        "id": 7122032803,
+        "name": "Maklohgwsepong",
+        "username": null,
+        "amount": 53463375
+      },
+      {
+        "id": 8235663977,
+        "name": "Leon Shirs",
+        "username": "LEONSHIRS",
+        "amount": 27556803
+      }
+    ],
+    "created_at": "2026-03-08T09:56:11.041Z",
+    "reactions": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0
+    },
+    "reacted_users": {}
+  },
+  "JSJAI": {
+    "type": "ga",
+    "total_pool": 500000000,
+    "remaining_pool": 179890041,
+    "kuota": 4,
+    "claimedBy": [
+      {
+        "id": 8661203722,
+        "name": "bellavaniaputri",
+        "username": "bellavniaaputri",
+        "amount": 69410929
+      },
+      {
+        "id": 8366975648,
+        "name": "jaidan kawe",
+        "username": "jaidankawe",
+        "amount": 75194360
+      },
+      {
+        "id": 8614343065,
+        "name": "⏤͟͟͞𝙈𝟓 X ⏤͟͟͞𝙈£K|| BAGAS CRUELL",
+        "username": "bagascruell",
+        "amount": 31937405
+      },
+      {
+        "id": 8235663977,
+        "name": "Leon Shirs",
+        "username": "LEONSHIRS",
+        "amount": 69079077
+      },
+      {
+        "id": 8517189333,
+        "name": "⏤͟͟͞͞𝗘𝗻𝘁𝗶𝘁𝘆 Lindaa Suka Kamu🌸",
+        "username": "putluvluv1",
+        "amount": 35393106
+      },
+      {
+        "id": 6747350093,
+        "name": "⸙ꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋDanz ⸙ꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋ",
+        "username": "Ygtagkayatai",
+        "amount": 39095082
+      }
+    ],
+    "created_at": "2026-03-08T10:36:05.009Z",
+    "reactions": {
+      "0": 0,
+      "1": 1,
+      "2": 0,
+      "3": 0
+    },
+    "reacted_users": {
+      "8365519013": "1"
+    }
+  },
+  "KAELLIMUTBANGET": {
+    "nominal": 50000000,
+    "kuota": 1,
+    "claimedBy": [
+      {
+        "id": 8278112817,
+        "name": "Rafzyyy [ Limit ]",
+        "username": "Rafzyy15",
+        "amount": 50000000
+      },
+      {
+        "id": 8661203722,
+        "name": "bellavaniaputri",
+        "username": "bellavniaaputri",
+        "amount": 50000000
+      },
+      {
+        "id": 7076443573,
+        "name": "☨ ♞𝗫𝗖𝗲𝗻𝘃𝗶𝗻𝘇𝘇 ϟ 𝗗𝗿𝗼𝘅𝘂𝗩𝗼𝗿𝘀🍷",
+        "username": null,
+        "amount": 50000000
+      },
+      {
+        "id": 8421114324,
+        "name": "–soobin ✧",
+        "username": "soobin15",
+        "amount": 50000000
+      },
+      {
+        "id": 8762265167,
+        "name": "JembutKontol LIMIT ANJG",
+        "username": "mbudzjmbudz",
+        "amount": 50000000
+      },
+      {
+        "id": 8048321004,
+        "name": "</𝙇𝙑𝙂𝙎 || 𝙋𝙖𝙧𝙖𝙙𝙞𝙨𝙚𝙑𝙤𝙞𝙙𝙈𝘿>",
+        "username": "ParadiseVoidMD",
+        "amount": 50000000
+      },
+      {
+        "id": 7686281557,
+        "name": "Nasz #Quartz ¿",
+        "username": "Nasz_06",
+        "amount": 50000000
+      },
+      {
+        "id": 8160086256,
+        "name": "renn",
+        "username": "rennsukajkt",
+        "amount": 50000000
+      },
+      {
+        "id": 1402991119,
+        "name": "⏤͟͟͞ 🧸 𝗞αєℓℓ~✘𝐳𖥔ᴋ𝟺ᴇʟ 𒁍",
+        "username": "Kaell_Xz",
+        "amount": 50000000
+      }
+    ],
+    "created_at": "2026-03-08T13:39:03.354Z"
+  },
+  "JSBDIWGYDVSH": {
+    "type": "ga",
+    "total_pool": 1000000000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 7413500299,
+        "name": "𝐙𝐎𝐑𝐃𝐀𝐁𝐘𝐒 [ OPEN UBOT ]",
+        "username": "seppabys",
+        "amount": 30943055
+      },
+      {
+        "id": 8302282541,
+        "name": "EDXZVIP 「VØIDSTRIKE」",
+        "username": "EDXZVIP",
+        "amount": 43086477
+      },
+      {
+        "id": 8220733085,
+        "name": "p dobtol",
+        "username": "kdhsuppuiw",
+        "amount": 43569216
+      },
+      {
+        "id": 8235663977,
+        "name": "Leon Shirs",
+        "username": "LEONSHIRS",
+        "amount": 51757223
+      },
+      {
+        "id": 8366975648,
+        "name": "jaidan kawe",
+        "username": "jaidankawe",
+        "amount": 41562789
+      },
+      {
+        "id": 8160086256,
+        "name": "renn",
+        "username": "rennsukajkt",
+        "amount": 23956837
+      },
+      {
+        "id": 8048321004,
+        "name": "</𝙇𝙑𝙂𝙎 || 𝙋𝙖𝙧𝙖𝙙𝙞𝙨𝙚𝙑𝙤𝙞𝙙𝙈𝘿>",
+        "username": "ParadiseVoidMD",
+        "amount": 23773717
+      },
+      {
+        "id": 8278112817,
+        "name": "Rafzyyy [ Limit ]",
+        "username": "Rafzyy15",
+        "amount": 63452481
+      },
+      {
+        "id": 8762265167,
+        "name": "JembutKontol LIMIT ANJG",
+        "username": "mbudzjmbudz",
+        "amount": 56424348
+      },
+      {
+        "id": 7386716852,
+        "name": "𝐅𝐑𝐀𝐗𝐙𝐘",
+        "username": "fraxzynobody",
+        "amount": 64536120
+      },
+      {
+        "id": 7502679833,
+        "name": "⏤͟͟͞͞𝐒𝐏𝐄𝐂𝐓𝐑𝐀𝐙𝐀 𝐃𝐈𝐆𝐈𝐓𝐀𝐋 ☭",
+        "username": "lmexza",
+        "amount": 84835572
+      },
+      {
+        "id": 6747350093,
+        "name": "⸙ꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋDanz ⸙ꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋ",
+        "username": "Ygtagkayatai",
+        "amount": 45281346
+      },
+      {
+        "id": 7038001731,
+        "name": "𝐈'𝐌 ☣︎ 𝐋𝐀𝐑𝐒𝐇𝐄𝐍☭",
+        "username": "larshenn",
+        "amount": 59196918
+      },
+      {
+        "id": 8230203258,
+        "name": "Bosnsks",
+        "username": null,
+        "amount": 82472504
+      },
+      {
+        "id": 7686281557,
+        "name": "Nasz #Quartz ¿",
+        "username": "Nasz_06",
+        "amount": 25524979
+      },
+      {
+        "id": 5054547166,
+        "name": "𐌶𐍅𐍂𐌴𐍇 🅽🅿🅲",
+        "username": "Zyrexoffc3",
+        "amount": 59704645
+      },
+      {
+        "id": 1122207241,
+        "name": "Support Group - IB",
+        "username": "suport_group_i6b",
+        "amount": 26702963
+      },
+      {
+        "id": 1987857245,
+        "name": "Support Group - IB",
+        "username": "suport_group_i65b",
+        "amount": 70369972
+      },
+      {
+        "id": 8222315871,
+        "name": "[ 𐌶𐍅𐍂𐌴𐍇 ] 𐌸𐌷𐌴 𐍅𐌹𐌋𐌋𐌰𐌹𐌽",
+        "username": "Zyrexoffc",
+        "amount": 52968080
+      },
+      {
+        "id": 7995916116,
+        "name": "Ryzz AJAH",
+        "username": "RyzzAjaMe",
+        "amount": 49880758
+      }
+    ],
+    "created_at": "2026-03-08T14:17:23.530Z",
+    "reactions": {
+      "0": 0,
+      "1": 0,
+      "2": 3,
+      "3": 1
+    },
+    "reacted_users": {
+      "1402991119": "2",
+      "8160086256": "2",
+      "5054547166": "3",
+      "8222315871": "2"
+    }
+  },
+  "JGUFUG": {
+    "type": "ga",
+    "total_pool": 500000000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 7340896634,
+        "name": "𝐌𝐢𝐫𝐮𝐥𝐙𝐭𝐲𝐳𝐳 ( ALWAYS ON )",
+        "username": "MirulZtyzz",
+        "amount": 23762230
+      },
+      {
+        "id": 8026569972,
+        "name": "𝐆𝐮𝐧𝐳𝐳",
+        "username": "gunzmods",
+        "amount": 43685244
+      },
+      {
+        "id": 8048321004,
+        "name": "</𝙇𝙑𝙂𝙎 || 𝙋𝙖𝙧𝙖𝙙𝙞𝙨𝙚𝙑𝙤𝙞𝙙𝙈𝘿>",
+        "username": "ParadiseVoidMD",
+        "amount": 55354762
+      },
+      {
+        "id": 6747350093,
+        "name": "⸙ꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋDanz ⸙ꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋ",
+        "username": "Ygtagkayatai",
+        "amount": 30516699
+      },
+      {
+        "id": 7732376713,
+        "name": "Queenzz",
+        "username": "queenherees",
+        "amount": 82533118
+      },
+      {
+        "id": 7995916116,
+        "name": "Ryzz AJAH",
+        "username": "RyzzAjaMe",
+        "amount": 57094482
+      },
+      {
+        "id": 8366975648,
+        "name": "jaidan kawe",
+        "username": "jaidankawe",
+        "amount": 81149177
+      },
+      {
+        "id": 7103531545,
+        "name": "zero wut-wut⚡️",
+        "username": "gwehdurov",
+        "amount": 42740798
+      },
+      {
+        "id": 2034311161,
+        "name": "y",
+        "username": "modeoffmatikanfalse",
+        "amount": 43873405
+      },
+      {
+        "id": 7152064072,
+        "name": "—͟͞͞𝐒𝐃𝐋| YAMA GUCHI HOST || 𝐓𝟓",
+        "username": "Yamaguchihost",
+        "amount": 39290085
+      }
+    ],
+    "created_at": "2026-03-08T15:49:31.801Z",
+    "reactions": {
+      "0": 0,
+      "1": 0,
+      "2": 1,
+      "3": 3
+    },
+    "reacted_users": {
+      "1402991119": "2",
+      "7340896634": "3",
+      "7995916116": "3",
+      "7103531545": "3"
+    }
+  },
+  "KUIAJDBAU": {
+    "type": "ga",
+    "total_pool": 400000000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 8278112817,
+        "name": "Rafzyyy [ Limit ]",
+        "username": "Rafzyy15",
+        "amount": 70995014
+      },
+      {
+        "id": 7122032803,
+        "name": "Maklohgwsepong",
+        "username": null,
+        "amount": 55117739
+      },
+      {
+        "id": 8235663977,
+        "name": "Leon Shirs",
+        "username": "LEONSHIRS",
+        "amount": 65899486
+      },
+      {
+        "id": 8302282541,
+        "name": "EDXZVIP 「VØIDSTRIKE」",
+        "username": "EDXZVIP",
+        "amount": 44830862
+      },
+      {
+        "id": 8384339467,
+        "name": "AlfrianXploit AlfrianXploit",
+        "username": "AlfrianXploit",
+        "amount": 40820758
+      },
+      {
+        "id": 1200928025,
+        "name": "── RapkiOffc. Ξίμποου",
+        "username": "whyBro404",
+        "amount": 42673709
+      },
+      {
+        "id": 1402991119,
+        "name": "⏤͟͟͞ 🧸 𝗞αєℓℓ~✘𝐳𖥔ᴋ𝟺ᴇʟ 𒁍",
+        "username": "Kaell_Xz",
+        "amount": 79662432
+      }
+    ],
+    "created_at": "2026-03-08T22:34:37.547Z"
+  },
+  "UGUGYHUGU": {
+    "nominal": 50000000,
+    "kuota": 6,
+    "claimedBy": [
+      {
+        "id": 8366975648,
+        "name": "jaidan kawe",
+        "username": "jaidankawe",
+        "amount": 50000000
+      },
+      {
+        "id": 7413500299,
+        "name": "𝐙𝐎𝐑𝐃𝐀𝐁𝐘𝐒 [ OPEN UBOT ]",
+        "username": "seppabys",
+        "amount": 50000000
+      },
+      {
+        "id": 1200928025,
+        "name": "── RapkiOffc. Ξίμποου",
+        "username": "whyBro404",
+        "amount": 50000000
+      },
+      {
+        "id": 8302282541,
+        "name": "EDXZVIP 「VØIDSTRIKE」",
+        "username": "EDXZVIP",
+        "amount": 50000000
+      },
+      {
+        "id": 7932183592,
+        "name": "AGUNG [JARANG ON]",
+        "username": "AGUNGVIP",
+        "amount": 50000000
+      },
+      {
+        "id": 8220733085,
+        "name": "p dobtol",
+        "username": "Zetzapolo",
+        "amount": 50000000
+      },
+      {
+        "id": 8539866221,
+        "name": "Ado Be",
+        "username": "Gelowo",
+        "amount": 50000000
+      },
+      {
+        "id": 8235663977,
+        "name": "Leon Shirs",
+        "username": "LEONSHIRS",
+        "amount": 50000000
+      },
+      {
+        "id": 7686281557,
+        "name": "Nasz #Quartz ¿",
+        "username": "Nasz_06",
+        "amount": 50000000
+      },
+      {
+        "id": 7692230763,
+        "name": "𝗩𝗮𝘆𝘆 ⺓𝗩𝗩𝗜𝗣",
+        "username": "suamiayano",
+        "amount": 50000000
+      },
+      {
+        "id": 1987857245,
+        "name": "Support Group - IB",
+        "username": "suport_group_i65b",
+        "amount": 50000000
+      },
+      {
+        "id": 7864104899,
+        "name": "Mongz",
+        "username": null,
+        "amount": 50000000
+      },
+      {
+        "id": 1122207241,
+        "name": "Support Group - IB",
+        "username": "suport_group_i6b",
+        "amount": 50000000
+      },
+      {
+        "id": 7152064072,
+        "name": "—͟͞͞𝐒𝐃𝐋| YAMA GUCHI HOST || 𝐓𝟓",
+        "username": "Yamaguchihost",
+        "amount": 50000000
+      }
+    ],
+    "created_at": "2026-03-09T08:43:50.479Z",
+    "reactions": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0
+    },
+    "reacted_users": {}
+  },
+  "KANAIA": {
+    "nominal": 50000000,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 8302282541,
+        "name": "EDXZVIP 「VØIDSTRIKE」",
+        "username": "EDXZVIP",
+        "amount": 50000000
+      },
+      {
+        "id": 1450800056,
+        "name": "𝒀𝒖𝒏𝒏 < 𝑿𝒊𝒂𝒐",
+        "username": "yuncbb",
+        "amount": 50000000
+      },
+      {
+        "id": 1200928025,
+        "name": "── RapkiOffc. Ξίμποου",
+        "username": "whyBro404",
+        "amount": 50000000
+      },
+      {
+        "id": 8328727709,
+        "name": "𝕳𝖞𝖊𝖑𝖑 𝕿𝖊𝖒𝖕𝖊𝖘𝖙",
+        "username": "hyelltempest0121",
+        "amount": 50000000
+      },
+      {
+        "id": 7932183592,
+        "name": "AGUNG [JARANG ON]",
+        "username": "AGUNGVIP",
+        "amount": 50000000
+      },
+      {
+        "id": 7122032803,
+        "name": "Maklohgwsepong",
+        "username": null,
+        "amount": 50000000
+      },
+      {
+        "id": 8235663977,
+        "name": "Leon Shirs",
+        "username": "LEONSHIRS",
+        "amount": 50000000
+      }
+    ],
+    "created_at": "2026-03-09T08:47:03.297Z",
+    "reactions": {
+      "0": 0,
+      "1": 0,
+      "2": 1,
+      "3": 1
+    },
+    "reacted_users": {
+      "8026569972": "3",
+      "7907134865": "2"
+    }
+  },
+  "JEMBUT": {
+    "nominal": 100000000,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 7797491207,
+        "name": "𝐒𝐱 ⻰ /𝐊𝐳𝐱𝐬𝐲𝐧𝐬𝐞",
+        "username": null,
+        "amount": 100000000
+      },
+      {
+        "id": 8655883649,
+        "name": "Hanzz",
+        "username": "HanzzXmc",
+        "amount": 100000000
+      },
+      {
+        "id": 8517189333,
+        "name": "Lindaa🌸",
+        "username": "putluvluv1",
+        "amount": 100000000
+      },
+      {
+        "id": 8048321004,
+        "name": "</𝙇𝙑𝙂𝙎 || 𝙋𝙖𝙧𝙖𝙙𝙞𝙨𝙚𝙑𝙤𝙞𝙙𝙈𝘿>",
+        "username": "ParadiseVoidMD",
+        "amount": 100000000
+      },
+      {
+        "id": 5757312953,
+        "name": "Sanzdemigood",
+        "username": null,
+        "amount": 100000000
+      }
+    ],
+    "created_at": "2026-03-09T14:26:48.540Z"
+  },
+  "IANSISBC": {
+    "nominal": 20000000,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 7122032803,
+        "name": "Maklohgwsepong",
+        "username": null,
+        "amount": 20000000
+      },
+      {
+        "id": 8517189333,
+        "name": "Lindaa🌸",
+        "username": "putluvluv1",
+        "amount": 20000000
+      },
+      {
+        "id": 5757312953,
+        "name": "Sanzdemigood",
+        "username": null,
+        "amount": 20000000
+      },
+      {
+        "id": 8421114324,
+        "name": "–soobin ✧",
+        "username": "raxzy15",
+        "amount": 20000000
+      },
+      {
+        "id": 7797491207,
+        "name": "𝐒𝐱 ⻰ /𝐊𝐳𝐱𝐬𝐲𝐧𝐬𝐞",
+        "username": null,
+        "amount": 20000000
+      },
+      {
+        "id": 1402991119,
+        "name": "⏤͟͟͞ # 𝗞αєℓℓ~✘𝐳𖥔ᴋ𝟺ᴇʟ 𒁍",
+        "username": "Kaell_Xz",
+        "amount": 20000000
+      },
+      {
+        "id": 7932183592,
+        "name": "AGUNG [JARANG ON]",
+        "username": "AGUNGVIP",
+        "amount": 20000000
+      },
+      {
+        "id": 7686281557,
+        "name": "Nasz #Quartz ¿",
+        "username": "Nasz_06",
+        "amount": 20000000
+      },
+      {
+        "id": 1987857245,
+        "name": "Support Group - IB",
+        "username": "suport_group_i65b",
+        "amount": 20000000
+      },
+      {
+        "id": 1122207241,
+        "name": "Support Group - IB",
+        "username": "suport_group_i6b",
+        "amount": 20000000
+      }
+    ],
+    "created_at": "2026-03-10T13:11:56.895Z",
+    "reactions": {
+      "0": 0,
+      "1": 1,
+      "2": 0,
+      "3": 1
+    },
+    "reacted_users": {
+      "1402991119": "1",
+      "8026569972": "3"
+    }
+  },
+  "ISISHSHS": {
+    "type": "ga",
+    "total_pool": 300000000,
+    "remaining_pool": 0,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 8026569972,
+        "name": "𝐆𝐮𝐧𝐳𝐳",
+        "username": "gunzmods",
+        "amount": 42919308
+      },
+      {
+        "id": 8517189333,
+        "name": "Lindaa🌸",
+        "username": "putluvluv1",
+        "amount": 36254807
+      },
+      {
+        "id": 8048321004,
+        "name": "</𝙇𝙑𝙂𝙎 || 𝙋𝙖𝙧𝙖𝙙𝙞𝙨𝙚𝙑𝙤𝙞𝙙𝙈𝘿>",
+        "username": "ParadiseVoidMD",
+        "amount": 36884088
+      },
+      {
+        "id": 8160086256,
+        "name": "renn",
+        "username": "rennsukajkt",
+        "amount": 25812315
+      },
+      {
+        "id": 7797491207,
+        "name": "𝐒𝐱 ⻰ /𝐊𝐳𝐱𝐬𝐲𝐧𝐬𝐞",
+        "username": null,
+        "amount": 25715016
+      },
+      {
+        "id": 8278112817,
+        "name": "Rafzyyy [ Limit ]",
+        "username": "Rafzyy15",
+        "amount": 19361542
+      },
+      {
+        "id": 8421114324,
+        "name": "–soobin ✧",
+        "username": "raxzy15",
+        "amount": 14392772
+      },
+      {
+        "id": 7103531545,
+        "name": "zero wut-wut⚡️",
+        "username": "gwehdurov",
+        "amount": 45285854
+      },
+      {
+        "id": 2034311161,
+        "name": "y",
+        "username": "modeoffmatikanfalse",
+        "amount": 30383942
+      },
+      {
+        "id": 7295553358,
+        "name": "Fiz",
+        "username": "Fizajaa0",
+        "amount": 22990356
+      }
+    ],
+    "created_at": "2026-03-11T10:19:31.029Z",
+    "reactions": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 1
+    },
+    "reacted_users": {
+      "1402991119": "3"
+    }
+  },
+  "JSISUWH": {
+    "nominal": 50000000,
+    "kuota": 0,
+    "claimedBy": [
+      {
+        "id": 1200928025,
+        "name": "── RapkiOffc. Ξίμποου",
+        "username": "whyBro404",
+        "amount": 50000000
+      },
+      {
+        "id": 7995916116,
+        "name": "Ryzz AJAH",
+        "username": "RyzzAj",
+        "amount": 50000000
+      },
+      {
+        "id": 8534037866,
+        "name": "`JARZY `",
+        "username": "JarzyXx",
+        "amount": 50000000
+      },
+      {
+        "id": 7295553358,
+        "name": "Fiz",
+        "username": "Fizajaa0",
+        "amount": 50000000
+      },
+      {
+        "id": 7797491207,
+        "name": "𝐒𝐱 ⻰ /𝐊𝐳𝐱𝐬𝐲𝐧𝐬𝐞",
+        "username": null,
+        "amount": 50000000
+      },
+      {
+        "id": 8366975648,
+        "name": "jaidan kawe",
+        "username": "jaidankawe",
+        "amount": 50000000
+      },
+      {
+        "id": 8302282541,
+        "name": "EDXZVIP 「VØIDSTRIKE」",
+        "username": "EDXZVIP",
+        "amount": 50000000
+      },
+      {
+        "id": 7152064072,
+        "name": "—͟͞͞𝐒𝐃𝐋| YAMA GUCHI HOST || 𝐓𝟓",
+        "username": "Yamaguchihost",
+        "amount": 50000000
+      },
+      {
+        "id": 8048321004,
+        "name": "</𝙇𝙑𝙂𝙎 || 𝙋𝙖𝙧𝙖𝙙𝙞𝙨𝙚𝙑𝙤𝙞𝙙𝙈𝘿>",
+        "username": "ParadiseVoidMD",
+        "amount": 50000000
+      },
+      {
+        "id": 5223822990,
+        "name": "⏤͟͟͞͞𝐌𝐚𝐝𝐙𝐡𝐚 ϟ 𝟔𝟗",
+        "username": "ZaaALFyu",
+        "amount": 50000000
+      }
+    ],
+    "created_at": "2026-03-11T14:20:40.372Z"
+  },
+  "817ISH91": {
+    "type": "ga",
+    "total_pool": 550000000,
+    "remaining_pool": 75354770,
+    "kuota": 2,
+    "claimedBy": [
+      {
+        "id": 8517189333,
+        "name": "Lindaa🌸",
+        "username": "putluvluv1",
+        "amount": 22737397
+      },
+      {
+        "id": 6743880383,
+        "name": "𝕾 𒐬 | 𝐃𝐬𝐥𝐰𝐓𝐳𝐲",
+        "username": "yttajancok556",
+        "amount": 17540749
+      },
+      {
+        "id": 7413500299,
+        "name": "𝐙𝐎𝐑𝐃𝐀𝐁𝐘𝐒 [ OPEN UBOT ]",
+        "username": "seppabys",
+        "amount": 34486047
+      },
+      {
+        "id": 8366975648,
+        "name": "jaidan kawe",
+        "username": "jaidankawe",
+        "amount": 22050345
+      },
+      {
+        "id": 8220733085,
+        "name": "𝐙𝐄𝐓𝐙𝐀𝐏𝐎𝐋𝐎 [ OPEN PANEL ]",
+        "username": "Zetzapolo",
+        "amount": 31998578
+      },
+      {
+        "id": 8414230376,
+        "name": "── RapkiOffc. Ξίμποου _",
+        "username": "WhyBro444",
+        "amount": 42629021
+      },
+      {
+        "id": 7995916116,
+        "name": "Ryzz AJAH",
+        "username": "RyzzAj",
+        "amount": 45002856
+      },
+      {
+        "id": 5223822990,
+        "name": "⏤͟͟͞͞𝐌𝐚𝐝𝐙𝐡𝐚 ϟ 𝟔𝟗",
+        "username": "ZaaALFyu",
+        "amount": 34265033
+      },
+      {
+        "id": 7797491207,
+        "name": "𝐒𝐱 ⻰ /𝐊𝐳𝐱𝐬𝐲𝐧𝐬𝐞",
+        "username": null,
+        "amount": 61243517
+      },
+      {
+        "id": 8496499485,
+        "name": "ᯓ𝐃𝐚𝐫𝐤𝐕𝐞𝐱𝐈𝐃 || 𝐁𝐈𝐆 𝟎𝟕",
+        "username": "DarkVexID",
+        "amount": 39163971
+      },
+      {
+        "id": 6747350093,
+        "name": "⸙ꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋDanz ⸙ꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋꠋ",
+        "username": "Ygtagkayatai",
+        "amount": 27850132
+      },
+      {
+        "id": 7295553358,
+        "name": "Fiz",
+        "username": "Fizajaa0",
+        "amount": 49227472
+      },
+      {
+        "id": 8661203722,
+        "name": "bellavaniaputri",
+        "username": "bellavniaaputri",
+        "amount": 46450112
+      }
+    ],
+    "created_at": "2026-03-12T16:59:21.057Z"
+  }
+}
